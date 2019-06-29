@@ -15,8 +15,5 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <materialDesign:Card Padding="32" Margin="16">
-            <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}">My first Material Design App</TextBlock>
-        </materialDesign:Card>
     </Grid>
 </Window>
