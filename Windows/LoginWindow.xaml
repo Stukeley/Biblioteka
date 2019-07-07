@@ -20,7 +20,7 @@
 		<materialDesign:PackIcon Kind="LocalLibrary" Margin="20" Height="100" Width="100" VerticalAlignment="Top" 
 								 HorizontalAlignment="Center" Foreground="White"/>
 		<materialDesign:PackIcon x:Name="CloseButton" Kind="Close" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10" Height="30"
-								 Width="30" Foreground="DarkSlateGray" PreviewMouseUp="CloseButton_PreviewMouseUp"/>
+								 Width="30" Foreground="DarkSlateGray" PreviewMouseUp="CloseButton_PreviewMouseUp" Cursor="Hand"/>
 		<Rectangle Width="280" Height="240" Fill="White" VerticalAlignment="Bottom" Margin="0,100">
 			<Rectangle.Effect>
 				<DropShadowEffect Color="#FFBBBBBB" Direction="0" BlurRadius="15" RenderingBias="Quality" ShadowDepth="1"/>
@@ -35,7 +35,7 @@
 				<PasswordBox x:Name="PasswordBox" materialDesign:HintAssist.Hint="HASŁO" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
 						 Margin="0,10"/>
 				<CheckBox x:Name="RememberLoginCredentials" Margin="0,10" FontFamily="Segoe UI"
-						  FontSize="12" Content="Zapamiętaj logowanie"/>
+						  FontSize="12" Content="Zapamiętaj logowanie" Foreground="Gray"/>
 			</StackPanel>
 		</Grid>
 

@@ -48,7 +48,7 @@
 				<Button x:Name="LoginButton" VerticalAlignment="Center" Margin="10" FontFamily="Segoe UI" FontSize="16" 
 						Content="Zaloguj się" Click="LoginButton_Click"/>
 				<materialDesign:PackIcon x:Name="ExitButton" Kind="Close" Margin="10" Height="30" Width="30" 
-										 PreviewMouseUp="ExitButton_PreviewMouseUp"/>
+										 PreviewMouseUp="ExitButton_PreviewMouseUp" Cursor="Hand"/>
 			</StackPanel>
         </Grid>
         <Grid x:Name="GridMenu" Width="60" HorizontalAlignment="Left" Background="#FF1B3861">
