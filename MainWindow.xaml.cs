@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Media;
 
 namespace Biblioteka
 {
@@ -8,16 +9,16 @@ namespace Biblioteka
 	public partial class MainWindow : Window
 	{
 		//TODO: make the dashboard remind the user of logging in and make the menu unaccessible if not logged in
-		//TODO: move the menu from top right to left side menu, make an X in its place
 
 		public MainWindow()
 		{
 			InitializeComponent();
 
-			//TODO: hide the button upon login
+			//hide unnecessary elements if the user is logged in
 			if (Biblioteka.Windows.LoginWindow.IsLoggedIn)
 			{
 				LoginButton.Visibility = Visibility.Hidden;
+				PleaseLogInGrid.Visibility = Visibility.Hidden;
 			}
 		}
 
@@ -43,6 +44,23 @@ namespace Biblioteka
 		private void ExitButton_Click(object sender, RoutedEventArgs e)
 		{
 			Application.Current.Shutdown();
+		}
+
+		private void PleaseLogInGrid_PreviewMouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		{
+			var loginWindow = new Biblioteka.Windows.LoginWindow();
+			loginWindow.Show();
+			this.Close();
+		}
+
+		private void ExitButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+		{
+			ExitButton.Foreground = new SolidColorBrush(Colors.Black);
+		}
+
+		private void ExitButton_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+		{
+			ExitButton.Foreground = new SolidColorBrush(Colors.DarkSlateGray);
 		}
 	}
 }

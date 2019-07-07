@@ -49,54 +49,55 @@
 						Content="Zaloguj się" Click="LoginButton_Click"/>
 
 				<Button x:Name="ExitButton" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30"
-						Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" Click="ExitButton_Click" Margin="10">
+						Background="{x:Null}" BorderBrush="{x:Null}" Foreground="DarkSlateGray" Click="ExitButton_Click" Margin="10"
+						MouseEnter="ExitButton_MouseEnter" MouseLeave="ExitButton_MouseLeave">
 					<materialDesign:PackIcon Width="30" Height="30" Kind="Close" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 				</Button>
 			</StackPanel>
         </Grid>
-        <Grid x:Name="GridMenu" Width="60" HorizontalAlignment="Left" Background="#FF1B3861">
-            <StackPanel>
-                <Grid Height="150" Background="White">
-                    <Button x:Name="ButtonCloseMenu" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" 
+		<Grid x:Name="GridMenu" Width="60" HorizontalAlignment="Left" Background="#FF1B3861">
+			<StackPanel>
+				<Grid Height="150" Background="White">
+					<Button x:Name="ButtonCloseMenu" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" 
                             VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="Collapsed" Click="ButtonCloseMenu_Click">
-                        <materialDesign:PackIcon Foreground="#FF1B3861" Kind="ArrowLeft" Width="25" Height="25"/>
-                    </Button>
-                    <Button x:Name="ButtonOpenMenu" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" 
+						<materialDesign:PackIcon Foreground="#FF1B3861" Kind="ArrowLeft" Width="25" Height="25"/>
+					</Button>
+					<Button x:Name="ButtonOpenMenu" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" 
                             VerticalAlignment="Top" HorizontalAlignment="Right" Click="ButtonOpenMenu_Click">
-                        <materialDesign:PackIcon Foreground="#FF1B3861" Kind="Menu" Width="25" Height="25"/>
-                    </Button>
-                </Grid>
-                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="#FF1368BD">
-                    <ListViewItem Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="HomeOutline" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
-                            <TextBlock Text="Strona Główna" VerticalAlignment="Center" Margin="20 10"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="CalendarMultiselect" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
-                            <TextBlock Text="Wypożyczenia" VerticalAlignment="Center" Margin="20 10"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="BookOpen" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
-                            <TextBlock Text="Książki" VerticalAlignment="Center" Margin="20 10"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Pen" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
-                            <TextBlock Text="Autorzy" VerticalAlignment="Center" Margin="20 10"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="EmailOutline" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
-                            <TextBlock Text="Kontakt" VerticalAlignment="Center" Margin="20 10"/>
-                        </StackPanel>
-                    </ListViewItem>
+						<materialDesign:PackIcon Foreground="#FF1B3861" Kind="Menu" Width="25" Height="25"/>
+					</Button>
+				</Grid>
+				<ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="#FF1368BD">
+					<ListViewItem Height="60">
+						<StackPanel Orientation="Horizontal">
+							<materialDesign:PackIcon Kind="HomeOutline" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+							<TextBlock Text="Strona Główna" VerticalAlignment="Center" Margin="20 10"/>
+						</StackPanel>
+					</ListViewItem>
+					<ListViewItem Height="60">
+						<StackPanel Orientation="Horizontal">
+							<materialDesign:PackIcon Kind="CalendarMultiselect" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+							<TextBlock Text="Wypożyczenia" VerticalAlignment="Center" Margin="20 10"/>
+						</StackPanel>
+					</ListViewItem>
+					<ListViewItem Height="60">
+						<StackPanel Orientation="Horizontal">
+							<materialDesign:PackIcon Kind="BookOpen" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+							<TextBlock Text="Książki" VerticalAlignment="Center" Margin="20 10"/>
+						</StackPanel>
+					</ListViewItem>
+					<ListViewItem Height="60">
+						<StackPanel Orientation="Horizontal">
+							<materialDesign:PackIcon Kind="Pen" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+							<TextBlock Text="Autorzy" VerticalAlignment="Center" Margin="20 10"/>
+						</StackPanel>
+					</ListViewItem>
+					<ListViewItem Height="60">
+						<StackPanel Orientation="Horizontal">
+							<materialDesign:PackIcon Kind="EmailOutline" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+							<TextBlock Text="Kontakt" VerticalAlignment="Center" Margin="20 10"/>
+						</StackPanel>
+					</ListViewItem>
 					<ListViewItem Height="60">
 						<StackPanel Orientation="Horizontal">
 							<materialDesign:PackIcon Kind="AccountOutline" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
@@ -110,9 +111,42 @@
 						</StackPanel>
 					</ListViewItem>
 				</ListView>
-            </StackPanel>
-        </Grid>
+			</StackPanel>
+		</Grid>
+
+		<Grid>
+			<Rectangle Width="300" Height="200" VerticalAlignment="Center" HorizontalAlignment="Center"
+					   PreviewMouseUp="PleaseLogInGrid_PreviewMouseUp">
+				<Rectangle.Fill>
+					<SolidColorBrush Color="White"/>
+				</Rectangle.Fill>
+
+				<Rectangle.Effect>
+					<DropShadowEffect BlurRadius="10" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
+				</Rectangle.Effect>
+			</Rectangle>
+			
+			<Grid x:Name="PleaseLogInGrid" Width="300" Height="200" PreviewMouseUp="PleaseLogInGrid_PreviewMouseUp">
+				<Grid.Style>
+					<Style TargetType="{x:Type Grid}">
+						<Style.Triggers>
+							<Trigger Property="IsMouseOver" Value="False">
+								<Setter Property="Opacity" Value="0.75"/>
+							</Trigger>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter Property="Opacity" Value="1"/>
+							</Trigger>
+						</Style.Triggers>
+					</Style>
+				</Grid.Style>
+				
+				<materialDesign:PackIcon Kind="DoorOpen" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10"
+										 Width="80" Height="80"/>
+				<TextBlock Text="Nie jesteś zalogowany/a! Kliknij tutaj, by się zalogować." HorizontalAlignment="Center"
+						   VerticalAlignment="Bottom" Margin="20" FontSize="22" TextWrapping="Wrap" TextAlignment="Center"
+						   Foreground="Black"/>
+			</Grid>
+		</Grid>
 		
-		
-    </Grid>
+	</Grid>
 </Window>

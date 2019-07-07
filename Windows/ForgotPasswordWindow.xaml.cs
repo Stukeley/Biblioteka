@@ -3,6 +3,7 @@ using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace Biblioteka.Windows
 {
@@ -87,6 +88,16 @@ namespace Biblioteka.Windows
 		private void ExitButton_Click(object sender, RoutedEventArgs e)
 		{
 			Application.Current.Shutdown();
+		}
+
+		private void ExitButton_MouseEnter(object sender, MouseEventArgs e)
+		{
+			ExitButton.Foreground = new SolidColorBrush(Colors.Black);
+		}
+
+		private void ExitButton_MouseLeave(object sender, MouseEventArgs e)
+		{
+			ExitButton.Foreground = new SolidColorBrush(Colors.DarkSlateGray);
 		}
 	}
 }

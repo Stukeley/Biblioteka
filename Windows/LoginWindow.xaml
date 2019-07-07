@@ -21,7 +21,7 @@
 								 HorizontalAlignment="Center" Foreground="White"/>
 		<Button x:Name="ExitButton" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30"
 						Background="{x:Null}" BorderBrush="{x:Null}" Foreground="DarkSlateGray" Click="ExitButton_Click"  Margin="10"
-				HorizontalAlignment="Right" VerticalAlignment="Top">
+				HorizontalAlignment="Right" VerticalAlignment="Top" MouseEnter="ExitButton_MouseEnter" MouseLeave="ExitButton_MouseLeave">
 			<materialDesign:PackIcon Width="30" Height="30" Kind="Close" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 		</Button>
 		
