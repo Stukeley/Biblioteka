@@ -10,7 +10,6 @@ namespace Biblioteka.Windows
 	/// </summary>
 	public partial class LoginWindow : Window
 	{
-		//TODO: add a checkbox to remember log-in credentials
 		//TODO: hash passwords
 
 		public static bool IsLoggedIn = false;
@@ -118,7 +117,7 @@ namespace Biblioteka.Windows
 			this.Close();
 		}
 
-		private void CloseButton_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+		private void ExitButton_Click(object sender, RoutedEventArgs e)
 		{
 			Application.Current.Shutdown();
 		}

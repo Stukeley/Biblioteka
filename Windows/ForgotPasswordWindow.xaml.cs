@@ -84,7 +84,7 @@ namespace Biblioteka.Windows
 			this.Close();
 		}
 
-		private void CloseButton_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+		private void ExitButton_Click(object sender, RoutedEventArgs e)
 		{
 			Application.Current.Shutdown();
 		}

@@ -19,8 +19,12 @@
 		</Rectangle>
 		<materialDesign:PackIcon Kind="LocalLibrary" Margin="20" Height="100" Width="100" VerticalAlignment="Top" 
 								 HorizontalAlignment="Center" Foreground="White"/>
-		<materialDesign:PackIcon x:Name="CloseButton" Kind="Close" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10" Height="30"
-								 Width="30" Foreground="DarkSlateGray" PreviewMouseUp="CloseButton_PreviewMouseUp" Cursor="Hand"/>
+		<Button x:Name="ExitButton" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30"
+						Background="{x:Null}" BorderBrush="{x:Null}" Foreground="DarkSlateGray" Click="ExitButton_Click"  Margin="10"
+				HorizontalAlignment="Right" VerticalAlignment="Top">
+			<materialDesign:PackIcon Width="30" Height="30" Kind="Close" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+		</Button>
+		
 		<Rectangle Width="280" Height="240" Fill="White" VerticalAlignment="Bottom" Margin="0,100">
 			<Rectangle.Effect>
 				<DropShadowEffect Color="#FFBBBBBB" Direction="0" BlurRadius="15" RenderingBias="Quality" ShadowDepth="1"/>
