@@ -1,0 +1,46 @@
+﻿<Window x:Class="Biblioteka.Windows.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:Biblioteka.Windows"
+        mc:Ignorable="d"
+        Title="LoginWindow" Height="500" Width="350" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <Grid>
+		<Rectangle Height="280" VerticalAlignment="Top">
+			<Rectangle.Fill>
+				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+					<GradientStop Color="#FF2281D1"/>
+					<GradientStop Color="#FF34268A" Offset="1"/>
+					<GradientStop Color="#FF33288B" Offset="0.5"/>
+				</LinearGradientBrush>
+			</Rectangle.Fill>
+		</Rectangle>
+		<materialDesign:PackIcon Kind="LocalLibrary" Margin="20" Height="100" Width="100" VerticalAlignment="Top" 
+								 HorizontalAlignment="Center" Foreground="White"/>
+		<Rectangle Width="280" Height="240" Fill="White" VerticalAlignment="Bottom" Margin="0,100">
+			<Rectangle.Effect>
+				<DropShadowEffect Color="#FFBBBBBB" Direction="0" BlurRadius="15" RenderingBias="Quality" ShadowDepth="1"/>
+			</Rectangle.Effect>
+		</Rectangle>
+		<Grid Width="280" Height="240" VerticalAlignment="Bottom" Margin="0,100">
+			<TextBlock Text="Logowanie" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5" 
+					   Foreground="Gray" FontSize="20"/>
+			<StackPanel VerticalAlignment="Center" Margin="10">
+				<TextBox x:Name="EmailBox" materialDesign:HintAssist.Hint="EMAIL" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+						 Margin="0,10"/>
+				<PasswordBox x:Name="PasswordBox" materialDesign:HintAssist.Hint="HASŁO" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+						 Margin="0,10"/>
+				<CheckBox x:Name="RememberLoginCredentials" Margin="0,10" FontFamily="Segoe UI"
+						  FontSize="12" Content="Zapamiętaj logowanie"/>
+			</StackPanel>
+		</Grid>
+
+		<Button x:Name="LoginButton" VerticalAlignment="Bottom" Margin="0,85" Width="150" Content="ZALOGUJ" Click="LoginButton_Click"/>
+		<TextBlock x:Name="NoAccount" Text="Nie posiadasz konta?" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="50" 
+				   Foreground="Gray" Cursor="Hand" PreviewMouseUp="NoAccount_PreviewMouseUp"/>
+		<TextBlock x:Name="ForgotPassword" Text="Zapomniałeś hasła?" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20" 
+				   Foreground="Gray" Cursor="Hand" PreviewMouseUp="ForgotPassword_PreviewMouseUp"/>
+	</Grid>
+</Window>
