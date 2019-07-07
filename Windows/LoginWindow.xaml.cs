@@ -30,13 +30,13 @@ namespace Biblioteka.Windows
 		private void LoginButton_Click(object sender, RoutedEventArgs e)
 		{
 			//Data validation
-			if (EmailBox.Text == "" || !EmailBox.Text.Contains("@"))
+			if (string.IsNullOrEmpty(EmailBox.Text) || !EmailBox.Text.Contains("@"))
 			{
-				MessageBox.Show("Niepoprawny adres email!", "Błąd adresu email", MessageBoxButton.OK, MessageBoxImage.Error);
+				MessageBox.Show("Nie podano prawidłowego adresu email!", "Błąd adresu email", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
-			else if (PasswordBox.Password == "")
+			else if (string.IsNullOrEmpty(PasswordBox.Password))
 			{
-				MessageBox.Show("Niepoprawne hasło!", "Błąd hasła", MessageBoxButton.OK, MessageBoxImage.Error);
+				MessageBox.Show("Hasło nie może być puste!", "Błąd hasła", MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 			else
 			{
@@ -106,16 +106,21 @@ namespace Biblioteka.Windows
 
 		private void NoAccount_PreviewMouseUp(object sender, MouseButtonEventArgs e)
 		{
-			var registerWindow = new Biblioteka.Windows.RegisterWindow();
+			var registerWindow = new RegisterWindow();
 			registerWindow.Show();
 			this.Close();
 		}
 
 		private void ForgotPassword_PreviewMouseUp(object sender, MouseButtonEventArgs e)
 		{
-			var forgotPasswordWindow = new Biblioteka.Windows.ForgotPasswordWindow();
+			var forgotPasswordWindow = new ForgotPasswordWindow();
 			forgotPasswordWindow.Show();
 			this.Close();
+		}
+
+		private void CloseButton_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+		{
+			Application.Current.Shutdown();
 		}
 	}
 }

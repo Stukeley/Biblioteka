@@ -47,17 +47,9 @@
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
 				<Button x:Name="LoginButton" VerticalAlignment="Center" Margin="10" FontFamily="Segoe UI" FontSize="16" 
 						Content="Zaloguj się" Click="LoginButton_Click"/>
-                <materialDesign:PopupBox Margin="10" PlacementMode="BottomAndAlignRightEdges"
-                                     StaysOpen="False">
-                    <StackPanel Width="150">
-                        <Button Content="Konto"/>
-                        <Button Content="Ustawienia"/>
-                        <Button Content="Pomoc"/>
-                        <Separator/>
-                        <Button x:Name="PopUpButtonLogout" Content="Wyloguj się" Click="PopUpButtonLogout_Click"/>
-                    </StackPanel>
-                </materialDesign:PopupBox>
-            </StackPanel>
+				<materialDesign:PackIcon x:Name="ExitButton" Kind="Close" Margin="10" Height="30" Width="30" 
+										 PreviewMouseUp="ExitButton_PreviewMouseUp"/>
+			</StackPanel>
         </Grid>
         <Grid x:Name="GridMenu" Width="60" HorizontalAlignment="Left" Background="#FF1B3861">
             <StackPanel>
@@ -102,7 +94,19 @@
                             <TextBlock Text="Kontakt" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
-                </ListView>
+					<ListViewItem Height="60">
+						<StackPanel Orientation="Horizontal">
+							<materialDesign:PackIcon Kind="AccountOutline" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+							<TextBlock Text="Konto" VerticalAlignment="Center" Margin="20 10"/>
+						</StackPanel>
+					</ListViewItem>
+					<ListViewItem Height="60">
+						<StackPanel Orientation="Horizontal">
+							<materialDesign:PackIcon Kind="SettingsOutline" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+							<TextBlock Text="Ustawienia" VerticalAlignment="Center" Margin="20 10"/>
+						</StackPanel>
+					</ListViewItem>
+				</ListView>
             </StackPanel>
         </Grid>
 		

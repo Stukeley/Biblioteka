@@ -19,6 +19,8 @@
 		</Rectangle>
 		<materialDesign:PackIcon Kind="LocalLibrary" Margin="20" Height="100" Width="100" VerticalAlignment="Top" 
 								 HorizontalAlignment="Center" Foreground="White"/>
+		<materialDesign:PackIcon x:Name="CloseButton" Kind="Close" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10" Height="30"
+								 Width="30" Foreground="DarkSlateGray" PreviewMouseUp="CloseButton_PreviewMouseUp"/>
 		<Rectangle Width="280" Height="240" Fill="White" VerticalAlignment="Bottom" Margin="0,100">
 			<Rectangle.Effect>
 				<DropShadowEffect Color="#FFBBBBBB" Direction="0" BlurRadius="15" RenderingBias="Quality" ShadowDepth="1"/>
@@ -28,13 +30,13 @@
 			<TextBlock Text="Rejestracja" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5" 
 					   Foreground="Gray" FontSize="20"/>
 			<StackPanel VerticalAlignment="Center" Margin="10">
-				<TextBox materialDesign:HintAssist.Hint="IMIĘ" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+				<TextBox x:Name="NameBox" materialDesign:HintAssist.Hint="IMIĘ" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
 						 Margin="0,5"/>
-				<TextBox materialDesign:HintAssist.Hint="NAZWISKO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+				<TextBox x:Name="SurnameBox" materialDesign:HintAssist.Hint="NAZWISKO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
 						 Margin="0,5"/>
-				<TextBox materialDesign:HintAssist.Hint="EMAIL" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+				<TextBox x:Name="EmailBox" materialDesign:HintAssist.Hint="EMAIL" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
 						 Margin="0,5"/>
-				<PasswordBox materialDesign:HintAssist.Hint="HASŁO" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+				<PasswordBox x:Name="PasswordBox" materialDesign:HintAssist.Hint="HASŁO" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
 						 Margin="0,5"/>
 			</StackPanel>
 		</Grid>

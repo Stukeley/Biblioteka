@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Biblioteka
 {
@@ -21,6 +9,7 @@ namespace Biblioteka
 	public partial class MainWindow : Window
 	{
 		//TODO: make the dashboard remind the user of logging in and make the menu unaccessible if not logged in
+		//TODO: move the menu from top right to left side menu, make an X in its place
 
 		public MainWindow()
 		{
@@ -31,13 +20,6 @@ namespace Biblioteka
 			{
 				LoginButton.Visibility = Visibility.Hidden;
 			}
-		}
-
-		private void PopUpButtonLogout_Click(object sender, RoutedEventArgs e)
-		{
-			Application.Current.Shutdown();
-
-			//TODO: actually log out
 		}
 
 		private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
@@ -57,6 +39,11 @@ namespace Biblioteka
 			var loginWindow = new Biblioteka.Windows.LoginWindow();
 			loginWindow.Show();
 			this.Close();
+		}
+
+		private void ExitButton_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+		{
+			Application.Current.Shutdown();
 		}
 	}
 }
