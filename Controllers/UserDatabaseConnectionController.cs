@@ -48,6 +48,7 @@ namespace Biblioteka.Controllers
 					{
 						var dbName = reader["Name"].ToString();
 						var dbSurname = reader["Surname"].ToString();
+						var dbId = int.Parse(reader["Id"].ToString());
 
 						if (rememberLoginCredentials == true)
 						{
@@ -69,7 +70,10 @@ namespace Biblioteka.Controllers
 						}
 
 						Biblioteka.Windows.LoginWindow.IsLoggedIn = true;
-						var userModel = new UserModel(dbName, dbSurname, email, password);
+						var userModel = new UserModel(dbName, dbSurname, email, password)
+						{
+							UserId = dbId
+						};
 						UserModel.CurrentUser = userModel;
 					}
 				}

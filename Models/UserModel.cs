@@ -5,6 +5,9 @@
 		//currently logged in user
 		public static UserModel CurrentUser = null;
 
+		//just for the currently logged in user, no other purposes
+		public int UserId { get; set; }
+
 		public string Imię { get; set; }
 		public string Nazwisko { get; set; }
 		public string Email { get; set; }
