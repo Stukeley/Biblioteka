@@ -10,16 +10,16 @@
 		public string Email { get; set; }
 		public string Hasło { get; set; }
 
+		private UserModel()
+		{
+		}
+
 		public UserModel(string imię, string nazwisko, string email, string hasło)
 		{
 			Imię = imię;
 			Nazwisko = nazwisko;
 			Email = email;
 			Hasło = hasło;
-		}
-
-		private UserModel()
-		{
 		}
 	}
 }

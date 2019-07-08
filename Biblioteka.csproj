@@ -82,11 +82,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BibliotekaDBDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\BookDatabaseConnectionController.cs" />
     <Compile Include="Controllers\UserDatabaseConnectionController.cs" />
     <Compile Include="Exceptions\CredentialsException.cs" />
     <Compile Include="Exceptions\EmailException.cs" />
     <Compile Include="Exceptions\PasswordException.cs" />
     <Compile Include="Exceptions\UserNotFoundException.cs" />
+    <Compile Include="Models\AuthorModel.cs" />
+    <Compile Include="Models\BookModel.cs" />
+    <Compile Include="Models\GenreModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Windows\ForgotPasswordWindow.xaml.cs">
       <DependentUpon>ForgotPasswordWindow.xaml</DependentUpon>
