@@ -9,6 +9,9 @@ namespace Biblioteka
 	public partial class MainWindow : Window
 	{
 		//TODO: make the dashboard remind the user of logging in and make the menu unaccessible if not logged in
+		//TODO: live chat in Contact section
+		//TODO: (in the future) make tooltips
+		//TODO: (in the future) machine learning for live chat
 
 		public MainWindow()
 		{

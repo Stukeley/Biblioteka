@@ -1,5 +1,6 @@
-﻿using System.Configuration;
-using System.Data.SqlClient;
+﻿using Biblioteka.Controllers;
+using Biblioteka.Exceptions;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -34,46 +35,27 @@ namespace Biblioteka.Windows
 			}
 			else
 			{
-				var name = NameBox.Text;
-				var surname = SurnameBox.Text;
-				var email = EmailBox.Text;
-				var newPassword = PasswordBox.Password;
-
-				var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
-
-				var connection = new SqlConnection(connString);
-
-				var command = new SqlCommand($"SELECT * FROM BibliotekaDB.Czytelnicy WHERE Email={email}", connection);
-
-				connection.Open();
-
-				//?
-				using (var reader = command.ExecuteReader())
+				try
 				{
-					reader.Read();
+					var name = NameBox.Text;
+					var surname = SurnameBox.Text;
+					var email = EmailBox.Text;
+					var newPassword = PasswordBox.Password;
 
-					if (!reader.HasRows)
-					{
-						MessageBox.Show("Podany użytkownik nie istnieje.", "Błąd użytkownika", MessageBoxButton.OK, MessageBoxImage.Error);
-					}
-					else
-					{
-						var dbName = reader["Name"].ToString();
-						var dbSurname = reader["Surname"].ToString();
-
-						if (dbName != name || dbSurname != surname)
-						{
-							MessageBox.Show("Niepoprawne dane użytkownika!", "Błąd użytkownika", MessageBoxButton.OK, MessageBoxImage.Error);
-						}
-						else
-						{
-							var updatePasswordCommand = new SqlCommand($"UPDATE BibliotekaDB.Czytelnicy SET Password='{newPassword}' WHERE Email={email}");
-						}
-					}
+					UserDatabaseConnectionController.ResetUserPassword(name, surname, email, newPassword);
 				}
-
-				connection.Close();
-
+				catch (UserNotFoundException)
+				{
+					MessageBox.Show("Podany użytkownik nie istnieje.", "Błąd użytkownika", MessageBoxButton.OK, MessageBoxImage.Error);
+				}
+				catch (CredentialsException)
+				{
+					MessageBox.Show("Niepoprawne dane użytkownika!", "Błąd użytkownika", MessageBoxButton.OK, MessageBoxImage.Error);
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show($"{ex.Message}");
+				}
 			}
 
 		}

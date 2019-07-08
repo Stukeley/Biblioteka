@@ -1,5 +1,7 @@
-﻿using System.Configuration;
-using System.Data.SqlClient;
+﻿using Biblioteka.Controllers;
+using Biblioteka.Exceptions;
+using Biblioteka.Models;
+using System;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -40,68 +42,37 @@ namespace Biblioteka.Windows
 			}
 			else
 			{
-				var email = EmailBox.Text;
-				var password = PasswordBox.Password;
-
-
-				var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
-
-				var connection = new SqlConnection(connString);
-
-				var command = new SqlCommand($"SELECT * FROM BibliotekaDB.Czytelnicy WHERE Email='{email}'", connection);
-
-				connection.Open();
-
-				//?
-				using (var reader = command.ExecuteReader())
+				try
 				{
-					reader.Read();
+					var email = EmailBox.Text;
+					var password = PasswordBox.Password;
 
-					if (!reader.HasRows)
-					{
-						MessageBox.Show("Podany adres email nie istnieje.", "Błąd adresu email", MessageBoxButton.OK, MessageBoxImage.Error);
-					}
-					else
-					{
-						var dbPassword = reader["Password"].ToString();
-
-						if (dbPassword != password)
-						{
-							MessageBox.Show("Niepoprawne hasło!", "Błąd hasła", MessageBoxButton.OK, MessageBoxImage.Error);
-							PasswordBox.Clear();
-						}
-						else
-						{
-							if (RememberLoginCredentials.IsChecked == true)
-							{
-								Properties.Settings.Default.UserEmail = email;
-
-								//TODO: hash the password
-								Properties.Settings.Default.UserPassword = password;
-
-								Properties.Settings.Default.Save();
-							}
-							else
-							{
-								if (!string.IsNullOrEmpty(Properties.Settings.Default.UserEmail) && !string.IsNullOrEmpty(Properties.Settings.Default.UserPassword))
-								{
-									Properties.Settings.Default.UserEmail = "";
-									Properties.Settings.Default.UserPassword = "";
-									Properties.Settings.Default.Save();
-								}
-							}
-
-							IsLoggedIn = true;
-						}
-					}
+					UserDatabaseConnectionController.GetUserByEmail(email, password, RememberLoginCredentials.IsChecked);
 				}
-
-				connection.Close();
+				catch (EmailException)
+				{
+					MessageBox.Show("Podany adres email nie istnieje w bazie danych!", "Błąd adresu email", MessageBoxButton.OK, MessageBoxImage.Error);
+				}
+				catch (PasswordException)
+				{
+					MessageBox.Show("Podano nieprawidłowe hasło dla danego adresu email!", "Błąd hasła", MessageBoxButton.OK, MessageBoxImage.Error);
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show($"{ex.Message}");
+				}
 			}
 
-			var mainWindow = new MainWindow();
-			mainWindow.Show();
-			this.Close();
+			if (UserModel.CurrentUser != null)
+			{
+				var mainWindow = new MainWindow();
+				mainWindow.Show();
+				this.Close();
+			}
+			else
+			{
+				MessageBox.Show("Nie udało się uzyskać użytkownika z bazy danych!", "Błąd bazy danych", MessageBoxButton.OK, MessageBoxImage.Error);
+			}
 		}
 
 		private void NoAccount_PreviewMouseUp(object sender, MouseButtonEventArgs e)

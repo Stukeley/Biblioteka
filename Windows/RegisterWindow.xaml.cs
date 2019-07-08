@@ -1,5 +1,5 @@
-﻿using System.Configuration;
-using System.Data.SqlClient;
+﻿using Biblioteka.Controllers;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -36,26 +36,19 @@ namespace Biblioteka.Windows
 			}
 			else
 			{
-				var name = NameBox.Text;
-				var surname = SurnameBox.Text;
-				var email = EmailBox.Text;
-				var password = PasswordBox.Password;
+				try
+				{
+					var name = NameBox.Text;
+					var surname = SurnameBox.Text;
+					var email = EmailBox.Text;
+					var password = PasswordBox.Password;
 
-				var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
-
-				var connection = new SqlConnection(connString);
-
-				var command = new SqlCommand("INSERT INTO BibliotekaDB.Czytelnicy (Name, Surname, Email, Password) VALUES (@Name, @Surname, @Email, @Password)",
-					connection);
-
-				command.Parameters.AddWithValue("@Name", name);
-				command.Parameters.AddWithValue("@Surname", surname);
-				command.Parameters.AddWithValue("@Email", email);
-				command.Parameters.AddWithValue("@Password", password);
-
-				connection.Open();
-				command.ExecuteNonQuery();
-				connection.Close();
+					UserDatabaseConnectionController.RegisterUser(name, surname, email, password);
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show($"{ex.Message}");
+				}
 			}
 		}
 

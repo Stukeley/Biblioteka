@@ -82,6 +82,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BibliotekaDBDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\UserDatabaseConnectionController.cs" />
+    <Compile Include="Exceptions\CredentialsException.cs" />
+    <Compile Include="Exceptions\EmailException.cs" />
+    <Compile Include="Exceptions\PasswordException.cs" />
+    <Compile Include="Exceptions\UserNotFoundException.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Windows\ForgotPasswordWindow.xaml.cs">
       <DependentUpon>ForgotPasswordWindow.xaml</DependentUpon>
     </Compile>
@@ -169,6 +175,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
