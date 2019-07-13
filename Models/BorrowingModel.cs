@@ -9,6 +9,9 @@ namespace Biblioteka.Models
 		public DateTime DataWypożyczenia { get; set; }
 		public DateTime TerminOddania { get; set; }
 
+		public string NazwaAutora { get; set; }
+		public string TytułKsiążki { get; set; }
+
 		public BorrowingModel()
 		{
 		}
