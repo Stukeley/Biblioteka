@@ -97,10 +97,12 @@
     <Compile Include="Controllers\BookDatabaseConnectionController.cs" />
     <Compile Include="Controllers\LibraryDatabaseConnectionController.cs" />
     <Compile Include="Controllers\UserDatabaseConnectionController.cs" />
+    <Compile Include="Exceptions\BookBorrowedException.cs" />
     <Compile Include="Exceptions\CredentialsException.cs" />
     <Compile Include="Exceptions\EmailException.cs" />
     <Compile Include="Exceptions\NoBorrowingFoundException.cs" />
     <Compile Include="Exceptions\PasswordException.cs" />
+    <Compile Include="Exceptions\TooManyBorrowings.cs" />
     <Compile Include="Exceptions\UserNotFoundException.cs" />
     <Compile Include="Exceptions\UserNotLoggedInException.cs" />
     <Compile Include="Models\AuthorModel.cs" />
@@ -108,6 +110,9 @@
     <Compile Include="Models\BorrowingModel.cs" />
     <Compile Include="Models\GenreModel.cs" />
     <Compile Include="Models\UserModel.cs" />
+    <Compile Include="UserControls\ContactPage.xaml.cs">
+      <DependentUpon>ContactPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Homepage.xaml.cs">
       <DependentUpon>Homepage.xaml</DependentUpon>
     </Compile>
@@ -132,6 +137,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserControls\ContactPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\Homepage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

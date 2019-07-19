@@ -148,6 +148,68 @@ namespace Biblioteka.Controllers
 			return endingBorrowings;
 		}
 
+		public static void AddNewBorrowing(int bookId)
+		{
+			if (UserModel.CurrentUser == null)
+			{
+				throw new UserNotLoggedInException();
+			}
+
+			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
+			var connection = new SqlConnection(connString);
+
+			connection.Open();
+
+			//Check if the book has already been borrowed
+
+			var hasBookBeenBorrowed = new SqlCommand($"SELECT * FROM Wypożyczenia WHERE BookId={bookId}", connection);
+
+			using (var reader = hasBookBeenBorrowed.ExecuteReader())
+			{
+				if (reader.HasRows)
+				{
+					throw new BookBorrowedException();
+				}
+			}
+
+			//Check if the user has no more than 5 borrowings (that's the limit at a time)
+
+			var amountOfBorrowings = new SqlCommand($"SELECT * FROM Wypożyczenia WHERE ReaderId={UserModel.CurrentUser.UserId}", connection);
+
+			using (var reader = hasBookBeenBorrowed.ExecuteReader())
+			{
+				if (reader.HasRows)
+				{
+					var amount = 0;
+
+					while (reader.Read())
+					{
+						amount++;
+					}
+
+					if (amount >= 5)
+					{
+						throw new TooManyBorrowings();
+					}
+				}
+			}
+
+
+			var borrowing = new BorrowingModel(UserModel.CurrentUser.UserId, bookId, DateTime.Now, DateTime.Now.AddDays(14));
+
+			var addBorrowing = new SqlCommand($"INSERT INTO Wypożyczenia (BookId, ReaderId, StartDate, EndDate) VALUES " +
+				$"(@BookId, @ReaderId, @StartDate, @EndDate)", connection);
+
+			addBorrowing.Parameters.AddWithValue("@BookId", borrowing.BookId);
+			addBorrowing.Parameters.AddWithValue("@ReaderId", borrowing.UserId);
+			addBorrowing.Parameters.AddWithValue("@StartDate", borrowing.DataWypożyczenia);
+			addBorrowing.Parameters.AddWithValue("@EndDate", borrowing.TerminOddania);
+
+			addBorrowing.ExecuteNonQuery();
+
+			connection.Close();
+		}
+
 		public static void ExtendUserBorrowing()
 		{
 			if (UserModel.CurrentUser == null)

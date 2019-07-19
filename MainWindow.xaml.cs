@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace Biblioteka
@@ -14,6 +15,7 @@ namespace Biblioteka
 		//TODO: (in the future) machine learning for live chat
 		//TODO: add borrowing limit (every book can be borrowed by 1 person at a time, and every person can borrow up to 5 books at a time)
 		//TODO: fees for holding a book for too long without extending
+		//TODO: try-catches everywhere
 
 		public MainWindow()
 		{
@@ -25,6 +27,11 @@ namespace Biblioteka
 				LoginButton.Visibility = Visibility.Hidden;
 				PleaseLogInGrid.Visibility = Visibility.Hidden;
 			}
+		}
+
+		public void ChangeContent(UserControl userControl)
+		{
+			ContentGrid.Children.Add(userControl);
 		}
 
 		private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)

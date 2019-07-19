@@ -1,19 +1,9 @@
-﻿using System;
+﻿using Biblioteka.Controllers;
+using Biblioteka.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Biblioteka.Models;
-using Biblioteka.Controllers;
 
 namespace Biblioteka.UserControls
 {
@@ -26,7 +16,7 @@ namespace Biblioteka.UserControls
 		{
 			InitializeComponent();
 
-			if (UserModel.CurrentUser==null)
+			if (UserModel.CurrentUser == null)
 			{
 				this.Visibility = Visibility.Hidden;
 			}
@@ -34,6 +24,14 @@ namespace Biblioteka.UserControls
 			{
 				WypożyczeniaDataGrid.ItemsSource = LibraryDatabaseConnectionController.RetrieveBorrowingsForUser();
 			}
+
+			WypożyczeniaDataGrid.ItemsSource = LibraryDatabaseConnectionController.RetrieveBorrowingsForUser();
+			OstatnieWypożyczenieDataGrid.ItemsSource = new List<BorrowingModel>()
+			{
+				LibraryDatabaseConnectionController.RetrieveRecentBorrowing()
+			};
+
+			KoniecTerminuDataGrid.ItemsSource = LibraryDatabaseConnectionController.RetrieveEndingBorrowings();
 		}
 
 		private void ContactUs_PreviewMouseUp(object sender, MouseButtonEventArgs e)
