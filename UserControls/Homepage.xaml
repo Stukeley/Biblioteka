@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Biblioteka.UserControls"
 			 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="540" d:DesignWidth="1020" Background="White">
+             d:DesignHeight="540" d:DesignWidth="1020" Background="LightGray">
     <Grid>
 		<Grid Height="270" VerticalAlignment="Top">
 			<TextBlock Text="Obecne wypożyczenia" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10"

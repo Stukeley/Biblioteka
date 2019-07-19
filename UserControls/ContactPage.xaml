@@ -3,10 +3,41 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:Biblioteka.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="540" d:DesignWidth="1020" Background="LightGray">
     <Grid>
-            
+		<Grid Width="300" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left">
+			<materialDesign:PackIcon Kind="EmailOutline" Width="40" Height="40" Margin="10,10" VerticalAlignment="Top"
+									 HorizontalAlignment="Left"/>
+			<TextBlock Text="asdf@123.com" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="60,19.36"/>
+
+			<materialDesign:PackIcon Kind="TelephoneInTalk" Width="40" Height="40" VerticalAlignment="Top"
+									 HorizontalAlignment="Left" Margin="10,80"/>
+			<TextBlock Text="+48 123 456 789" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="60, 89.36"/>
+		</Grid>
+
+		<Grid Width="300" Height="200" VerticalAlignment="Top" HorizontalAlignment="Right">
+			<materialDesign:PackIcon x:Name="LiveChatIcon" Kind="ChatBubbleOutline" Width="40" Height="40" Margin="10,10" 
+									 VerticalAlignment="Top" HorizontalAlignment="Left"/>
+			<TextBlock x:Name="LiveChatText" Text="Chat na żywo (wkrótce)" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" 
+					   Margin="60,19.36"/>
+		</Grid>
+
+		<Grid>
+			<TextBlock Text="Skontaktuj się z nami bezpośrednio z aplikacji!" VerticalAlignment="Top" 
+					   HorizontalAlignment="Center" Margin="0,180" FontSize="22"/>
+			
+			<TextBox x:Name="TitleBox" materialDesign:HintAssist.Hint="TYTUŁ" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+					Margin="20,0" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left"
+					Width="980"/>
+			<TextBox x:Name="ContentBox" materialDesign:HintAssist.Hint="TREŚĆ WIADOMOŚCI" 
+					 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="20,0,0,201.58" VerticalAlignment="Bottom"
+					 HorizontalAlignment="Left" Width="980" FontSize="16" MaxLines="4" TextWrapping="Wrap" AcceptsReturn="True"
+					 AcceptsTab="True"/>
+			<Button x:Name="SendButton" Width="100" Height="40" FontSize="16" VerticalAlignment="Bottom" HorizontalAlignment="Center"
+					Margin="0,0,0,10" Content="WYŚLIJ"/>
+		</Grid>
     </Grid>
 </UserControl>

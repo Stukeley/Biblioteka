@@ -16,6 +16,7 @@ namespace Biblioteka
 		//TODO: add borrowing limit (every book can be borrowed by 1 person at a time, and every person can borrow up to 5 books at a time)
 		//TODO: fees for holding a book for too long without extending
 		//TODO: try-catches everywhere
+		//TODO: add a bool field in the Książki database to reflect whether the book has been borrowed or not (will make things easier)
 
 		public MainWindow()
 		{

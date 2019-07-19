@@ -210,7 +210,7 @@ namespace Biblioteka.Controllers
 			connection.Close();
 		}
 
-		public static void ExtendUserBorrowing()
+		public static void ExtendUserBorrowing(int bookId)
 		{
 			if (UserModel.CurrentUser == null)
 			{
@@ -219,17 +219,54 @@ namespace Biblioteka.Controllers
 
 			var userId = UserModel.CurrentUser.UserId;
 
-			var currentDate = DateTime.Now;
-			var extendedDate = currentDate.AddDays(7);
+			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
+			var connection = new SqlConnection(connString);
+
+			var getEndDate = new SqlCommand($"SELECT * FROM Wypożyczenia WHERE BookId={bookId}", connection);
+
+			connection.Open();
+
+			using (var reader = getEndDate.ExecuteReader())
+			{
+				if (reader.HasRows)
+				{
+					reader.Read();
+					var previosuDate = reader.GetDateTime(4);
+					var extendedDate = previosuDate.AddDays(7);
+
+					var command = new SqlCommand($"UPDATE Wypożyczenia SET EndDate={extendedDate} WHERE BookId={bookId}", connection);
+
+					command.ExecuteNonQuery();
+				}
+				else
+				{
+					throw new NoBorrowingFoundException();
+				}
+			}
+
+			connection.Close();
+		}
+
+		public static int? GetBookByModel(BookModel bookModel)
+		{
+			//null means book not found
+			int? id = null;
 
 			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
 			var connection = new SqlConnection(connString);
 
-			var command = new SqlCommand($"UPDATE Wypożyczenia SET EndDate={extendedDate} WHERE ReaderId={userId}", connection);
+			var command = new SqlCommand($"SELECT * FROM Książki WHERE Title='{bookModel.Tytuł}'", connection);
 
-			connection.Open();
-			command.ExecuteNonQuery();
-			connection.Close();
+			using (var reader = command.ExecuteReader())
+			{
+				if (reader.HasRows)
+				{
+					reader.Read();
+					id = reader.GetInt32(0);
+				}
+			}
+
+			return id;
 		}
 
 		public static void ReturnBook(int bookId)
