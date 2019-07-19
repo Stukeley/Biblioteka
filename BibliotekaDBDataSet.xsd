@@ -300,7 +300,7 @@ SELECT Id, BookId, ReaderId, StartDate, EndDate FROM Wypożyczenia WHERE (Id = @
   <xs:element name="BibliotekaDBDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="BibliotekaDBDataSet" msprop:Generator_UserDSName="BibliotekaDBDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Autorzy" msprop:Generator_TableClassName="AutorzyDataTable" msprop:Generator_TableVarName="tableAutorzy" msprop:Generator_TablePropName="Autorzy" msprop:Generator_RowDeletingName="AutorzyRowDeleting" msprop:Generator_RowChangingName="AutorzyRowChanging" msprop:Generator_RowEvHandlerName="AutorzyRowChangeEventHandler" msprop:Generator_RowDeletedName="AutorzyRowDeleted" msprop:Generator_UserTableName="Autorzy" msprop:Generator_RowChangedName="AutorzyRowChanged" msprop:Generator_RowEvArgName="AutorzyRowChangeEvent" msprop:Generator_RowClassName="AutorzyRow">
+        <xs:element name="Autorzy" msprop:Generator_TableClassName="AutorzyDataTable" msprop:Generator_TableVarName="tableAutorzy" msprop:Generator_RowChangedName="AutorzyRowChanged" msprop:Generator_TablePropName="Autorzy" msprop:Generator_RowDeletingName="AutorzyRowDeleting" msprop:Generator_RowChangingName="AutorzyRowChanging" msprop:Generator_RowEvHandlerName="AutorzyRowChangeEventHandler" msprop:Generator_RowDeletedName="AutorzyRowDeleted" msprop:Generator_RowClassName="AutorzyRow" msprop:Generator_UserTableName="Autorzy" msprop:Generator_RowEvArgName="AutorzyRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -321,7 +321,7 @@ SELECT Id, BookId, ReaderId, StartDate, EndDate FROM Wypożyczenia WHERE (Id = @
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Czytelnicy" msprop:Generator_TableClassName="CzytelnicyDataTable" msprop:Generator_TableVarName="tableCzytelnicy" msprop:Generator_TablePropName="Czytelnicy" msprop:Generator_RowDeletingName="CzytelnicyRowDeleting" msprop:Generator_RowChangingName="CzytelnicyRowChanging" msprop:Generator_RowEvHandlerName="CzytelnicyRowChangeEventHandler" msprop:Generator_RowDeletedName="CzytelnicyRowDeleted" msprop:Generator_UserTableName="Czytelnicy" msprop:Generator_RowChangedName="CzytelnicyRowChanged" msprop:Generator_RowEvArgName="CzytelnicyRowChangeEvent" msprop:Generator_RowClassName="CzytelnicyRow">
+        <xs:element name="Czytelnicy" msprop:Generator_TableClassName="CzytelnicyDataTable" msprop:Generator_TableVarName="tableCzytelnicy" msprop:Generator_RowChangedName="CzytelnicyRowChanged" msprop:Generator_TablePropName="Czytelnicy" msprop:Generator_RowDeletingName="CzytelnicyRowDeleting" msprop:Generator_RowChangingName="CzytelnicyRowChanging" msprop:Generator_RowEvHandlerName="CzytelnicyRowChangeEventHandler" msprop:Generator_RowDeletedName="CzytelnicyRowDeleted" msprop:Generator_RowClassName="CzytelnicyRow" msprop:Generator_UserTableName="Czytelnicy" msprop:Generator_RowEvArgName="CzytelnicyRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -356,7 +356,7 @@ SELECT Id, BookId, ReaderId, StartDate, EndDate FROM Wypożyczenia WHERE (Id = @
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Gatunki" msprop:Generator_TableClassName="GatunkiDataTable" msprop:Generator_TableVarName="tableGatunki" msprop:Generator_TablePropName="Gatunki" msprop:Generator_RowDeletingName="GatunkiRowDeleting" msprop:Generator_RowChangingName="GatunkiRowChanging" msprop:Generator_RowEvHandlerName="GatunkiRowChangeEventHandler" msprop:Generator_RowDeletedName="GatunkiRowDeleted" msprop:Generator_UserTableName="Gatunki" msprop:Generator_RowChangedName="GatunkiRowChanged" msprop:Generator_RowEvArgName="GatunkiRowChangeEvent" msprop:Generator_RowClassName="GatunkiRow">
+        <xs:element name="Gatunki" msprop:Generator_TableClassName="GatunkiDataTable" msprop:Generator_TableVarName="tableGatunki" msprop:Generator_RowChangedName="GatunkiRowChanged" msprop:Generator_TablePropName="Gatunki" msprop:Generator_RowDeletingName="GatunkiRowDeleting" msprop:Generator_RowChangingName="GatunkiRowChanging" msprop:Generator_RowEvHandlerName="GatunkiRowChangeEventHandler" msprop:Generator_RowDeletedName="GatunkiRowDeleted" msprop:Generator_RowClassName="GatunkiRow" msprop:Generator_UserTableName="Gatunki" msprop:Generator_RowEvArgName="GatunkiRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -370,7 +370,7 @@ SELECT Id, BookId, ReaderId, StartDate, EndDate FROM Wypożyczenia WHERE (Id = @
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Książki" msprop:Generator_TableClassName="KsiążkiDataTable" msprop:Generator_TableVarName="tableKsiążki" msprop:Generator_TablePropName="Książki" msprop:Generator_RowDeletingName="KsiążkiRowDeleting" msprop:Generator_RowChangingName="KsiążkiRowChanging" msprop:Generator_RowEvHandlerName="KsiążkiRowChangeEventHandler" msprop:Generator_RowDeletedName="KsiążkiRowDeleted" msprop:Generator_UserTableName="Książki" msprop:Generator_RowChangedName="KsiążkiRowChanged" msprop:Generator_RowEvArgName="KsiążkiRowChangeEvent" msprop:Generator_RowClassName="KsiążkiRow">
+        <xs:element name="Książki" msprop:Generator_TableClassName="KsiążkiDataTable" msprop:Generator_TableVarName="tableKsiążki" msprop:Generator_RowChangedName="KsiążkiRowChanged" msprop:Generator_TablePropName="Książki" msprop:Generator_RowDeletingName="KsiążkiRowDeleting" msprop:Generator_RowChangingName="KsiążkiRowChanging" msprop:Generator_RowEvHandlerName="KsiążkiRowChangeEventHandler" msprop:Generator_RowDeletedName="KsiążkiRowDeleted" msprop:Generator_RowClassName="KsiążkiRow" msprop:Generator_UserTableName="Książki" msprop:Generator_RowEvArgName="KsiążkiRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -386,7 +386,7 @@ SELECT Id, BookId, ReaderId, StartDate, EndDate FROM Wypożyczenia WHERE (Id = @
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Wypożyczenia" msprop:Generator_TableClassName="WypożyczeniaDataTable" msprop:Generator_TableVarName="tableWypożyczenia" msprop:Generator_TablePropName="Wypożyczenia" msprop:Generator_RowDeletingName="WypożyczeniaRowDeleting" msprop:Generator_RowChangingName="WypożyczeniaRowChanging" msprop:Generator_RowEvHandlerName="WypożyczeniaRowChangeEventHandler" msprop:Generator_RowDeletedName="WypożyczeniaRowDeleted" msprop:Generator_UserTableName="Wypożyczenia" msprop:Generator_RowChangedName="WypożyczeniaRowChanged" msprop:Generator_RowEvArgName="WypożyczeniaRowChangeEvent" msprop:Generator_RowClassName="WypożyczeniaRow">
+        <xs:element name="Wypożyczenia" msprop:Generator_TableClassName="WypożyczeniaDataTable" msprop:Generator_TableVarName="tableWypożyczenia" msprop:Generator_RowChangedName="WypożyczeniaRowChanged" msprop:Generator_TablePropName="Wypożyczenia" msprop:Generator_RowDeletingName="WypożyczeniaRowDeleting" msprop:Generator_RowChangingName="WypożyczeniaRowChanging" msprop:Generator_RowEvHandlerName="WypożyczeniaRowChangeEventHandler" msprop:Generator_RowDeletedName="WypożyczeniaRowDeleted" msprop:Generator_RowClassName="WypożyczeniaRow" msprop:Generator_UserTableName="Wypożyczenia" msprop:Generator_RowEvArgName="WypożyczeniaRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -419,12 +419,16 @@ SELECT Id, BookId, ReaderId, StartDate, EndDate FROM Wypożyczenia WHERE (Id = @
       <xs:selector xpath=".//mstns:Wypożyczenia" />
       <xs:field xpath="mstns:Id" />
     </xs:unique>
+    <xs:unique name="Constraint2">
+      <xs:selector xpath=".//mstns:Wypożyczenia" />
+      <xs:field xpath="mstns:BookId" />
+    </xs:unique>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_Książki_Autorzy" msdata:parent="Autorzy" msdata:child="Książki" msdata:parentkey="Id" msdata:childkey="AutorId" msprop:Generator_UserChildTable="Książki" msprop:Generator_ChildPropName="GetKsiążkiRows" msprop:Generator_UserRelationName="FK_Książki_Autorzy" msprop:Generator_ParentPropName="AutorzyRow" msprop:Generator_RelationVarName="relationFK_Książki_Autorzy" msprop:Generator_UserParentTable="Autorzy" />
-      <msdata:Relationship name="FK_Książki_Gatunki" msdata:parent="Gatunki" msdata:child="Książki" msdata:parentkey="Id" msdata:childkey="GenreId" msprop:Generator_UserChildTable="Książki" msprop:Generator_ChildPropName="GetKsiążkiRows" msprop:Generator_UserRelationName="FK_Książki_Gatunki" msprop:Generator_ParentPropName="GatunkiRow" msprop:Generator_RelationVarName="relationFK_Książki_Gatunki" msprop:Generator_UserParentTable="Gatunki" />
-      <msdata:Relationship name="FK_Wypożyczenia_Czytelnicy" msdata:parent="Czytelnicy" msdata:child="Wypożyczenia" msdata:parentkey="Id" msdata:childkey="ReaderId" msprop:Generator_UserChildTable="Wypożyczenia" msprop:Generator_ChildPropName="GetWypożyczeniaRows" msprop:Generator_UserRelationName="FK_Wypożyczenia_Czytelnicy" msprop:Generator_ParentPropName="CzytelnicyRow" msprop:Generator_RelationVarName="relationFK_Wypożyczenia_Czytelnicy" msprop:Generator_UserParentTable="Czytelnicy" />
+      <msdata:Relationship name="FK_Książki_Autorzy" msdata:parent="Autorzy" msdata:child="Książki" msdata:parentkey="Id" msdata:childkey="AutorId" msprop:Generator_UserChildTable="Książki" msprop:Generator_ChildPropName="GetKsiążkiRows" msprop:Generator_UserRelationName="FK_Książki_Autorzy" msprop:Generator_RelationVarName="relationFK_Książki_Autorzy" msprop:Generator_UserParentTable="Autorzy" msprop:Generator_ParentPropName="AutorzyRow" />
+      <msdata:Relationship name="FK_Książki_Gatunki" msdata:parent="Gatunki" msdata:child="Książki" msdata:parentkey="Id" msdata:childkey="GenreId" msprop:Generator_UserChildTable="Książki" msprop:Generator_ChildPropName="GetKsiążkiRows" msprop:Generator_UserRelationName="FK_Książki_Gatunki" msprop:Generator_RelationVarName="relationFK_Książki_Gatunki" msprop:Generator_UserParentTable="Gatunki" msprop:Generator_ParentPropName="GatunkiRow" />
+      <msdata:Relationship name="FK_Wypożyczenia_Czytelnicy" msdata:parent="Czytelnicy" msdata:child="Wypożyczenia" msdata:parentkey="Id" msdata:childkey="ReaderId" msprop:Generator_UserChildTable="Wypożyczenia" msprop:Generator_ChildPropName="GetWypożyczeniaRows" msprop:Generator_UserRelationName="FK_Wypożyczenia_Czytelnicy" msprop:Generator_RelationVarName="relationFK_Wypożyczenia_Czytelnicy" msprop:Generator_UserParentTable="Czytelnicy" msprop:Generator_ParentPropName="CzytelnicyRow" />
       <msdata:Relationship name="FK_Wypożyczenia_Książki" msdata:parent="Książki" msdata:child="Wypożyczenia" msdata:parentkey="Id" msdata:childkey="BookId" msprop:Generator_UserChildTable="Wypożyczenia" msprop:Generator_ChildPropName="GetWypożyczeniaRows" msprop:Generator_UserRelationName="FK_Wypożyczenia_Książki" msprop:Generator_ParentPropName="KsiążkiRow" msprop:Generator_RelationVarName="relationFK_Wypożyczenia_Książki" msprop:Generator_UserParentTable="Książki" />
     </xs:appinfo>
   </xs:annotation>

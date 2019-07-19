@@ -1838,6 +1838,8 @@ namespace Biblioteka {
                 base.Columns.Add(this.columnEndDate);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
+                                this.columnBookId}, false));
                 this.columnId.AutoIncrement = true;
                 this.columnId.AutoIncrementSeed = -1;
                 this.columnId.AutoIncrementStep = -1;
@@ -1845,6 +1847,7 @@ namespace Biblioteka {
                 this.columnId.ReadOnly = true;
                 this.columnId.Unique = true;
                 this.columnBookId.AllowDBNull = false;
+                this.columnBookId.Unique = true;
                 this.columnReaderId.AllowDBNull = false;
                 this.columnStartDate.AllowDBNull = false;
                 this.columnEndDate.AllowDBNull = false;
