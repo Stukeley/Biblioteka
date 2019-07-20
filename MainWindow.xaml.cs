@@ -32,6 +32,7 @@ namespace Biblioteka
 
 		public void ChangeContent(UserControl userControl)
 		{
+			ContentGrid.Children.Clear();
 			ContentGrid.Children.Add(userControl);
 		}
 

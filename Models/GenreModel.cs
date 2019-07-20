@@ -2,9 +2,10 @@
 {
 	internal class GenreModel
 	{
+		public int Id { get; set; }
 		public string Nazwa { get; set; }
 
-		private GenreModel()
+		public GenreModel()
 		{
 		}
 

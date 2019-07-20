@@ -76,12 +76,6 @@
 					</ListViewItem>
 					<ListViewItem Height="60">
 						<StackPanel Orientation="Horizontal">
-							<materialDesign:PackIcon Kind="CalendarMultiselect" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
-							<TextBlock Text="Wypożyczenia" VerticalAlignment="Center" Margin="20 10"/>
-						</StackPanel>
-					</ListViewItem>
-					<ListViewItem Height="60">
-						<StackPanel Orientation="Horizontal">
 							<materialDesign:PackIcon Kind="BookOpen" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
 							<TextBlock Text="Książki" VerticalAlignment="Center" Margin="20 10"/>
 						</StackPanel>

@@ -94,7 +94,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BibliotekaDBDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AuthorsDatabaseConnectionController.cs" />
     <Compile Include="Controllers\BookDatabaseConnectionController.cs" />
+    <Compile Include="Controllers\DataInsertionController.cs" />
     <Compile Include="Controllers\LibraryDatabaseConnectionController.cs" />
     <Compile Include="Controllers\UserDatabaseConnectionController.cs" />
     <Compile Include="Exceptions\BookBorrowedException.cs" />
@@ -110,6 +112,9 @@
     <Compile Include="Models\BorrowingModel.cs" />
     <Compile Include="Models\GenreModel.cs" />
     <Compile Include="Models\UserModel.cs" />
+    <Compile Include="UserControls\AuthorsPage.xaml.cs">
+      <DependentUpon>AuthorsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\BooksPage.xaml.cs">
       <DependentUpon>BooksPage.xaml</DependentUpon>
     </Compile>
@@ -140,6 +145,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserControls\AuthorsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UserControls\BooksPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
