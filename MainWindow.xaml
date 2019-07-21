@@ -68,13 +68,13 @@
 					</Button>
 				</Grid>
 				<ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="#FF1368BD">
-					<ListViewItem Height="60">
+					<ListViewItem x:Name="Homepage" Height="60" PreviewMouseUp="Homepage_PreviewMouseUp">
 						<StackPanel Orientation="Horizontal">
 							<materialDesign:PackIcon Kind="HomeOutline" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
 							<TextBlock Text="Strona Główna" VerticalAlignment="Center" Margin="20 10"/>
 						</StackPanel>
 					</ListViewItem>
-					<ListViewItem Height="60">
+					<ListViewItem x:Name="Books" Height="60" PreviewMouseUp="Books_PreviewMouseUp">
 						<StackPanel Orientation="Horizontal">
 							<materialDesign:PackIcon Kind="BookOpen" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
 							<TextBlock Text="Książki" VerticalAlignment="Center" Margin="20 10"/>

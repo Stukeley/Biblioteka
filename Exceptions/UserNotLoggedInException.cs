@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Biblioteka.Windows;
+using System;
 
 namespace Biblioteka.Exceptions
 {
@@ -6,6 +7,8 @@ namespace Biblioteka.Exceptions
 	{
 		public UserNotLoggedInException()
 		{
+			CustomMessageBox.Show("Użytkownik nie jest zalogowany!", "Aby uzyskać dostęp do tej strony, proszę się zalogować.",
+				CustomMessageBox.CustomMessageBoxIcon.Warning);
 		}
 
 		public UserNotLoggedInException(string message) : base(message)

@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using Biblioteka.Exceptions;
+using Biblioteka.Models;
+using Biblioteka.UserControls;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -9,7 +12,6 @@ namespace Biblioteka
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		//TODO: make the dashboard remind the user of logging in and make the menu unaccessible if not logged in
 		//TODO: live chat in Contact section
 		//TODO: (in the future) make tooltips
 		//TODO: (in the future) machine learning for live chat
@@ -17,6 +19,7 @@ namespace Biblioteka
 		//TODO: fees for holding a book for too long without extending
 		//TODO: try-catches everywhere
 		//TODO: add a bool field in the Książki database to reflect whether the book has been borrowed or not (will make things easier)
+		//TODO: custom MessageBox
 
 		public MainWindow()
 		{
@@ -32,8 +35,11 @@ namespace Biblioteka
 
 		public void ChangeContent(UserControl userControl)
 		{
-			ContentGrid.Children.Clear();
-			ContentGrid.Children.Add(userControl);
+			if (!ContentGrid.Children.Contains(userControl))
+			{
+				ContentGrid.Children.Clear();
+				ContentGrid.Children.Add(userControl);
+			}
 		}
 
 		private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
@@ -75,6 +81,30 @@ namespace Biblioteka
 		private void ExitButton_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
 		{
 			ExitButton.Foreground = new SolidColorBrush(Colors.DarkSlateGray);
+		}
+
+		private void Homepage_PreviewMouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		{
+			if (UserModel.CurrentUser == null)
+			{
+				throw new UserNotLoggedInException();
+			}
+			else
+			{
+				ChangeContent(new Homepage());
+			}
+		}
+
+		private void Books_PreviewMouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		{
+			if (UserModel.CurrentUser == null)
+			{
+				//custom MessageBox
+			}
+			else
+			{
+				ChangeContent(new BooksPage());
+			}
 		}
 	}
 }
