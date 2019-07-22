@@ -1,4 +1,5 @@
 ﻿using Biblioteka.Controllers;
+using Biblioteka.Exceptions;
 using Biblioteka.Models;
 using System.Collections.Generic;
 using System.Windows;
@@ -22,7 +23,15 @@ namespace Biblioteka.UserControls
 			}
 			else
 			{
-				WypożyczeniaDataGrid.ItemsSource = LibraryDatabaseConnectionController.RetrieveBorrowingsForUser();
+				try
+				{
+					WypożyczeniaDataGrid.ItemsSource = LibraryDatabaseConnectionController.RetrieveBorrowingsForUser();
+
+				}
+				catch (NoBorrowingFoundException)
+				{
+					NoBorrowingFoundException.ShowGenericMessageBox();
+				}
 			}
 
 			WypożyczeniaDataGrid.ItemsSource = LibraryDatabaseConnectionController.RetrieveBorrowingsForUser();

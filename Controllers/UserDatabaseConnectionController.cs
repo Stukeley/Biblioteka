@@ -31,15 +31,14 @@ namespace Biblioteka.Controllers
 			//?
 			using (var reader = command.ExecuteReader())
 			{
-				reader.Read();
-
 				if (!reader.HasRows)
 				{
 					throw new EmailException();
 				}
 				else
 				{
-					var dbPassword = reader["Password"].ToString();
+					reader.Read();
+					var dbPassword = reader.GetString(4).Trim();
 
 					if (dbPassword != password)
 					{

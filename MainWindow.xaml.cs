@@ -19,6 +19,8 @@ namespace Biblioteka
 		//TODO: fees for holding a book for too long without extending
 		//TODO: try-catches everywhere
 		//TODO: add a bool field in the Książki database to reflect whether the book has been borrowed or not (will make things easier)
+		//TODO: get current directory at runtime and look for the database
+		//TODO: 2nd solution for adding new authors/books (perhaps a predefined admin-account/s in the database?)
 
 		public MainWindow()
 		{
