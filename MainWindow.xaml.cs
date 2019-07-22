@@ -19,7 +19,6 @@ namespace Biblioteka
 		//TODO: fees for holding a book for too long without extending
 		//TODO: try-catches everywhere
 		//TODO: add a bool field in the Książki database to reflect whether the book has been borrowed or not (will make things easier)
-		//TODO: custom MessageBox
 
 		public MainWindow()
 		{
@@ -30,6 +29,7 @@ namespace Biblioteka
 			{
 				LoginButton.Visibility = Visibility.Hidden;
 				PleaseLogInGrid.Visibility = Visibility.Hidden;
+				ChangeContent(new Homepage());
 			}
 		}
 
@@ -87,7 +87,7 @@ namespace Biblioteka
 		{
 			if (UserModel.CurrentUser == null)
 			{
-				throw new UserNotLoggedInException();
+				UserNotLoggedInException.ShowGenericMessageBox();
 			}
 			else
 			{
@@ -99,12 +99,46 @@ namespace Biblioteka
 		{
 			if (UserModel.CurrentUser == null)
 			{
-				//custom MessageBox
+				UserNotLoggedInException.ShowGenericMessageBox();
 			}
 			else
 			{
 				ChangeContent(new BooksPage());
 			}
+		}
+
+		private void Authors_PreviewMouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		{
+			if (UserModel.CurrentUser == null)
+			{
+				UserNotLoggedInException.ShowGenericMessageBox();
+			}
+			else
+			{
+				ChangeContent(new AuthorsPage());
+			}
+		}
+
+		private void Contact_PreviewMouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		{
+			if (UserModel.CurrentUser == null)
+			{
+				UserNotLoggedInException.ShowGenericMessageBox();
+			}
+			else
+			{
+				ChangeContent(new ContactPage());
+			}
+		}
+
+		private void Account_PreviewMouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		{
+
+		}
+
+		private void Settings_PreviewMouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		{
+
 		}
 	}
 }

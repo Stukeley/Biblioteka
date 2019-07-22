@@ -52,6 +52,7 @@ namespace Biblioteka.Windows
 				ContentBox = { Text = content }
 			};
 			SetIconOfCustomMessageBox(icon);
+
 			MessageBox.ShowDialog();
 
 			return Result;

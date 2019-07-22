@@ -44,6 +44,12 @@ namespace Biblioteka.Windows
 					var password = PasswordBox.Password;
 
 					UserDatabaseConnectionController.RegisterUser(name, surname, email, password);
+					CustomMessageBox.Show("Rejestracja pomyślna!", "Udało się zarejestrować pomyślnie. Możesz się teraz zalogować",
+						CustomMessageBox.CustomMessageBoxIcon.Information);
+
+					var loginWindow = new LoginWindow();
+					loginWindow.Show();
+					this.Close();
 				}
 				catch (Exception ex)
 				{

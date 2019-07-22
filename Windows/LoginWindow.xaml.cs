@@ -48,14 +48,17 @@ namespace Biblioteka.Windows
 					var password = PasswordBox.Password;
 
 					UserDatabaseConnectionController.GetUserByEmail(email, password, RememberLoginCredentials.IsChecked);
+
+					CustomMessageBox.Show("Zalogowano pomyślnie!", "Zalogowano pomyślnie, możesz teraz przejść do aplikacji.",
+						CustomMessageBox.CustomMessageBoxIcon.Information);
 				}
 				catch (EmailException)
 				{
-					MessageBox.Show("Podany adres email nie istnieje w bazie danych!", "Błąd adresu email", MessageBoxButton.OK, MessageBoxImage.Error);
+					EmailException.ShowGenericMessageBox();
 				}
 				catch (PasswordException)
 				{
-					MessageBox.Show("Podano nieprawidłowe hasło dla danego adresu email!", "Błąd hasła", MessageBoxButton.OK, MessageBoxImage.Error);
+					PasswordException.ShowGenericMessageBox();
 				}
 				catch (Exception ex)
 				{

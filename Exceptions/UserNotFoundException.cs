@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Biblioteka.Windows;
+using System;
 
 namespace Biblioteka.Exceptions
 {
@@ -14,6 +15,12 @@ namespace Biblioteka.Exceptions
 
 		public UserNotFoundException(string message, Exception inner) : base(message, inner)
 		{
+		}
+
+		public static void ShowGenericMessageBox()
+		{
+			CustomMessageBox.Show("Nie znaleziono użytkownika!", "Nie znaleziono użytkownika w bazie danych.",
+				CustomMessageBox.CustomMessageBoxIcon.Error);
 		}
 	}
 }

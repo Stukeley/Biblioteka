@@ -1,5 +1,6 @@
 ﻿using Biblioteka.Exceptions;
 using Biblioteka.Models;
+using System;
 using System.Configuration;
 using System.Data.SqlClient;
 
@@ -23,7 +24,7 @@ namespace Biblioteka.Controllers
 
 			var connection = new SqlConnection(connString);
 
-			var command = new SqlCommand($"SELECT * FROM BibliotekaDB.Czytelnicy WHERE Email='{email}'", connection);
+			var command = new SqlCommand($"SELECT * FROM Czytelnicy WHERE Email='{email}'", connection);
 
 			connection.Open();
 
@@ -96,7 +97,7 @@ namespace Biblioteka.Controllers
 
 			var connection = new SqlConnection(connString);
 
-			var command = new SqlCommand($"SELECT * FROM BibliotekaDB.Czytelnicy WHERE Email={email}", connection);
+			var command = new SqlCommand($"SELECT * FROM Czytelnicy WHERE Email={email}", connection);
 
 			connection.Open();
 
@@ -120,7 +121,7 @@ namespace Biblioteka.Controllers
 					}
 					else
 					{
-						var updatePasswordCommand = new SqlCommand($"UPDATE BibliotekaDB.Czytelnicy SET Password='{newPassword}' WHERE Email={email}",
+						var updatePasswordCommand = new SqlCommand($"UPDATE Czytelnicy SET Password='{newPassword}' WHERE Email={email}",
 							connection);
 						updatePasswordCommand.ExecuteNonQuery();
 					}
@@ -139,23 +140,28 @@ namespace Biblioteka.Controllers
 		/// <param name="password">Password of the user</param>
 		public static void RegisterUser(string name, string surname, string email, string password)
 		{
-			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
+			//check if email exists in the database
+			var currentDate = DateTime.Now;
 
+			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
 			var connection = new SqlConnection(connString);
 
-			var command = new SqlCommand("INSERT INTO BibliotekaDB.Czytelnicy (Name, Surname, Email, Password) VALUES (@Name, @Surname, @Email, @Password)",
+			connection.Open();
+
+			var command = new SqlCommand("INSERT INTO Czytelnicy (Name, Surname, Email, Password, DateOfCreation) VALUES " +
+				"(@Name, @Surname, @Email, @Password, @DateOfCreation);",
 				connection);
 
 			command.Parameters.AddWithValue("@Name", name);
 			command.Parameters.AddWithValue("@Surname", surname);
 			command.Parameters.AddWithValue("@Email", email);
 			command.Parameters.AddWithValue("@Password", password);
+			command.Parameters.AddWithValue("@DateOfCreation", currentDate);
 
-			connection.Open();
 			command.ExecuteNonQuery();
 			connection.Close();
 
-			UserModel.CurrentUser = new UserModel(name, surname, email, password);
+			UserModel.CurrentUser = new UserModel(name, surname, email, password, currentDate);
 		}
 	}
 }

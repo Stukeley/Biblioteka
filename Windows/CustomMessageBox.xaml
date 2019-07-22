@@ -29,7 +29,7 @@
 		</Grid>
 
 		<Grid Height="120" VerticalAlignment="Bottom">
-			<Rectangle Fill="White">
+			<Rectangle Fill="#F8F8F8">
 				<Rectangle.Effect>
 					<DropShadowEffect Color="#FFBBBBBB" Direction="0" BlurRadius="15" RenderingBias="Quality" ShadowDepth="1"/>
 				</Rectangle.Effect>
@@ -37,7 +37,7 @@
 			<materialDesign:PackIcon x:Name="MessageBoxPackIcon" Kind="Exclamation" Width="40" Height="40" VerticalAlignment="Top"
 									 HorizontalAlignment="Center" Margin="0,2"/>
 			<TextBlock x:Name="ContentBox" VerticalAlignment="Center" HorizontalAlignment="Center" Width="410" Margin="5" FontSize="16"
-					   Foreground="Black" TextAlignment="Center"/>
+					   Foreground="Black" TextAlignment="Center" TextWrapping="WrapWithOverflow"/>
 			<Button x:Name="OkButton" VerticalAlignment="Bottom" HorizontalAlignment="Center" Content="OK" FontSize="16" Click="OkButton_Click"
 					Margin="0,0,0,5"/>
 		</Grid>

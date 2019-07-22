@@ -1,4 +1,6 @@
-﻿namespace Biblioteka.Models
+﻿using System;
+
+namespace Biblioteka.Models
 {
 	internal class UserModel
 	{
@@ -12,17 +14,19 @@
 		public string Nazwisko { get; set; }
 		public string Email { get; set; }
 		public string Hasło { get; set; }
+		public DateTime? DateOfCreation { get; set; }
 
 		private UserModel()
 		{
 		}
 
-		public UserModel(string imię, string nazwisko, string email, string hasło)
+		public UserModel(string imię, string nazwisko, string email, string hasło, DateTime? dateOfCreation = null)
 		{
 			Imię = imię;
 			Nazwisko = nazwisko;
 			Email = email;
 			Hasło = hasło;
+			DateOfCreation = dateOfCreation;
 		}
 	}
 }

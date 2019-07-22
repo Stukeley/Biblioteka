@@ -80,25 +80,25 @@
 							<TextBlock Text="Książki" VerticalAlignment="Center" Margin="20 10"/>
 						</StackPanel>
 					</ListViewItem>
-					<ListViewItem Height="60">
+					<ListViewItem x:Name="Authors" Height="60" PreviewMouseUp="Authors_PreviewMouseUp">
 						<StackPanel Orientation="Horizontal">
 							<materialDesign:PackIcon Kind="Pen" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
 							<TextBlock Text="Autorzy" VerticalAlignment="Center" Margin="20 10"/>
 						</StackPanel>
 					</ListViewItem>
-					<ListViewItem Height="60">
+					<ListViewItem x:Name="Contact" Height="60" PreviewMouseUp="Contact_PreviewMouseUp">
 						<StackPanel Orientation="Horizontal">
 							<materialDesign:PackIcon Kind="EmailOutline" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
 							<TextBlock Text="Kontakt" VerticalAlignment="Center" Margin="20 10"/>
 						</StackPanel>
 					</ListViewItem>
-					<ListViewItem Height="60">
+					<ListViewItem x:Name="Account" Height="60" PreviewMouseUp="Account_PreviewMouseUp">
 						<StackPanel Orientation="Horizontal">
 							<materialDesign:PackIcon Kind="AccountOutline" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
 							<TextBlock Text="Konto" VerticalAlignment="Center" Margin="20 10"/>
 						</StackPanel>
 					</ListViewItem>
-					<ListViewItem Height="60">
+					<ListViewItem x:Name="Settings" Height="60" PreviewMouseUp="Settings_PreviewMouseUp">
 						<StackPanel Orientation="Horizontal">
 							<materialDesign:PackIcon Kind="SettingsOutline" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
 							<TextBlock Text="Ustawienia" VerticalAlignment="Center" Margin="20 10"/>

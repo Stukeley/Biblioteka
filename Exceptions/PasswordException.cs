@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Biblioteka.Windows;
+using System;
 
 namespace Biblioteka.Exceptions
 {
@@ -14,6 +15,12 @@ namespace Biblioteka.Exceptions
 
 		public PasswordException(string message, Exception inner) : base(message, inner)
 		{
+		}
+
+		public static void ShowGenericMessageBox()
+		{
+			CustomMessageBox.Show("Niepoprawne hasło!", "Wprowadzono niepoprawne hasło dla podanego adresu email.",
+				CustomMessageBox.CustomMessageBoxIcon.Error);
 		}
 	}
 }

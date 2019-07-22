@@ -24,8 +24,8 @@
 				HorizontalAlignment="Right" VerticalAlignment="Top" MouseEnter="ExitButton_MouseEnter" MouseLeave="ExitButton_MouseLeave">
 			<materialDesign:PackIcon Width="30" Height="30" Kind="Close" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 		</Button>
-		
-		<Rectangle Width="280" Height="240" Fill="White" VerticalAlignment="Bottom" Margin="0,100">
+
+		<Rectangle Width="280" Height="240" Fill="#F8F8F8" VerticalAlignment="Bottom" Margin="0,100">
 			<Rectangle.Effect>
 				<DropShadowEffect Color="#FFBBBBBB" Direction="0" BlurRadius="15" RenderingBias="Quality" ShadowDepth="1"/>
 			</Rectangle.Effect>
