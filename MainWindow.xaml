@@ -47,6 +47,8 @@
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
 				<Button x:Name="LoginButton" VerticalAlignment="Center" Margin="10" FontFamily="Segoe UI" FontSize="16" 
 						Content="Zaloguj się" Click="LoginButton_Click"/>
+				<Button x:Name="AdminAddContentButton" VerticalAlignment="Center" Margin="10" FontFamily="Segoe UI" FontSize="16"
+						Content="Dodaj coś" Visibility="Collapsed" IsEnabled="False" Click="AdminAddContentButton_Click"/>
 
 				<Button x:Name="ExitButton" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30"
 						Background="{x:Null}" BorderBrush="{x:Null}" Foreground="DarkSlateGray" Click="ExitButton_Click" Margin="10"
@@ -71,37 +73,37 @@
 					<ListViewItem x:Name="Homepage" Height="60" PreviewMouseUp="Homepage_PreviewMouseUp">
 						<StackPanel Orientation="Horizontal">
 							<materialDesign:PackIcon Kind="HomeOutline" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
-							<TextBlock Text="Strona Główna" VerticalAlignment="Center" Margin="20 10"/>
+							<TextBlock Text="Strona Główna" VerticalAlignment="Center" Margin="10 10"/>
 						</StackPanel>
 					</ListViewItem>
 					<ListViewItem x:Name="Books" Height="60" PreviewMouseUp="Books_PreviewMouseUp">
 						<StackPanel Orientation="Horizontal">
 							<materialDesign:PackIcon Kind="BookOpen" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
-							<TextBlock Text="Książki" VerticalAlignment="Center" Margin="20 10"/>
+							<TextBlock Text="Książki" VerticalAlignment="Center" Margin="10 10"/>
 						</StackPanel>
 					</ListViewItem>
 					<ListViewItem x:Name="Authors" Height="60" PreviewMouseUp="Authors_PreviewMouseUp">
 						<StackPanel Orientation="Horizontal">
 							<materialDesign:PackIcon Kind="Pen" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
-							<TextBlock Text="Autorzy" VerticalAlignment="Center" Margin="20 10"/>
+							<TextBlock Text="Autorzy" VerticalAlignment="Center" Margin="10 10"/>
 						</StackPanel>
 					</ListViewItem>
 					<ListViewItem x:Name="Contact" Height="60" PreviewMouseUp="Contact_PreviewMouseUp">
 						<StackPanel Orientation="Horizontal">
 							<materialDesign:PackIcon Kind="EmailOutline" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
-							<TextBlock Text="Kontakt" VerticalAlignment="Center" Margin="20 10"/>
+							<TextBlock Text="Kontakt" VerticalAlignment="Center" Margin="10 10"/>
 						</StackPanel>
 					</ListViewItem>
 					<ListViewItem x:Name="Account" Height="60" PreviewMouseUp="Account_PreviewMouseUp">
 						<StackPanel Orientation="Horizontal">
 							<materialDesign:PackIcon Kind="AccountOutline" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
-							<TextBlock Text="Konto" VerticalAlignment="Center" Margin="20 10"/>
+							<TextBlock Text="Konto" VerticalAlignment="Center" Margin="10 10"/>
 						</StackPanel>
 					</ListViewItem>
 					<ListViewItem x:Name="Settings" Height="60" PreviewMouseUp="Settings_PreviewMouseUp">
 						<StackPanel Orientation="Horizontal">
 							<materialDesign:PackIcon Kind="SettingsOutline" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
-							<TextBlock Text="Ustawienia" VerticalAlignment="Center" Margin="20 10"/>
+							<TextBlock Text="Ustawienia" VerticalAlignment="Center" Margin="10 10"/>
 						</StackPanel>
 					</ListViewItem>
 				</ListView>

@@ -9,7 +9,7 @@ namespace Biblioteka.Controllers
 	/// <summary>
 	/// This class is used for connecting with the database and retrieving user information, or inserting new users into it
 	/// </summary>
-	internal class UserDatabaseConnectionController
+	internal static class UserDatabaseConnectionController
 	{
 		/// <summary>
 		/// This method will check for the user assigned to the provided email in the database, and will check if passwords match.
@@ -75,6 +75,9 @@ namespace Biblioteka.Controllers
 							UserId = dbId
 						};
 						UserModel.CurrentUser = userModel;
+
+						//check special privileges
+						UserModel.CurrentUser.IsSpecialAccount = CheckUserPrivileges();
 					}
 				}
 			}
@@ -111,8 +114,8 @@ namespace Biblioteka.Controllers
 				}
 				else
 				{
-					var dbName = reader["Name"].ToString();
-					var dbSurname = reader["Surname"].ToString();
+					var dbName = reader.GetString(1);
+					var dbSurname = reader.GetString(2);
 
 					if (dbName != name || dbSurname != surname)
 					{
@@ -161,6 +164,34 @@ namespace Biblioteka.Controllers
 			connection.Close();
 
 			UserModel.CurrentUser = new UserModel(name, surname, email, password, currentDate);
+		}
+
+		/// <summary>
+		/// This method is used for checking special privileges of the currently logged user. True means the user is an Admin (able to add new content
+		/// like Authors or Books or Genres), false means the user is just a reader
+		/// </summary>
+		public static bool CheckUserPrivileges()
+		{
+			bool isSpecialAccount = false;
+			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
+			var connection = new SqlConnection(connString);
+
+			connection.Open();
+
+			var command = new SqlCommand($"SELECT IsSpecialAccount FROM Czytelnicy WHERE Email='{UserModel.CurrentUser.Email}'", connection);
+
+			using (var reader = command.ExecuteReader())
+			{
+				if (reader.HasRows)
+				{
+					reader.Read();
+					isSpecialAccount = reader.GetBoolean(0);
+				}
+			}
+
+			connection.Close();
+
+			return isSpecialAccount;
 		}
 	}
 }

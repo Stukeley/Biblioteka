@@ -6,7 +6,8 @@
 		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Biblioteka.Windows"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="500" Width="350" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+        Title="LoginWindow" Height="500" Width="350" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None"
+		Background="#F8F8F8">
     <Grid>
 		<Rectangle Height="280" VerticalAlignment="Top">
 			<Rectangle.Fill>
@@ -25,7 +26,7 @@
 			<materialDesign:PackIcon Width="30" Height="30" Kind="Close" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 		</Button>
 
-		<Rectangle Width="280" Height="240" Fill="#F8F8F8" VerticalAlignment="Bottom" Margin="0,100">
+		<Rectangle Width="280" Height="240" Fill="White" VerticalAlignment="Bottom" Margin="0,100">
 			<Rectangle.Effect>
 				<DropShadowEffect Color="#FFBBBBBB" Direction="0" BlurRadius="15" RenderingBias="Quality" ShadowDepth="1"/>
 			</Rectangle.Effect>
@@ -39,7 +40,7 @@
 				<PasswordBox x:Name="PasswordBox" materialDesign:HintAssist.Hint="HASŁO" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
 						 Margin="0,10"/>
 				<CheckBox x:Name="RememberLoginCredentials" Margin="0,10" FontFamily="Segoe UI"
-						  FontSize="12" Content="Zapamiętaj logowanie" Foreground="Gray"/>
+						  FontSize="12" Content="Zapamiętaj logowanie" Foreground="Gray" HorizontalAlignment="Center"/>
 			</StackPanel>
 		</Grid>
 

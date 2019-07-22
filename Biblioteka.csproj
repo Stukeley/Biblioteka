@@ -124,6 +124,9 @@
     <Compile Include="UserControls\Homepage.xaml.cs">
       <DependentUpon>Homepage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\AdminAddContentWindow.xaml.cs">
+      <DependentUpon>AdminAddContentWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\CustomMessageBox.xaml.cs">
       <DependentUpon>CustomMessageBox.xaml</DependentUpon>
     </Compile>
@@ -163,6 +166,10 @@
     <Page Include="UserControls\Homepage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\AdminAddContentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\CustomMessageBox.xaml">
       <SubType>Designer</SubType>

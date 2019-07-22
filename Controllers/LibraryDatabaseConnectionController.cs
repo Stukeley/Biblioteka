@@ -10,7 +10,7 @@ namespace Biblioteka.Controllers
 	/// <summary>
 	/// This class is used for the Wypożyczenia (borrowing) table that joins the Readers and Books tables to create a functioning library
 	/// </summary>
-	internal class LibraryDatabaseConnectionController
+	internal static class LibraryDatabaseConnectionController
 	{
 		public static List<BorrowingModel> RetrieveBorrowingsForUser()
 		{

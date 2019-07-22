@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace Biblioteka.Controllers
 {
-	internal class DataInsertionController
+	internal static class DataInsertionController
 	{
 		public static void InsertGenreIntoDatabase(GenreModel genre)
 		{

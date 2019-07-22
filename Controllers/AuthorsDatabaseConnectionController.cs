@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Biblioteka.Controllers
 {
-	internal class AuthorsDatabaseConnectionController
+	internal static class AuthorsDatabaseConnectionController
 	{
 		public static List<AuthorModel> GetAllAuthors()
 		{

@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Biblioteka.Controllers
 {
-	internal class BookDatabaseConnectionController
+	internal static class BookDatabaseConnectionController
 	{
 		public static List<BookModel> GetAllBooks()
 		{

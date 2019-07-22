@@ -15,6 +15,7 @@ namespace Biblioteka.Models
 		public string Email { get; set; }
 		public string Hasło { get; set; }
 		public DateTime? DateOfCreation { get; set; }
+		public bool IsSpecialAccount { get; set; }
 
 		private UserModel()
 		{
@@ -27,6 +28,7 @@ namespace Biblioteka.Models
 			Email = email;
 			Hasło = hasło;
 			DateOfCreation = dateOfCreation;
+			IsSpecialAccount = false;
 		}
 	}
 }

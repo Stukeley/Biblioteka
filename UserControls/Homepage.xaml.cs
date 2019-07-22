@@ -26,6 +26,12 @@ namespace Biblioteka.UserControls
 				try
 				{
 					WypożyczeniaDataGrid.ItemsSource = LibraryDatabaseConnectionController.RetrieveBorrowingsForUser();
+					OstatnieWypożyczenieDataGrid.ItemsSource = new List<BorrowingModel>()
+					{
+						LibraryDatabaseConnectionController.RetrieveRecentBorrowing()
+					};
+
+					KoniecTerminuDataGrid.ItemsSource = LibraryDatabaseConnectionController.RetrieveEndingBorrowings();
 
 				}
 				catch (NoBorrowingFoundException)
@@ -33,14 +39,6 @@ namespace Biblioteka.UserControls
 					NoBorrowingFoundException.ShowGenericMessageBox();
 				}
 			}
-
-			WypożyczeniaDataGrid.ItemsSource = LibraryDatabaseConnectionController.RetrieveBorrowingsForUser();
-			OstatnieWypożyczenieDataGrid.ItemsSource = new List<BorrowingModel>()
-			{
-				LibraryDatabaseConnectionController.RetrieveRecentBorrowing()
-			};
-
-			KoniecTerminuDataGrid.ItemsSource = LibraryDatabaseConnectionController.RetrieveEndingBorrowings();
 		}
 
 		private void ContactUs_PreviewMouseUp(object sender, MouseButtonEventArgs e)

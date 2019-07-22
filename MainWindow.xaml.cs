@@ -1,6 +1,7 @@
 ﻿using Biblioteka.Exceptions;
 using Biblioteka.Models;
 using Biblioteka.UserControls;
+using Biblioteka.Windows;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -32,6 +33,13 @@ namespace Biblioteka
 				LoginButton.Visibility = Visibility.Hidden;
 				PleaseLogInGrid.Visibility = Visibility.Hidden;
 				ChangeContent(new Homepage());
+
+				//For simple adding of new books/authors - special privilege account/s. True means the account has special privileges
+				if (UserModel.CurrentUser.IsSpecialAccount)
+				{
+					AdminAddContentButton.IsEnabled = true;
+					AdminAddContentButton.Visibility = Visibility.Visible;
+				}
 			}
 		}
 
@@ -141,6 +149,13 @@ namespace Biblioteka
 		private void Settings_PreviewMouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
 		{
 
+		}
+
+		private void AdminAddContentButton_Click(object sender, RoutedEventArgs e)
+		{
+			var addContentWindow = new AdminAddContentWindow();
+			addContentWindow.Show();
+			this.Close();
 		}
 	}
 }
