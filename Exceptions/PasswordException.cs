@@ -22,5 +22,10 @@ namespace Biblioteka.Exceptions
 			CustomMessageBox.Show("Niepoprawne hasło!", "Wprowadzono niepoprawne hasło dla podanego adresu email.",
 				CustomMessageBox.CustomMessageBoxIcon.Error);
 		}
+
+		public static void IncorrectPasswordFormat()
+		{
+			CustomMessageBox.Show("Błąd hasła!", "Hasło nie może być puste ani dłuższe niż 30 znaków.", CustomMessageBox.CustomMessageBoxIcon.Error);
+		}
 	}
 }

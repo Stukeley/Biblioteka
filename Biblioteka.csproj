@@ -86,6 +86,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Admin\AddNewAuthor.xaml.cs">
+      <DependentUpon>AddNewAuthor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BibliotekaDBDataSet.cs">
       <DependentUpon>BibliotekaDBDataSet.xsd</DependentUpon>
     </Compile>
@@ -124,7 +127,7 @@
     <Compile Include="UserControls\Homepage.xaml.cs">
       <DependentUpon>Homepage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\AdminAddContentWindow.xaml.cs">
+    <Compile Include="Admin\AdminAddContentWindow.xaml.cs">
       <DependentUpon>AdminAddContentWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\CustomMessageBox.xaml.cs">
@@ -139,6 +142,10 @@
     <Compile Include="Windows\RegisterWindow.xaml.cs">
       <DependentUpon>RegisterWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Admin\AddNewAuthor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -167,7 +174,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Windows\AdminAddContentWindow.xaml">
+    <Page Include="Admin\AdminAddContentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

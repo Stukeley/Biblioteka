@@ -41,7 +41,7 @@
 						 Margin="0,5"/>
 				<TextBox x:Name="EmailBox" materialDesign:HintAssist.Hint="EMAIL" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
 						 Margin="0,5"/>
-				<PasswordBox x:Name="PasswordBox" materialDesign:HintAssist.Hint="HASŁO" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+				<PasswordBox x:Name="PasswordBox" materialDesign:HintAssist.Hint="HASŁO (MAX 30 ZNAKÓW)" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
 						 Margin="0,5"/>
 			</StackPanel>
 		</Grid>

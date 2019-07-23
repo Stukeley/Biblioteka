@@ -1,4 +1,5 @@
 ﻿using Biblioteka.Controllers;
+using Biblioteka.Exceptions;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,15 +25,15 @@ namespace Biblioteka.Windows
 
 			if (string.IsNullOrEmpty(NameBox.Text) || string.IsNullOrEmpty(SurnameBox.Text))
 			{
-				MessageBox.Show("Imię ani nazwisko nie może być puste!", "Błąd imienia i/lub nazwiska", MessageBoxButton.OK, MessageBoxImage.Error);
+				CredentialsException.IncorrectNameSurnameFormat();
 			}
 			else if (string.IsNullOrEmpty(EmailBox.Text) || !EmailBox.Text.Contains("@"))
 			{
-				MessageBox.Show("Nie podano prawidłowego adresu email!", "Błąd adresu email", MessageBoxButton.OK, MessageBoxImage.Error);
+				EmailException.IncorrectEmailFormat();
 			}
-			else if (string.IsNullOrEmpty(PasswordBox.Password))
+			else if (string.IsNullOrEmpty(PasswordBox.Password) || PasswordBox.Password.Length > 30)
 			{
-				MessageBox.Show("Hasło nie może być puste!", "Błąd hasła", MessageBoxButton.OK, MessageBoxImage.Error);
+				PasswordException.IncorrectPasswordFormat();
 			}
 			else
 			{

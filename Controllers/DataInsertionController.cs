@@ -27,11 +27,13 @@ namespace Biblioteka.Controllers
 
 			var connection = new SqlConnection(connString);
 
-			var command = new SqlCommand($"INSERT INTO BibliotekaDB.Autorzy (Name, Surname, DateOfBirth) VALUES (@Name, @Surname, @DateOfBirth)", connection);
+			var command = new SqlCommand($"INSERT INTO BibliotekaDB.Autorzy (Name, Surname, DateOfBirth, Biography) VALUES " +
+				$"(@Name, @Surname, @DateOfBirth, @Biography)", connection);
 
 			command.Parameters.AddWithValue("@Name", author.Imię);
 			command.Parameters.AddWithValue("@Surname", author.Nazwisko);
 			command.Parameters.AddWithValue("@DateOfBirth", author.DataUrodzenia);
+			command.Parameters.AddWithValue("@Biography", author.Biografia);
 
 			connection.Open();
 			command.ExecuteNonQuery();

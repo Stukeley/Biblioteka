@@ -34,11 +34,11 @@ namespace Biblioteka.Windows
 			//Data validation
 			if (string.IsNullOrEmpty(EmailBox.Text) || !EmailBox.Text.Contains("@"))
 			{
-				MessageBox.Show("Nie podano prawidłowego adresu email!", "Błąd adresu email", MessageBoxButton.OK, MessageBoxImage.Error);
+				EmailException.IncorrectEmailFormat();
 			}
 			else if (string.IsNullOrEmpty(PasswordBox.Password))
 			{
-				MessageBox.Show("Hasło nie może być puste!", "Błąd hasła", MessageBoxButton.OK, MessageBoxImage.Error);
+				PasswordException.IncorrectPasswordFormat();
 			}
 			else
 			{
@@ -74,7 +74,8 @@ namespace Biblioteka.Windows
 			}
 			else
 			{
-				MessageBox.Show("Nie udało się uzyskać użytkownika z bazy danych!", "Błąd bazy danych", MessageBoxButton.OK, MessageBoxImage.Error);
+				//this situation should not be possible
+				UserNotLoggedInException.ShowGenericMessageBox();
 			}
 		}
 

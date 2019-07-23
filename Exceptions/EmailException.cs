@@ -21,5 +21,10 @@ namespace Biblioteka.Exceptions
 		{
 			CustomMessageBox.Show("Błąd adresu email", "Podany adres email nie istnieje w bazie danych!", CustomMessageBox.CustomMessageBoxIcon.Error);
 		}
+
+		public static void IncorrectEmailFormat()
+		{
+			CustomMessageBox.Show("Błąd adresu email", "Nie podano prawidłowego adresu email.", CustomMessageBox.CustomMessageBoxIcon.Error);
+		}
 	}
 }
