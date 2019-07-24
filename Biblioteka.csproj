@@ -89,6 +89,15 @@
     <Compile Include="Admin\AddNewAuthor.xaml.cs">
       <DependentUpon>AddNewAuthor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Admin\AddNewBook.xaml.cs">
+      <DependentUpon>AddNewBook.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddNewGenre.xaml.cs">
+      <DependentUpon>AddNewGenre.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Dashboard.xaml.cs">
+      <DependentUpon>Dashboard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BibliotekaDBDataSet.cs">
       <DependentUpon>BibliotekaDBDataSet.xsd</DependentUpon>
     </Compile>
@@ -100,6 +109,7 @@
     <Compile Include="Controllers\AuthorsDatabaseConnectionController.cs" />
     <Compile Include="Controllers\BookDatabaseConnectionController.cs" />
     <Compile Include="Controllers\DataInsertionController.cs" />
+    <Compile Include="Controllers\GenresDatabaseConnectionController.cs" />
     <Compile Include="Controllers\LibraryDatabaseConnectionController.cs" />
     <Compile Include="Controllers\UserDatabaseConnectionController.cs" />
     <Compile Include="Exceptions\BookBorrowedException.cs" />
@@ -143,6 +153,18 @@
       <DependentUpon>RegisterWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Admin\AddNewAuthor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin\AddNewBook.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin\AddNewGenre.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin\Dashboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

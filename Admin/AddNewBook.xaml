@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="Biblioteka.Admin.AddNewBook"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:Biblioteka.Admin"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="880" Background="LightGray">
+    <Grid>
+		<Grid>
+			<TextBlock Text="Wszystkie książki w bazie danych" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center"
+					   Margin="0,10"/>
+			<DataGrid x:Name="WszystkieKsiążkiDataGrid" Height="250" Width="840" VerticalAlignment="Top" HorizontalAlignment="Center"
+				  Margin="0,40" VerticalScrollBarVisibility="Auto" CanUserDeleteRows="True" KeyDown="WszystkieKsiążkiDataGrid_KeyDown" 
+					  SelectedCellsChanged="WszystkieKsiążkiDataGrid_SelectedCellsChanged">
+
+				<DataGrid.Resources>
+					<Style TargetType="{x:Type DataGridColumnHeader}">
+						<Setter Property="FontWeight" Value="Bold"/>
+					</Style>
+				</DataGrid.Resources>
+
+				<DataGrid.Columns>
+					<DataGridTextColumn Header="Id" Width="100" Binding="{Binding Id}"/>
+					<DataGridTextColumn Header="Tytuł" Width="300" Binding="{Binding Tytuł}"/>
+					<DataGridTextColumn Header="Gatunek" Width="150" Binding="{Binding NazwaGatunku}"/>
+					<DataGridTextColumn Header="Autor" Width="200" Binding="{Binding NazwaAutora}"/>
+				</DataGrid.Columns>
+
+
+			</DataGrid>
+		</Grid>
+
+		<Grid>
+			<TextBox x:Name="BookTitleBox" materialDesign:HintAssist.Hint="TYTUŁ" VerticalAlignment="Bottom" HorizontalAlignment="Left"
+					 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="150" FontSize="16"
+					 Margin="20,0,0,200"/>
+
+			<ComboBox x:Name="BookGenreBox" materialDesign:HintAssist.Hint="GATUNEK" FontSize="16" VerticalAlignment="Bottom"
+					  HorizontalAlignment="Left" Width="150" Margin="20,0,0,140"/>
+
+			<ComboBox x:Name="AuthorNameBox" materialDesign:HintAssist.Hint="AUTOR" FontSize="16" VerticalAlignment="Bottom"
+					  HorizontalAlignment="Left" Width="200" Margin="20,0,0,80"/>
+
+			<Button x:Name="AddBookButton" FontSize="16" Content="DODAJ KSIĄŻKĘ" VerticalAlignment="Bottom" HorizontalAlignment="Right"
+					Margin="0,0,300,140" Click="AddBookButton_Click"/>
+		</Grid>
+	</Grid>
+</UserControl>

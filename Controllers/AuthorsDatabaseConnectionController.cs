@@ -82,5 +82,30 @@ namespace Biblioteka.Controllers
 
 			return filteredAuthors;
 		}
+
+		public static string GetAuthorBiography(int id)
+		{
+			string biography = "";
+
+			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
+			var connection = new SqlConnection(connString);
+
+			connection.Open();
+
+			var command = new SqlCommand($"SELECT Biografia FROM Autorzy WHERE Id={id}", connection);
+
+			using (var reader = command.ExecuteReader())
+			{
+				if (reader.HasRows)
+				{
+					reader.Read();
+					biography = reader.GetString(0);
+				}
+			}
+
+			connection.Close();
+
+			return biography;
+		}
 	}
 }

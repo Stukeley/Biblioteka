@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
-namespace Biblioteka.Windows
+namespace Biblioteka.Admin
 {
 	/// <summary>
 	/// Interaction logic for AdminAddContentWindow.xaml
@@ -22,11 +12,22 @@ namespace Biblioteka.Windows
 		public AdminAddContentWindow()
 		{
 			InitializeComponent();
+
+			ChangeContent(new Dashboard());
+		}
+
+		private void ChangeContent(UserControl userControl)
+		{
+			if (!ContentGrid.Children.Contains(userControl))
+			{
+				ContentGrid.Children.Clear();
+				ContentGrid.Children.Add(userControl);
+			}
 		}
 
 		private void AddAuthor_PreviewMouseUp(object sender, MouseButtonEventArgs e)
 		{
-
+			ChangeContent(new AddNewAuthor());
 		}
 
 		private void AddGenre_PreviewMouseUp(object sender, MouseButtonEventArgs e)
@@ -42,6 +43,13 @@ namespace Biblioteka.Windows
 		private void BrowseUsers_PreviewMouseUp(object sender, MouseButtonEventArgs e)
 		{
 
+		}
+
+		private void CloseWindow_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+		{
+			var mainWindow = new MainWindow();
+			mainWindow.Show();
+			this.Close();
 		}
 	}
 }

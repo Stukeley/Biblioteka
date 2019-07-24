@@ -12,11 +12,15 @@
 			<TextBlock Text="Wszyscy autorzy w bazie danych" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center"
 					   Margin="0,10"/>
 			<DataGrid x:Name="WszyscyAutorzyDataGrid" Height="250" Width="840" VerticalAlignment="Top" HorizontalAlignment="Center"
-				  Margin="0,40" VerticalScrollBarVisibility="Auto">
+				  Margin="0,40" VerticalScrollBarVisibility="Auto" CanUserDeleteRows="True" KeyDown="WszyscyAutorzyDataGrid_KeyDown" 
+					  SelectedCellsChanged="WszyscyAutorzyDataGrid_SelectedCellsChanged">
 				
 				<DataGrid.Resources>
 					<Style TargetType="{x:Type DataGridColumnHeader}">
 						<Setter Property="FontWeight" Value="Bold"/>
+					</Style>
+					<Style TargetType="{x:Type DataGridRow}">
+						<EventSetter Event="MouseDoubleClick" Handler="WszyscyAutorzyDataGrid_MouseDoubleClick"/>
 					</Style>
 				</DataGrid.Resources>
 				
@@ -25,6 +29,7 @@
 					<DataGridTextColumn Header="Imię" Width="200" Binding="{Binding Imię}"/>
 					<DataGridTextColumn Header="Nazwisko" Width="200" Binding="{Binding Nazwisko}"/>
 					<DataGridTextColumn Header="Data Urodzenia" Width="200" Binding="{Binding DataUrodzenia}"/>
+					<DataGridTextColumn Header="Biografia" Width="200"/>
 				</DataGrid.Columns>
 				
 				
@@ -41,11 +46,12 @@
 					 Margin="20,0,0,140"/>
 			
 			<TextBox x:Name="AuthorBiographyBox" TextWrapping="Wrap" materialDesign:HintAssist.Hint="BIOGRAFIA"
-					 VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="16" 
+					 VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="14" 
 					 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="20,80" Width="840" MaxLines="3"/>
 			
 			<DatePicker x:Name="AuthorDateOfBirthPicker" VerticalAlignment="Bottom" HorizontalAlignment="Left"
-						Width="200" Height="50" Margin="200,0,0,200" FirstDayOfWeek="Monday" SelectedDateFormat="Short"/>
+						Width="200" Height="50" Margin="200,0,0,200" FirstDayOfWeek="Monday" SelectedDateFormat="Short"
+						materialDesign:HintAssist.Hint="DATA URODZENIA"/>
 			<Button x:Name="AddAuthorButton" FontSize="16" Content="DODAJ AUTORA" VerticalAlignment="Bottom" HorizontalAlignment="Right"
 					Margin="0,0,300,140" Click="AddAuthorButton_Click"/>
 		</Grid>

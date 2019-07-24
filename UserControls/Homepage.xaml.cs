@@ -36,7 +36,7 @@ namespace Biblioteka.UserControls
 				}
 				catch (NoBorrowingFoundException)
 				{
-					NoBorrowingFoundException.ShowGenericMessageBox();
+					//NoBorrowingFoundException.ShowGenericMessageBox();
 				}
 			}
 		}

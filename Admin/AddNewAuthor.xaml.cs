@@ -1,5 +1,6 @@
 ﻿using Biblioteka.Controllers;
 using Biblioteka.Models;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -11,17 +12,27 @@ namespace Biblioteka.Admin
 	public partial class AddNewAuthor : UserControl
 	{
 		//TODO: event on update or deletion of a row (commit this to the DB)
-		//TODO: show author's biography when row is doubleclicked
+
+		//Lista ze wszystkimi autorami
+		private static List<AuthorModel> Autorzy;
 
 		public AddNewAuthor()
 		{
 			InitializeComponent();
 
-			var authors = AuthorsDatabaseConnectionController.GetAllAuthors();
-			foreach (var author in authors)
-			{
-				WszyscyAutorzyDataGrid.Items.Add(author);
-			}
+			Autorzy = AuthorsDatabaseConnectionController.GetAllAuthors();
+			//foreach (var author in autorzy)
+			//{
+			//	WszyscyAutorzyDataGrid.Items.Add(author);
+			//}
+			WszyscyAutorzyDataGrid.ItemsSource = Autorzy;
+		}
+
+		private void UpdateDataGrid()
+		{
+			Autorzy = AuthorsDatabaseConnectionController.GetAllAuthors();
+			WszyscyAutorzyDataGrid.ItemsSource = Autorzy;
+			WszyscyAutorzyDataGrid.UpdateLayout();
 		}
 
 		private void AddAuthorButton_Click(object sender, RoutedEventArgs e)
@@ -41,9 +52,35 @@ namespace Biblioteka.Admin
 				var author = new AuthorModel(name, surname, dateOfBirth, biography);
 
 				DataInsertionController.InsertAuthorIntoDatabase(author);
-				WszyscyAutorzyDataGrid.Items.Add(author);
+				//WszyscyAutorzyDataGrid.Items.Add(author);
+				UpdateDataGrid();
 
 			}
+		}
+
+		private void WszyscyAutorzyDataGrid_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		{
+			var row = sender as DataGridRow;
+			var authorId = (row.Item as AuthorModel).Id;
+			var nameAndSurname = (row.Item as AuthorModel).Imię + (row.Item as AuthorModel).Nazwisko;
+
+			MessageBox.Show(AuthorsDatabaseConnectionController.GetAuthorBiography(authorId), nameAndSurname);
+		}
+
+		private void WszyscyAutorzyDataGrid_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+		{
+			if (e.Key == System.Windows.Input.Key.Delete)
+			{
+				//?
+				var selection = ((sender as DataGrid).SelectedItem) as AuthorModel;
+				Autorzy.Remove(selection);
+				UpdateDataGrid();
+			}
+		}
+
+		private void WszyscyAutorzyDataGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+		{
+			//?
 		}
 	}
 }

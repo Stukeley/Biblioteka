@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:local="clr-namespace:Biblioteka.Windows"
+        xmlns:local="clr-namespace:Biblioteka.Admin"
         mc:Ignorable="d"
         Title="CustomMessageBox" Height="160" Width="420" Background="#F8F8F8" WindowStartupLocation="CenterScreen"
 		ShowInTaskbar="True" WindowStyle="None" ResizeMode="NoResize">

@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="Biblioteka.Admin.Dashboard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:Biblioteka.Admin"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="880" Background="LightGray">
+    <Grid>
+		<TextBlock Text="Strona główna panelu Administratora" VerticalAlignment="Top" HorizontalAlignment="Center"
+				   TextAlignment="Center" FontSize="30" FontWeight="SemiBold" Margin="2" />
+		
+		<Rectangle Width="240" Height="160" Fill="White" RadiusX="10" RadiusY="10" VerticalAlignment="Top" HorizontalAlignment="Left"
+				   Margin="100">
+			<Rectangle.Effect>
+				<DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
+			</Rectangle.Effect>
+		</Rectangle>
+		<Grid Width="240" Height="160" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="100">
+			<materialDesign:PackIcon Kind="Book" Width="60" Height="60" Foreground="SandyBrown"/>
+			<TextBlock x:Name="AmountOfBooks" FontSize="64" Foreground="Black" TextAlignment="Center" Text="1234"
+					   VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20"/>
+			<TextBlock Text="Książek w bazie danych" FontSize="16" VerticalAlignment="Bottom" HorizontalAlignment="Center"
+					   Margin="0,0,0,20"/>
+		</Grid>
+		
+		<Rectangle Width="240" Height="160" Fill="White" RadiusX="10" RadiusY="10" VerticalAlignment="Top" HorizontalAlignment="Right"
+				   Margin="100">
+			<Rectangle.Effect>
+				<DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
+			</Rectangle.Effect>
+		</Rectangle>
+		<Grid Width="240" Height="160" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="100">
+			<materialDesign:PackIcon Kind="Pen" Width="60" Height="60" Foreground="Green"/>
+			<TextBlock x:Name="AmountOfAuthors" FontSize="64" Foreground="Black" TextAlignment="Center" Text="1234"
+					   VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20"/>
+			<TextBlock Text="Autorów w bazie danych" FontSize="16" VerticalAlignment="Bottom" HorizontalAlignment="Center"
+					   Margin="0,0,0,20"/>
+		</Grid>
+
+		<Rectangle Width="240" Height="160" Fill="White" RadiusX="10" RadiusY="10" VerticalAlignment="Bottom" HorizontalAlignment="Left"
+				   Margin="100">
+			<Rectangle.Effect>
+				<DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
+			</Rectangle.Effect>
+		</Rectangle>
+		<Grid Width="240" Height="160" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="100">
+			<materialDesign:PackIcon Kind="TagMultiple" Width="60" Height="60" Foreground="Red"/>
+			<TextBlock x:Name="AmountOfGenres" FontSize="64" Foreground="Black" TextAlignment="Center" Text="1234"
+					   VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20"/>
+			<TextBlock Text="Gatunków w bazie danych" FontSize="16" VerticalAlignment="Bottom" HorizontalAlignment="Center"
+					   Margin="0,0,0,20"/>
+		</Grid>
+
+		<Rectangle Width="240" Height="160" Fill="White" RadiusX="10" RadiusY="10" VerticalAlignment="Bottom" HorizontalAlignment="Right"
+				   Margin="100">
+			<Rectangle.Effect>
+				<DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
+			</Rectangle.Effect>
+		</Rectangle>
+		<Grid Width="240" Height="160" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="100">
+			<materialDesign:PackIcon Kind="AccountMultiple" Width="60" Height="60" Foreground="Blue"/>
+			<TextBlock x:Name="AmountOfUsers" FontSize="64" Foreground="Black" TextAlignment="Center" Text="1234"
+					   VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20"/>
+			<TextBlock Text="Użytkowników w bazie danych" FontSize="16" VerticalAlignment="Bottom" HorizontalAlignment="Center"
+					   Margin="0,0,0,20"/>
+		</Grid>
+		
+	</Grid>
+</UserControl>
