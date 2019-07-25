@@ -57,7 +57,8 @@
 				</Button>
 			</StackPanel>
         </Grid>
-		<Grid x:Name="GridMenu" Width="60" HorizontalAlignment="Left" Background="#FF1B3861">
+		
+		<Grid x:Name="GridMenu" Width="60" HorizontalAlignment="Left" Background="#FF1B3861" Panel.ZIndex="3">
 			<StackPanel>
 				<Grid Height="150" Background="White">
 					<Button x:Name="ButtonCloseMenu" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" 

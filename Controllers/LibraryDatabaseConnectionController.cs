@@ -174,24 +174,31 @@ namespace Biblioteka.Controllers
 
 			//Check if the user has no more than 5 borrowings (that's the limit at a time)
 
-			var amountOfBorrowings = new SqlCommand($"SELECT * FROM Wypożyczenia WHERE ReaderId={UserModel.CurrentUser.UserId}", connection);
+			var amountOfBorrowings = new SqlCommand($"SELECT COUNT(*) FROM Wypożyczenia WHERE ReaderId={UserModel.CurrentUser.UserId}", connection);
 
-			using (var reader = hasBookBeenBorrowed.ExecuteReader())
+			//using (var reader = amountOfBorrowings.ExecuteReader())
+			//{
+			//	if (reader.HasRows)
+			//	{
+			//		var amount = 0;
+
+			//		while (reader.Read())
+			//		{
+			//			amount++;
+			//		}
+
+			//		if (amount >= 5)
+			//		{
+			//			throw new TooManyBorrowings();
+			//		}
+			//	}
+			//}
+
+			var amount = (int)(amountOfBorrowings.ExecuteScalar());
+
+			if (amount >= 5)
 			{
-				if (reader.HasRows)
-				{
-					var amount = 0;
-
-					while (reader.Read())
-					{
-						amount++;
-					}
-
-					if (amount >= 5)
-					{
-						throw new TooManyBorrowings();
-					}
-				}
+				throw new TooManyBorrowings();
 			}
 
 

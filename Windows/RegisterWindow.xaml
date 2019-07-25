@@ -41,8 +41,16 @@
 						 Margin="0,5"/>
 				<TextBox x:Name="EmailBox" materialDesign:HintAssist.Hint="EMAIL" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
 						 Margin="0,5"/>
-				<PasswordBox x:Name="PasswordBox" materialDesign:HintAssist.Hint="HASŁO (MAX 30 ZNAKÓW)" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+
+				<Grid>
+					<PasswordBox x:Name="PasswordBox" materialDesign:HintAssist.Hint="HASŁO (MAX 30 ZNAKÓW)" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
 						 Margin="0,5"/>
+					<TextBox x:Name="VisiblePasswordBox" materialDesign:HintAssist.Hint="HASŁO (MAX 30 ZNAKÓW)" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+						 Margin="0,10" Visibility="Collapsed"/>
+					<materialDesign:PackIcon x:Name="ShowHidePassword" Kind="Eye" VerticalAlignment="Center" HorizontalAlignment="Right"
+						 Width="20" Height="20" Margin="0,0,5,0" Foreground="DarkSlateGray" PreviewMouseUp="ShowHidePassword_PreviewMouseUp"
+											 Cursor="Hand"/>
+				</Grid>
 			</StackPanel>
 		</Grid>
 

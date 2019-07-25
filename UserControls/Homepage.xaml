@@ -12,7 +12,7 @@
 			<TextBlock Text="Obecne wypożyczenia" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10"
 				   FontSize="16" Foreground="Black"/>
 			<DataGrid x:Name="WypożyczeniaDataGrid" Height="200" Width="940" VerticalAlignment="Top" HorizontalAlignment="Left" 
-				  Margin="40" RowBackground="BlueViolet" AlternatingRowBackground="LightBlue">
+				  Margin="40" RowBackground="BlueViolet" AlternatingRowBackground="LightBlue" AutoGenerateColumns="False">
 				<DataGrid.Effect>
 					<DropShadowEffect BlurRadius="10" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1" Opacity="0.75"/>
 				</DataGrid.Effect>
@@ -23,7 +23,7 @@
 			<TextBlock Text="Ostatnie wypożyczenie" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="169.6,30"
 				   FontSize="16" Foreground="Black"/>
 			<DataGrid x:Name="OstatnieWypożyczenieDataGrid" Height="120" Width="420" Margin="40" VerticalAlignment="Center"
-				  HorizontalAlignment="Left" RowBackground="BlueViolet" AlternatingRowBackground="LightBlue">
+				  HorizontalAlignment="Left" RowBackground="BlueViolet" AlternatingRowBackground="LightBlue" AutoGenerateColumns="False">
 				<DataGrid.Effect>
 					<DropShadowEffect BlurRadius="10" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1" Opacity="0.75"/>
 				</DataGrid.Effect>
@@ -32,7 +32,7 @@
 			<TextBlock Text="Wkrótce mija termin oddania" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="147.2,30"
 				   FontSize="16" Foreground="Black"/>
 			<DataGrid x:Name="KoniecTerminuDataGrid" Height="120" Width="420" Margin="40" VerticalAlignment="Center"
-				  HorizontalAlignment="Right" RowBackground="BlueViolet" AlternatingRowBackground="LightBlue">
+				  HorizontalAlignment="Right" RowBackground="BlueViolet" AlternatingRowBackground="LightBlue" AutoGenerateColumns="False">
 				<DataGrid.Effect>
 					<DropShadowEffect BlurRadius="10" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1" Opacity="0.75"/>
 				</DataGrid.Effect>

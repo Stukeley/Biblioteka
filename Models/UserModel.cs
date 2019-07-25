@@ -17,6 +17,7 @@ namespace Biblioteka.Models
 		public string Hasło { get; set; }
 		public DateTime? DateOfCreation { get; set; }
 		public bool IsSpecialAccount { get; set; }
+		public int Fees { get; set; }
 
 		public UserModel()
 		{

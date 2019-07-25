@@ -84,13 +84,22 @@ namespace Biblioteka.Controllers
 
 		public static List<BookModel> GetRecentBooks()
 		{
-			//3 latests books
+			//3 latest books
 
 			var allBooks = GetAllBooks();
 
 			var recentBooks = (from book in allBooks orderby book.Id descending select book).Take(3).ToList();
 
 			return recentBooks;
+		}
+
+		public static List<BookModel> GetUnborrowedBooks()
+		{
+			var allBooks = GetAllBooks();
+
+			var books = allBooks.Where(x => x.IsBorrowed == false).ToList();
+
+			return books;
 		}
 
 		public static List<BookModel> FilterBooks(string author = null, string title = null)

@@ -33,11 +33,11 @@
 					Margin="20,0" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left"
 					Width="980"/>
 			<TextBox x:Name="ContentBox" materialDesign:HintAssist.Hint="TREŚĆ WIADOMOŚCI" 
-					 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="20,0,0,201.58" VerticalAlignment="Bottom"
+					 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="20,0,0,100" VerticalAlignment="Bottom"
 					 HorizontalAlignment="Left" Width="980" FontSize="16" MaxLines="4" TextWrapping="Wrap" AcceptsReturn="True"
 					 AcceptsTab="True"/>
 			<Button x:Name="SendButton" Width="100" Height="40" FontSize="16" VerticalAlignment="Bottom" HorizontalAlignment="Center"
-					Margin="0,0,0,10" Content="WYŚLIJ"/>
+					Margin="0,0,0,10" Content="WYŚLIJ" Click="SendButton_Click"/>
 		</Grid>
     </Grid>
 </UserControl>

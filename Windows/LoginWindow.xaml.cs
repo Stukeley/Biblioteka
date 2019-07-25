@@ -107,5 +107,29 @@ namespace Biblioteka.Windows
 		{
 			ExitButton.Foreground = new SolidColorBrush(Colors.DarkSlateGray);
 		}
+
+		private void ShowHidePassword_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+		{
+			if (ShowHidePassword.Kind == MaterialDesignThemes.Wpf.PackIconKind.Eye)
+			{
+				ShowHidePassword.Kind = MaterialDesignThemes.Wpf.PackIconKind.EyeOff;
+
+				var enteredPassword = PasswordBox.Password;
+
+				VisiblePasswordBox.Visibility = Visibility.Visible;
+				VisiblePasswordBox.Text = enteredPassword;
+				PasswordBox.Visibility = Visibility.Collapsed;
+			}
+			else
+			{
+				ShowHidePassword.Kind = MaterialDesignThemes.Wpf.PackIconKind.Eye;
+
+				var enteredPassword = VisiblePasswordBox.Text;
+
+				PasswordBox.Visibility = Visibility.Visible;
+				PasswordBox.Password = enteredPassword;
+				VisiblePasswordBox.Visibility = Visibility.Collapsed;
+			}
+		}
 	}
 }

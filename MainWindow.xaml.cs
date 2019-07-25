@@ -22,6 +22,7 @@ namespace Biblioteka
 		//TODO: add a bool field in the Książki database to reflect whether the book has been borrowed or not (will make things easier)
 		//TODO: get current directory at runtime and look for the database
 		//might have trouble with inserting NULL into the database - to be checked
+		//TODO: after logging in, check Borrowings and count the possible fees
 
 
 		public MainWindow()

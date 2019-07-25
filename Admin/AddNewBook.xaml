@@ -25,6 +25,7 @@
 					<DataGridTextColumn Header="Id" Width="100" Binding="{Binding Id}"/>
 					<DataGridTextColumn Header="Autor" Width="200" Binding="{Binding NazwaAutora}"/>
 					<DataGridTextColumn Header="Gatunek" Width="150" Binding="{Binding NazwaGatunku}"/>
+					<DataGridTextColumn Header="Wypożyczona?" Width="100" Binding="{Binding IsBorrowed}"/>
 					<DataGridTextColumn Header="Tytuł" Width="*" Binding="{Binding Tytuł}"/>
 				</DataGrid.Columns>
 
@@ -44,7 +45,7 @@
 					  HorizontalAlignment="Left" Width="200" Margin="20,0,0,80"/>
 
 			<Button x:Name="AddBookButton" FontSize="16" Content="DODAJ KSIĄŻKĘ" VerticalAlignment="Bottom" HorizontalAlignment="Right"
-					Margin="0,0,300,140" Click="AddBookButton_Click"/>
+					Margin="0,0,500,140" Click="AddBookButton_Click"/>
 		</Grid>
 	</Grid>
 </UserControl>

@@ -10,10 +10,20 @@
 	<Grid>
 		<Grid Width="300" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left">
 			<TextBlock Text="Nowi autorzy" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="16" Margin="0,5"/>
-			<DataGrid x:Name="NowiAutorzyDataGrid" Margin="20,40,0,0">
-				<DataGrid.Effect>
-					<DropShadowEffect BlurRadius="10" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1" Opacity="0.75"/>
-				</DataGrid.Effect>
+			<DataGrid x:Name="NowiAutorzyDataGrid" Margin="20,40,0,0" AutoGenerateColumns="False" FontSize="12">
+				<DataGrid.Resources>
+					<Style TargetType="{x:Type DataGridColumnHeader}">
+						<Setter Property="FontWeight" Value="Bold"/>
+					</Style>
+					<Style TargetType="{x:Type DataGridRow}">
+						<EventSetter Event="MouseDoubleClick" Handler="WszyscyAutorzyDataGrid_MouseDoubleClick"/>
+					</Style>
+				</DataGrid.Resources>
+
+				<DataGrid.Columns>
+					<DataGridTextColumn Header="Imię" Width="150" Binding="{Binding Imię}"/>
+					<DataGridTextColumn Header="Nazwisko" Width="150" Binding="{Binding Nazwisko}"/>
+				</DataGrid.Columns>
 			</DataGrid>
 		</Grid>
 
@@ -30,12 +40,25 @@
 					Margin="0,0,0,15"/>
 		</Grid>
 
-		<TextBlock Text="Wszyscy autorzy" VerticalAlignment="Top" FontSize="20" Margin="434.542,188.4,437.7,0" d:LayoutOverrides="Width"/>
-		<DataGrid x:Name="WszyscyAutorzyDataGrid" Height="300" Width="1020" VerticalAlignment="Bottom" HorizontalAlignment="Center"
-				  Margin="20,0,20,20" VerticalScrollBarVisibility="Auto">
-			<DataGrid.Effect>
-				<DropShadowEffect BlurRadius="10" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1" Opacity="0.75"/>
-			</DataGrid.Effect>
+		<TextBlock Text="Wszyscy autorzy" VerticalAlignment="Top" FontSize="20" Margin="0,188.4,0,0" d:LayoutOverrides="Width"
+				   HorizontalAlignment="Center"/>
+		<DataGrid x:Name="WszyscyAutorzyDataGrid" Height="300" Width="980" VerticalAlignment="Bottom" HorizontalAlignment="Center"
+				  Margin="20,0,20,20" VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False">
+			<DataGrid.Resources>
+				<Style TargetType="{x:Type DataGridColumnHeader}">
+					<Setter Property="FontWeight" Value="Bold"/>
+				</Style>
+				<Style TargetType="{x:Type DataGridRow}">
+					<EventSetter Event="MouseDoubleClick" Handler="DataGridRow_MouseDoubleClick"/>
+				</Style>
+			</DataGrid.Resources>
+
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Id" Width="100" Binding="{Binding Id}"/>
+				<DataGridTextColumn Header="Imię" Width="200" Binding="{Binding Imię}"/>
+				<DataGridTextColumn Header="Nazwisko" Width="200" Binding="{Binding Nazwisko}"/>
+				<DataGridTextColumn Header="Data Urodzenia" Width="200" Binding="{Binding DataUrodzenia}"/>
+			</DataGrid.Columns>
 		</DataGrid>
 
 	</Grid>
