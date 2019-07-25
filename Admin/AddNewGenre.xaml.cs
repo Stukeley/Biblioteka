@@ -18,11 +18,10 @@ namespace Biblioteka.Admin
 		{
 			InitializeComponent();
 
-			Gatunki = GenresDatabaseConnectionController.GetAllGenres();
-			WszystkieGatunkiDataGrid.ItemsSource = Gatunki;
+			UpdateDataGrid();
 		}
 
-		private void UpdateGrid()
+		private void UpdateDataGrid()
 		{
 			Gatunki = GenresDatabaseConnectionController.GetAllGenres();
 			WszystkieGatunkiDataGrid.ItemsSource = Gatunki;
@@ -52,7 +51,7 @@ namespace Biblioteka.Admin
 				var gatunek = new GenreModel(name);
 
 				DataInsertionController.InsertGenreIntoDatabase(gatunek);
-				UpdateGrid();
+				UpdateDataGrid();
 			}
 		}
 	}

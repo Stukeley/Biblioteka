@@ -13,7 +13,7 @@
 					   Margin="0,10"/>
 			<DataGrid x:Name="WszystkieGatunkiDataGrid" Height="250" Width="840" VerticalAlignment="Top" HorizontalAlignment="Center"
 				  Margin="0,40" VerticalScrollBarVisibility="Auto" CanUserDeleteRows="True" KeyDown="WszystkieGatunkiDataGrid_KeyDown" 
-					  SelectedCellsChanged="WszystkieGatunkiDataGrid_SelectedCellsChanged">
+					  SelectedCellsChanged="WszystkieGatunkiDataGrid_SelectedCellsChanged" AutoGenerateColumns="False">
 
 				<DataGrid.Resources>
 					<Style TargetType="{x:Type DataGridColumnHeader}">

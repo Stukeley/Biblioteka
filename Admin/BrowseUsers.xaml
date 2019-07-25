@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="Biblioteka.Admin.BrowseUsers"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Biblioteka.Admin"
+			 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="880" Background="LightGray">
+    <Grid>
+		<Grid>
+			<TextBlock Text="Wszyscy użytkownicy w bazie danych" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center"
+					   Margin="0,10"/>
+			<DataGrid x:Name="WszyscyUżytkownicyDataGrid" Height="250" Width="840" VerticalAlignment="Top" HorizontalAlignment="Center"
+				  Margin="0,40" VerticalScrollBarVisibility="Auto" CanUserDeleteRows="True" AutoGenerateColumns="False">
+
+				<DataGrid.Resources>
+					<Style TargetType="{x:Type DataGridColumnHeader}">
+						<Setter Property="FontWeight" Value="Bold"/>
+					</Style>
+				</DataGrid.Resources>
+
+				<DataGrid.Columns>
+					<DataGridTextColumn Header="Id" Width="50" Binding="{Binding Id}"/>
+					<DataGridTextColumn Header="Imię" Width="150" Binding="{Binding Imię}"/>
+					<DataGridTextColumn Header="Nazwisko" Width="150" Binding="{Binding Nazwisko}"/>
+					<DataGridTextColumn Header="Email" Width="200" Binding="{Binding Email}"/>
+					<DataGridTextColumn Header="Hasło" Width="150" Binding="{Binding Hasło}"/>
+					<DataGridTextColumn Header="SpecjalneKonto?" Width="*" Binding="{Binding IsSpecialAccount}"/>
+				</DataGrid.Columns>
+
+
+			</DataGrid>
+		</Grid>
+    </Grid>
+</UserControl>

@@ -95,6 +95,9 @@
     <Compile Include="Admin\AddNewGenre.xaml.cs">
       <DependentUpon>AddNewGenre.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Admin\BrowseUsers.xaml.cs">
+      <DependentUpon>BrowseUsers.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>
@@ -161,6 +164,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Admin\AddNewGenre.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Admin\BrowseUsers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

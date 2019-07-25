@@ -12,7 +12,14 @@
 		<Grid x:Name="GridMenu" Width="200" HorizontalAlignment="Left" Background="#FF1B3861">
 			<StackPanel>
 				<ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="#FF1368BD">
-					
+
+					<ListViewItem x:Name="Dashboard" Height="60" PreviewMouseUp="Dashboard_PreviewMouseUp">
+						<StackPanel Orientation="Horizontal">
+							<materialDesign:PackIcon Kind="ViewDashboard" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+							<TextBlock Text="Strona główna" VerticalAlignment="Center" Margin="10 10"/>
+						</StackPanel>
+					</ListViewItem>
+
 					<ListViewItem x:Name="AddAuthor" Height="60" PreviewMouseUp="AddAuthor_PreviewMouseUp">
 						<StackPanel Orientation="Horizontal">
 							<materialDesign:PackIcon Kind="Pen" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>

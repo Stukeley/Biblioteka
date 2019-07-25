@@ -16,7 +16,7 @@ namespace Biblioteka.Admin
 			ChangeContent(new Dashboard());
 		}
 
-		private void ChangeContent(UserControl userControl)
+		public void ChangeContent(UserControl userControl)
 		{
 			if (!ContentGrid.Children.Contains(userControl))
 			{
@@ -32,17 +32,17 @@ namespace Biblioteka.Admin
 
 		private void AddGenre_PreviewMouseUp(object sender, MouseButtonEventArgs e)
 		{
-
+			ChangeContent(new AddNewGenre());
 		}
 
 		private void AddBook_PreviewMouseUp(object sender, MouseButtonEventArgs e)
 		{
-
+			ChangeContent(new AddNewBook());
 		}
 
 		private void BrowseUsers_PreviewMouseUp(object sender, MouseButtonEventArgs e)
 		{
-
+			ChangeContent(new BrowseUsers());
 		}
 
 		private void CloseWindow_PreviewMouseUp(object sender, MouseButtonEventArgs e)
@@ -50,6 +50,11 @@ namespace Biblioteka.Admin
 			var mainWindow = new MainWindow();
 			mainWindow.Show();
 			this.Close();
+		}
+
+		private void Dashboard_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+		{
+			ChangeContent(new Dashboard());
 		}
 	}
 }

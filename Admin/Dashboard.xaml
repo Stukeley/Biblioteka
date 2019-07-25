@@ -11,8 +11,8 @@
 		<TextBlock Text="Strona główna panelu Administratora" VerticalAlignment="Top" HorizontalAlignment="Center"
 				   TextAlignment="Center" FontSize="30" FontWeight="SemiBold" Margin="2" />
 		
-		<Rectangle Width="240" Height="160" Fill="White" RadiusX="10" RadiusY="10" VerticalAlignment="Top" HorizontalAlignment="Left"
-				   Margin="100">
+		<Rectangle x:Name="BooksAmountRectangle" Width="240" Height="160" Fill="White" RadiusX="10" RadiusY="10" VerticalAlignment="Top" HorizontalAlignment="Left"
+				   Margin="100" PreviewMouseUp="BooksAmountRectangle_PreviewMouseUp">
 			<Rectangle.Effect>
 				<DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
 			</Rectangle.Effect>
@@ -25,8 +25,8 @@
 					   Margin="0,0,0,20"/>
 		</Grid>
 		
-		<Rectangle Width="240" Height="160" Fill="White" RadiusX="10" RadiusY="10" VerticalAlignment="Top" HorizontalAlignment="Right"
-				   Margin="100">
+		<Rectangle x:Name="AuthorsAmountRectangle" Width="240" Height="160" Fill="White" RadiusX="10" RadiusY="10" VerticalAlignment="Top" HorizontalAlignment="Right"
+				   Margin="100" PreviewMouseUp="AuthorsAmountRectangle_PreviewMouseUp">
 			<Rectangle.Effect>
 				<DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
 			</Rectangle.Effect>
@@ -39,8 +39,8 @@
 					   Margin="0,0,0,20"/>
 		</Grid>
 
-		<Rectangle Width="240" Height="160" Fill="White" RadiusX="10" RadiusY="10" VerticalAlignment="Bottom" HorizontalAlignment="Left"
-				   Margin="100">
+		<Rectangle x:Name="GenresAmountRectangle" Width="240" Height="160" Fill="White" RadiusX="10" RadiusY="10" VerticalAlignment="Bottom" HorizontalAlignment="Left"
+				   Margin="100" PreviewMouseUp="GenresAmountRectangle_PreviewMouseUp">
 			<Rectangle.Effect>
 				<DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
 			</Rectangle.Effect>
@@ -53,8 +53,8 @@
 					   Margin="0,0,0,20"/>
 		</Grid>
 
-		<Rectangle Width="240" Height="160" Fill="White" RadiusX="10" RadiusY="10" VerticalAlignment="Bottom" HorizontalAlignment="Right"
-				   Margin="100">
+		<Rectangle x:Name="UsersAmountRectangle" Width="240" Height="160" Fill="White" RadiusX="10" RadiusY="10" VerticalAlignment="Bottom" HorizontalAlignment="Right"
+				   Margin="100" PreviewMouseUp="UsersAmountRectangle_PreviewMouseUp">
 			<Rectangle.Effect>
 				<DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
 			</Rectangle.Effect>

@@ -13,7 +13,7 @@
 					   Margin="0,10"/>
 			<DataGrid x:Name="WszystkieKsiążkiDataGrid" Height="250" Width="840" VerticalAlignment="Top" HorizontalAlignment="Center"
 				  Margin="0,40" VerticalScrollBarVisibility="Auto" CanUserDeleteRows="True" KeyDown="WszystkieKsiążkiDataGrid_KeyDown" 
-					  SelectedCellsChanged="WszystkieKsiążkiDataGrid_SelectedCellsChanged">
+					  SelectedCellsChanged="WszystkieKsiążkiDataGrid_SelectedCellsChanged" AutoGenerateColumns="False">
 
 				<DataGrid.Resources>
 					<Style TargetType="{x:Type DataGridColumnHeader}">
@@ -23,9 +23,9 @@
 
 				<DataGrid.Columns>
 					<DataGridTextColumn Header="Id" Width="100" Binding="{Binding Id}"/>
-					<DataGridTextColumn Header="Tytuł" Width="300" Binding="{Binding Tytuł}"/>
-					<DataGridTextColumn Header="Gatunek" Width="150" Binding="{Binding NazwaGatunku}"/>
 					<DataGridTextColumn Header="Autor" Width="200" Binding="{Binding NazwaAutora}"/>
+					<DataGridTextColumn Header="Gatunek" Width="150" Binding="{Binding NazwaGatunku}"/>
+					<DataGridTextColumn Header="Tytuł" Width="*" Binding="{Binding Tytuł}"/>
 				</DataGrid.Columns>
 
 

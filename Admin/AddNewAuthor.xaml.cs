@@ -20,12 +20,12 @@ namespace Biblioteka.Admin
 		{
 			InitializeComponent();
 
-			Autorzy = AuthorsDatabaseConnectionController.GetAllAuthors();
 			//foreach (var author in autorzy)
 			//{
 			//	WszyscyAutorzyDataGrid.Items.Add(author);
 			//}
-			WszyscyAutorzyDataGrid.ItemsSource = Autorzy;
+
+			UpdateDataGrid();
 		}
 
 		private void UpdateDataGrid()

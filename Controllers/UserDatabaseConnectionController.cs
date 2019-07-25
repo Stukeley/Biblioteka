@@ -1,6 +1,7 @@
 ﻿using Biblioteka.Exceptions;
 using Biblioteka.Models;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 
@@ -192,6 +193,43 @@ namespace Biblioteka.Controllers
 			connection.Close();
 
 			return isSpecialAccount;
+		}
+
+		public static List<UserModel> GetAllUsers()
+		{
+			var użytkownicy = new List<UserModel>();
+
+			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
+			var connection = new SqlConnection(connString);
+
+			connection.Open();
+
+			var command = new SqlCommand($"SELECT * FROM Czytelnicy", connection);
+
+			using (var reader = command.ExecuteReader())
+			{
+				if (reader.HasRows)
+				{
+					while (reader.Read())
+					{
+						var użytkownik = new UserModel()
+						{
+							Id = reader.GetInt32(0),
+							Imię = reader.GetString(1),
+							Nazwisko = reader.GetString(2),
+							Email = reader.GetString(3),
+							Hasło = reader.GetString(4),
+							IsSpecialAccount = reader.GetBoolean(6)
+						};
+
+						użytkownicy.Add(użytkownik);
+					}
+				}
+			}
+
+			connection.Close();
+
+			return użytkownicy;
 		}
 	}
 }

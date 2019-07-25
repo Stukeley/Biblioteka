@@ -10,6 +10,7 @@ namespace Biblioteka.Models
 		//just for the currently logged in user, no other purposes
 		public int UserId { get; set; }
 
+		public int Id { get; set; }
 		public string Imię { get; set; }
 		public string Nazwisko { get; set; }
 		public string Email { get; set; }
@@ -17,7 +18,7 @@ namespace Biblioteka.Models
 		public DateTime? DateOfCreation { get; set; }
 		public bool IsSpecialAccount { get; set; }
 
-		private UserModel()
+		public UserModel()
 		{
 		}
 
