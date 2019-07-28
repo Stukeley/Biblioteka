@@ -2,6 +2,7 @@
 using Biblioteka.Exceptions;
 using Biblioteka.Models;
 using Biblioteka.UserControls;
+using Biblioteka.Windows;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -145,12 +146,29 @@ namespace Biblioteka
 
 		private void Account_PreviewMouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
 		{
-
+			if (UserModel.CurrentUser == null)
+			{
+				UserNotLoggedInException.ShowGenericMessageBox();
+			}
+			else
+			{
+				ChangeContent(new AccountPage());
+			}
 		}
 
-		private void Settings_PreviewMouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		private void LogOut_PreviewMouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
 		{
-
+			if (UserModel.CurrentUser == null)
+			{
+				UserNotLoggedInException.ShowGenericMessageBox();
+			}
+			else
+			{
+				var loginWindow = new LoginWindow();
+				loginWindow.Show();
+				UserModel.CurrentUser = null;
+				this.Close();
+			}
 		}
 
 		private void AdminAddContentButton_Click(object sender, RoutedEventArgs e)

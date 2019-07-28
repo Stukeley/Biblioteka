@@ -33,8 +33,10 @@
 			<TextBox x:Name="TitleBox" materialDesign:HintAssist.Hint="TYTUŁ" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
 					Margin="20,82.28,0,0" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left"
 					Width="260"/>
-			<Button x:Name="FilterBooksButton" Content="FILTRUJ KSIĄŻKI" VerticalAlignment="Bottom" HorizontalAlignment="Center"
-					Margin="0,0,0,15"/>
+			<Button x:Name="FilterBooksButton" Content="FILTRUJ KSIĄŻKI" VerticalAlignment="Bottom" HorizontalAlignment="Left"
+					Margin="5,0,0,15" Click="FilterBooksButton_Click"/>
+			<Button x:Name="ResetFiltersButton" Content="RESET FILTRÓW" VerticalAlignment="Bottom" HorizontalAlignment="Right"
+					Margin="0,0,5,15" Click="ResetFiltersButton_Click"/>
 		</Grid>
 
 		<TextBlock Text="Dostępne książki" VerticalAlignment="Top" FontSize="20" Margin="0,188.4,0,0" d:LayoutOverrides="Width"

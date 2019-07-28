@@ -101,10 +101,10 @@
 							<TextBlock Text="Konto" VerticalAlignment="Center" Margin="10 10"/>
 						</StackPanel>
 					</ListViewItem>
-					<ListViewItem x:Name="Settings" Height="60" PreviewMouseUp="Settings_PreviewMouseUp">
+					<ListViewItem x:Name="LogOut" Height="60" PreviewMouseUp="LogOut_PreviewMouseUp">
 						<StackPanel Orientation="Horizontal">
-							<materialDesign:PackIcon Kind="SettingsOutline" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
-							<TextBlock Text="Ustawienia" VerticalAlignment="Center" Margin="10 10"/>
+							<materialDesign:PackIcon Kind="DoorOpen" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+							<TextBlock Text="Wyloguj się" VerticalAlignment="Center" Margin="10 10"/>
 						</StackPanel>
 					</ListViewItem>
 				</ListView>

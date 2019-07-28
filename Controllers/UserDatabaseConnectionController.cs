@@ -167,6 +167,21 @@ namespace Biblioteka.Controllers
 			UserModel.CurrentUser = new UserModel(name, surname, email, password, currentDate);
 		}
 
+		public static void UpdateUserCredentials(string name, string surname, string email, string password)
+		{
+			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
+			var connection = new SqlConnection(connString);
+
+			connection.Open();
+
+			var command = new SqlCommand($"UPDATE Czytelnicy SET Name='{name}', Surname='{surname}', Email='{email}', Password='{password}' " +
+				$"WHERE Email='{UserModel.CurrentUser.Email}'", connection);
+
+			command.ExecuteNonQuery();
+
+			connection.Close();
+		}
+
 		/// <summary>
 		/// This method is used for checking special privileges of the currently logged user. True means the user is an Admin (able to add new content
 		/// like Authors or Books or Genres), false means the user is just a reader

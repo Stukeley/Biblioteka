@@ -107,17 +107,26 @@ namespace Biblioteka.Controllers
 			var allBooks = GetAllBooks();
 			List<BookModel> filteredBooks = null;
 
-			if (author == null & title == null)
+			if (author == null && title == null)
 			{
 				return allBooks;
 			}
+
+			//I'm kinda ashamed of the code below
 
 			if (author != null && title == null)
 			{
 				var nameAndSurname = author.Split(new[] { ' ' });
 
-				filteredBooks = allBooks.Where(x => x.Autor.Imię.Contains(nameAndSurname[0]) || x.Autor.Imię.Contains(nameAndSurname[1])
+				if (nameAndSurname.Length < 2)
+				{
+					filteredBooks = allBooks.Where(x => x.Autor.Imię.Contains(nameAndSurname[0]) || x.Autor.Nazwisko.Contains(nameAndSurname[0])).ToList();
+				}
+				else
+				{
+					filteredBooks = allBooks.Where(x => x.Autor.Imię.Contains(nameAndSurname[0]) || x.Autor.Imię.Contains(nameAndSurname[1])
 				|| x.Autor.Nazwisko.Contains(nameAndSurname[0]) || x.Autor.Nazwisko.Contains(nameAndSurname[1])).ToList();
+				}
 			}
 
 			if (author == null && title != null)
@@ -129,8 +138,15 @@ namespace Biblioteka.Controllers
 			{
 				var nameAndSurname = author.Split(new[] { ' ' });
 
-				filteredBooks = allBooks.Where(x => (x.Autor.Imię.Contains(nameAndSurname[0]) || x.Autor.Imię.Contains(nameAndSurname[1])
+				if (nameAndSurname.Length < 2)
+				{
+					filteredBooks = allBooks.Where(x => x.Autor.Imię.Contains(nameAndSurname[0]) || x.Autor.Nazwisko.Contains(nameAndSurname[0])).ToList();
+				}
+				else
+				{
+					filteredBooks = allBooks.Where(x => (x.Autor.Imię.Contains(nameAndSurname[0]) || x.Autor.Imię.Contains(nameAndSurname[1])
 				|| x.Autor.Nazwisko.Contains(nameAndSurname[0]) || x.Autor.Nazwisko.Contains(nameAndSurname[1])) && (x.Tytuł.Contains(title))).ToList();
+				}
 			}
 
 			return filteredBooks;

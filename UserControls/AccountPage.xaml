@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="Biblioteka.UserControls.AccountPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:Biblioteka.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="540" d:DesignWidth="1020" Background="LightGray">
+	<Grid>
+		<materialDesign:PackIcon Kind="User" Width="100" Height="100" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,5"
+								 Foreground="#FF2281D1"/>
+		<Grid Width="510" HorizontalAlignment="Left">
+			<TextBlock Text="Dane użytkownika" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,30"/>
+			<TextBox x:Name="NameBox" IsReadOnly="True" materialDesign:HintAssist.Hint="IMIĘ" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+					 VerticalAlignment="Top" HorizontalAlignment="Left"	FontSize="16" Text="" Margin="50,100" Width="200"/>
+			<TextBox x:Name="SurnameBox" IsReadOnly="True" materialDesign:HintAssist.Hint="NAZWISKO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+					 VerticalAlignment="Top" HorizontalAlignment="Left"	FontSize="16" Text="" Margin="50,160" Width="200"/>
+			<TextBox x:Name="EmailBox" IsReadOnly="True" materialDesign:HintAssist.Hint="EMAIL" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+					 VerticalAlignment="Top" HorizontalAlignment="Left"	FontSize="16" Text="" Margin="50,220" Width="200"/>
+			<TextBox x:Name="PasswordBox" IsReadOnly="True" materialDesign:HintAssist.Hint="HASŁO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+					 VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" Margin="50,280,0,0" Width="200" />
+			<TextBox x:Name="FeesBox" IsReadOnly="True" materialDesign:HintAssist.Hint="OPŁATY" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+					 VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" Margin="50,340,0,0" Width="200" />
+			<Button x:Name="ChangeCredentialsButton" VerticalAlignment="Center" HorizontalAlignment="Right" Content="Zmień dane" Margin="0,0,80,40"
+					Click="ChangeCredentialsButton_Click"/>
+		</Grid>
+
+		<Grid Width="510" HorizontalAlignment="Right">
+			<TextBlock Text="Ustawienia użytkownika" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,30" FontWeight="SemiBold"/>
+			<CheckBox x:Name="RememberMeCheckBox" VerticalAlignment="Top" HorizontalAlignment="Center" Content="Zapamiętaj logowanie"
+					  Margin="0,140" FontSize="16" Foreground="Black" Checked="RememberMeCheckBox_Checked" Unchecked="RememberMeCheckBox_Unchecked"/>
+			<Button x:Name="PayButton" FontSize="16" Content="Zapłać opłaty za przetrzymanie książek" VerticalAlignment="Center" HorizontalAlignment="Center"
+					Margin="0,0,0,40"/>
+			<materialDesign:PackIcon Kind="CreditCard" Width="40" Height="40" HorizontalAlignment="Left" Margin="166,271,0,0"/>
+			<materialDesign:PackIcon Kind="Paypal" Width="40" Height="40" HorizontalAlignment="Left" Margin="236,271,0,0" Foreground="DarkBlue"/>
+			<materialDesign:PackIcon Kind="MobilePhone" Width="40" Height="40" HorizontalAlignment="Left" Margin="304,271,0,0"/>
+		</Grid>
+
+	</Grid>
+</UserControl>

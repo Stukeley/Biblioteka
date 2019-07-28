@@ -43,7 +43,7 @@ namespace Biblioteka.UserControls
 
 		private void ContactUs_PreviewMouseUp(object sender, MouseButtonEventArgs e)
 		{
-
+			(Application.Current.Windows[0] as MainWindow).ChangeContent(new ContactPage());
 		}
 	}
 }
