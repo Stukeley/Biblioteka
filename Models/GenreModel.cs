@@ -1,6 +1,6 @@
 ﻿namespace Biblioteka.Models
 {
-	internal class GenreModel
+	public class GenreModel
 	{
 		public int Id { get; set; }
 		public string Nazwa { get; set; }

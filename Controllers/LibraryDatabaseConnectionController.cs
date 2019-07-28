@@ -148,11 +148,16 @@ namespace Biblioteka.Controllers
 			return endingBorrowings;
 		}
 
-		public static void AddNewBorrowing(int bookId)
+		public static void BorrowBook(BookModel bookModel)
 		{
 			if (UserModel.CurrentUser == null)
 			{
 				throw new UserNotLoggedInException();
+			}
+
+			if (bookModel.IsBorrowed)
+			{
+				throw new BookBorrowedException();
 			}
 
 			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
@@ -160,39 +165,9 @@ namespace Biblioteka.Controllers
 
 			connection.Open();
 
-			//Check if the book has already been borrowed
-
-			var hasBookBeenBorrowed = new SqlCommand($"SELECT * FROM Wypożyczenia WHERE BookId={bookId}", connection);
-
-			using (var reader = hasBookBeenBorrowed.ExecuteReader())
-			{
-				if (reader.HasRows)
-				{
-					throw new BookBorrowedException();
-				}
-			}
-
 			//Check if the user has no more than 5 borrowings (that's the limit at a time)
 
 			var amountOfBorrowings = new SqlCommand($"SELECT COUNT(*) FROM Wypożyczenia WHERE ReaderId={UserModel.CurrentUser.UserId}", connection);
-
-			//using (var reader = amountOfBorrowings.ExecuteReader())
-			//{
-			//	if (reader.HasRows)
-			//	{
-			//		var amount = 0;
-
-			//		while (reader.Read())
-			//		{
-			//			amount++;
-			//		}
-
-			//		if (amount >= 5)
-			//		{
-			//			throw new TooManyBorrowings();
-			//		}
-			//	}
-			//}
 
 			var amount = (int)(amountOfBorrowings.ExecuteScalar());
 
@@ -202,7 +177,7 @@ namespace Biblioteka.Controllers
 			}
 
 
-			var borrowing = new BorrowingModel(UserModel.CurrentUser.UserId, bookId, DateTime.Now, DateTime.Now.AddDays(14));
+			var borrowing = new BorrowingModel(UserModel.CurrentUser.UserId, bookModel.Id, DateTime.Now, DateTime.Now.AddDays(14));
 
 			var addBorrowing = new SqlCommand($"INSERT INTO Wypożyczenia (BookId, ReaderId, StartDate, EndDate) VALUES " +
 				$"(@BookId, @ReaderId, @StartDate, @EndDate)", connection);
@@ -217,7 +192,7 @@ namespace Biblioteka.Controllers
 			connection.Close();
 		}
 
-		public static void ExtendUserBorrowing(int bookId)
+		public static void ExtendUserBorrowing(BorrowingModel borrowing)
 		{
 			if (UserModel.CurrentUser == null)
 			{
@@ -229,7 +204,7 @@ namespace Biblioteka.Controllers
 			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
 			var connection = new SqlConnection(connString);
 
-			var getEndDate = new SqlCommand($"SELECT * FROM Wypożyczenia WHERE BookId={bookId}", connection);
+			var getEndDate = new SqlCommand($"SELECT * FROM Wypożyczenia WHERE BookId={borrowing.Książka.Id}", connection);
 
 			connection.Open();
 
@@ -241,7 +216,7 @@ namespace Biblioteka.Controllers
 					var previosuDate = reader.GetDateTime(4);
 					var extendedDate = previosuDate.AddDays(7);
 
-					var command = new SqlCommand($"UPDATE Wypożyczenia SET EndDate={extendedDate} WHERE BookId={bookId}", connection);
+					var command = new SqlCommand($"UPDATE Wypożyczenia SET EndDate={extendedDate} WHERE BookId={borrowing.Książka.Id}", connection);
 
 					command.ExecuteNonQuery();
 				}
@@ -256,7 +231,7 @@ namespace Biblioteka.Controllers
 
 		public static List<BorrowingModel> GetAllBorrowings()
 		{
-			List<BorrowingModel> wypożyczenia = null;
+			var wypożyczenia = new List<BorrowingModel>();
 			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
 			var connection = new SqlConnection(connString);
 
@@ -289,12 +264,12 @@ namespace Biblioteka.Controllers
 			return wypożyczenia;
 		}
 
-		public static void ReturnBook(int bookId)
+		public static void ReturnBook(BorrowingModel borrowing)
 		{
 			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
 			var connection = new SqlConnection(connString);
 
-			var command = new SqlCommand($"DELETE FROM Wypożyczenia WHERE BookId={bookId}", connection);
+			var command = new SqlCommand($"DELETE FROM Wypożyczenia WHERE BookId={borrowing.Książka.Id}", connection);
 
 			connection.Open();
 			command.ExecuteNonQuery();

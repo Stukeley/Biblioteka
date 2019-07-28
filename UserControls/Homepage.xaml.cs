@@ -1,4 +1,6 @@
-﻿using Biblioteka.Models;
+﻿using Biblioteka.Controllers;
+using Biblioteka.Models;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -17,6 +19,16 @@ namespace Biblioteka.UserControls
 			if (UserModel.CurrentUser == null)
 			{
 				this.Visibility = Visibility.Hidden;
+			}
+			else
+			{
+				var amounts = DataInsertionController.GetAmountsOfItems();
+				AmountOfAuthors.Text = amounts.Item2.ToString();
+				AmountOfBorrowings.Text = LibraryDatabaseConnectionController.GetAllBorrowings().Where(x => x.UserId == UserModel.CurrentUser.Id)
+					.ToList().Count().ToString();
+				AmountOfBooks.Text = amounts.Item1.ToString();
+				AmountOfAvailableBooks.Text = BookDatabaseConnectionController.GetAllBooks().Where(x => x.IsBorrowed == false)
+					.ToList().Count().ToString();
 			}
 		}
 
@@ -48,7 +60,9 @@ namespace Biblioteka.UserControls
 		{
 			//filter books when this is clicked - to be done after the checkbox for showing unborrowed books only is added!
 			var window = Window.GetWindow(this) as MainWindow;
-			window.ChangeContent(new BooksPage());
+			var booksPage = new BooksPage();
+			booksPage.ShowAvailableBooksCheckbox.IsChecked = true;
+			window.ChangeContent(booksPage);
 		}
 	}
 }

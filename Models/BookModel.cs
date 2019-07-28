@@ -1,6 +1,6 @@
 ﻿namespace Biblioteka.Models
 {
-	internal class BookModel
+	public class BookModel
 	{
 		//TODO: wydawnictwo?
 

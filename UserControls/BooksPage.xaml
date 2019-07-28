@@ -10,7 +10,8 @@
 	<Grid>
 		<Grid Width="300" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left">
 			<TextBlock Text="Nowe książki" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="16" Margin="0,5"/>
-			<DataGrid x:Name="NoweKsiążkiDataGrid" Margin="20,40,0,0" AutoGenerateColumns="False" FontSize="12">
+			<DataGrid x:Name="NoweKsiążkiDataGrid" Margin="20,40,0,0" AutoGenerateColumns="False" FontSize="12"
+					  CanUserAddRows="False" CanUserDeleteRows="False">
 				<DataGrid.Resources>
 					<Style TargetType="{x:Type DataGridColumnHeader}">
 						<Setter Property="FontWeight" Value="Bold"/>
@@ -41,12 +42,19 @@
 
 		<TextBlock Text="Dostępne książki" VerticalAlignment="Top" FontSize="20" Margin="0,188.4,0,0" d:LayoutOverrides="Width"
 				   HorizontalAlignment="Center"/>
+		<CheckBox x:Name="ShowAvailableBooksCheckbox" Content="Pokaż tylko dostępne książki" VerticalAlignment="Top" HorizontalAlignment="Center"
+				  Margin="0,150,0,0" FontSize="18" Foreground="Black" Checked="ShowAvailableBooksCheckbox_Checked" Unchecked="ShowAvailableBooksCheckbox_Unchecked"/>
+
 		<DataGrid x:Name="WszystkieKsiążkiDataGrid" Height="300" Width="980" VerticalAlignment="Bottom" HorizontalAlignment="Center"
-				  Margin="20,0,20,20" VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False" FontSize="14">
+				  Margin="20,0,20,20" VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False" FontSize="14"
+				  CanUserAddRows="False" CanUserDeleteRows="False">
 
 			<DataGrid.Resources>
 				<Style TargetType="{x:Type DataGridColumnHeader}">
 					<Setter Property="FontWeight" Value="Bold"/>
+				</Style>
+				<Style TargetType="{x:Type DataGridRow}">
+					<EventSetter Event="MouseDoubleClick" Handler="DataGridRow_MouseDoubleClick"/>
 				</Style>
 			</DataGrid.Resources>
 

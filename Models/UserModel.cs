@@ -2,7 +2,7 @@
 
 namespace Biblioteka.Models
 {
-	internal class UserModel
+	public class UserModel
 	{
 		//currently logged in user
 		public static UserModel CurrentUser = null;

@@ -149,6 +149,9 @@
     <Compile Include="Admin\AdminAddContentWindow.xaml.cs">
       <DependentUpon>AdminAddContentWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\BorrowBookWindow.xaml.cs">
+      <DependentUpon>BorrowBookWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\ChangeUserCredentialsWindow.xaml.cs">
       <DependentUpon>ChangeUserCredentialsWindow.xaml</DependentUpon>
     </Compile>
@@ -163,6 +166,9 @@
     </Compile>
     <Compile Include="Windows\RegisterWindow.xaml.cs">
       <DependentUpon>RegisterWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ReturnBookWindow.xaml.cs">
+      <DependentUpon>ReturnBookWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Admin\AddNewAuthor.xaml">
       <SubType>Designer</SubType>
@@ -224,6 +230,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\BorrowBookWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\ChangeUserCredentialsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -241,6 +251,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Windows\RegisterWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ReturnBookWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Biblioteka.Windows;
+using System;
 
 namespace Biblioteka.Exceptions
 {
@@ -14,6 +15,11 @@ namespace Biblioteka.Exceptions
 
 		public BookBorrowedException(string message, Exception inner) : base(message, inner)
 		{
+		}
+
+		public static void ShowGenericMessageBox()
+		{
+			CustomMessageBox.Show("Błąd wypożyczenia!", "Ta pozycja jest obecnie wypożyczona.", CustomMessageBox.CustomMessageBoxIcon.Warning);
 		}
 	}
 }

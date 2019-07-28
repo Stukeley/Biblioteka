@@ -2,7 +2,7 @@
 
 namespace Biblioteka.Models
 {
-	internal class BorrowingModel
+	public class BorrowingModel
 	{
 		public int Id { get; set; }
 		public int UserId { get; set; }
@@ -12,6 +12,9 @@ namespace Biblioteka.Models
 
 		public string NazwaAutora { get; set; }
 		public string TytułKsiążki { get; set; }
+
+		public AuthorModel Autor { get; set; }
+		public BookModel Książka { get; set; }
 
 		public BorrowingModel()
 		{

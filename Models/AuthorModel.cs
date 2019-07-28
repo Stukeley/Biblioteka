@@ -2,7 +2,7 @@
 
 namespace Biblioteka.Models
 {
-	internal class AuthorModel
+	public class AuthorModel
 	{
 		public int Id { get; set; }
 		public string Imię { get; set; }

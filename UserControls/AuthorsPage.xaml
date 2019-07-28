@@ -10,10 +10,14 @@
 	<Grid>
 		<Grid Width="300" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left">
 			<TextBlock Text="Nowi autorzy" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="16" Margin="0,5"/>
-			<DataGrid x:Name="NowiAutorzyDataGrid" Margin="20,40,0,0" AutoGenerateColumns="False" FontSize="12">
+			<DataGrid x:Name="NowiAutorzyDataGrid" Margin="20,40,0,0" AutoGenerateColumns="False" FontSize="12"
+					  CanUserAddRows="False" CanUserDeleteRows="False">
 				<DataGrid.Resources>
 					<Style TargetType="{x:Type DataGridColumnHeader}">
 						<Setter Property="FontWeight" Value="Bold"/>
+					</Style>
+					<Style TargetType="{x:Type DataGridRow}">
+						<EventSetter Event="MouseDoubleClick" Handler="DataGridRow_MouseDoubleClick"/>
 					</Style>
 				</DataGrid.Resources>
 
@@ -42,7 +46,8 @@
 		<TextBlock Text="Wszyscy autorzy" VerticalAlignment="Top" FontSize="20" Margin="0,188.4,0,0" d:LayoutOverrides="Width"
 				   HorizontalAlignment="Center"/>
 		<DataGrid x:Name="WszyscyAutorzyDataGrid" Height="300" Width="980" VerticalAlignment="Bottom" HorizontalAlignment="Center"
-				  Margin="20,0,20,20" VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False">
+				  Margin="20,0,20,20" VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False"
+				  CanUserAddRows="False" CanUserDeleteRows="False" MouseDoubleClick="WszyscyAutorzyDataGrid_MouseDoubleClick">
 			<DataGrid.Resources>
 				<Style TargetType="{x:Type DataGridColumnHeader}">
 					<Setter Property="FontWeight" Value="Bold"/>

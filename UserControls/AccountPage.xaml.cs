@@ -1,4 +1,5 @@
-﻿using Biblioteka.Models;
+﻿using Biblioteka.Controllers;
+using Biblioteka.Models;
 using Biblioteka.Windows;
 using System.Windows;
 using System.Windows.Controls;
@@ -43,6 +44,11 @@ namespace Biblioteka.UserControls
 			var window = new ChangeUserCredentialsWindow();
 			window.Show();
 			Application.Current.Windows[0].Close();
+		}
+
+		private void PayButton_Click(object sender, RoutedEventArgs e)
+		{
+			UserDatabaseConnectionController.ClearUserFees();
 		}
 	}
 }

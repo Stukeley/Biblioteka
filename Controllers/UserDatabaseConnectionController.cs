@@ -29,7 +29,6 @@ namespace Biblioteka.Controllers
 
 			connection.Open();
 
-			//?
 			using (var reader = command.ExecuteReader())
 			{
 				if (!reader.HasRows)
@@ -50,6 +49,7 @@ namespace Biblioteka.Controllers
 						var dbName = reader["Name"].ToString();
 						var dbSurname = reader["Surname"].ToString();
 						var dbId = int.Parse(reader["Id"].ToString());
+						var fees = int.Parse(reader["Fees"].ToString());
 
 						if (rememberLoginCredentials == true)
 						{
@@ -73,7 +73,9 @@ namespace Biblioteka.Controllers
 						Biblioteka.Windows.LoginWindow.IsLoggedIn = true;
 						var userModel = new UserModel(dbName, dbSurname, email, password)
 						{
-							UserId = dbId
+							Id = dbId,
+							Fees = fees,
+							DateOfCreation = DateTime.Now
 						};
 						UserModel.CurrentUser = userModel;
 
@@ -263,7 +265,7 @@ namespace Biblioteka.Controllers
 				{
 					var amountOfWeeks = (int)(DateTime.Now - borrowing.TerminOddania).TotalDays / 7;
 					var fee = amountOfWeeks * 5;
-					LibraryDatabaseConnectionController.ExtendUserBorrowing(borrowing.BookId);
+					LibraryDatabaseConnectionController.ExtendUserBorrowing(borrowing);
 					userIds.Add(borrowing.UserId, fee);
 				}
 			}
@@ -278,6 +280,19 @@ namespace Biblioteka.Controllers
 				var command = new SqlCommand($"UPDATE Czytelnicy SET Fees={currentFees + pair.Value} WHERE Id={pair.Key}", connection);
 				command.ExecuteNonQuery();
 			}
+
+			connection.Close();
+		}
+
+		public static void ClearUserFees()
+		{
+			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
+			var connection = new SqlConnection(connString);
+
+			connection.Open();
+
+			var command = new SqlCommand($"UPDATE Czytelnicy SET Fees=0 WHERE Id={UserModel.CurrentUser.Id}", connection);
+			command.ExecuteNonQuery();
 
 			connection.Close();
 		}

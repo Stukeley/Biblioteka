@@ -9,7 +9,7 @@
              d:DesignHeight="540" d:DesignWidth="1020" Background="LightGray">
     <Grid>
 		<TextBlock Text="Strona główna panelu Czytelnika" FontSize="30" FontWeight="SemiBold" HorizontalAlignment="Center"
-				   VerticalAlignment="Top" Margin="2" TextAlignment="Center"/>
+				   VerticalAlignment="Top" Margin="10" TextAlignment="Center"/>
 
 		<Rectangle x:Name="AuthorsAmountRectangle" Width="240" Height="160" Fill="White" RadiusX="10" RadiusY="10" VerticalAlignment="Top" 
 				   HorizontalAlignment="Left" Margin="140,80,0,0" PreviewMouseUp="AuthorsAmountRectangle_PreviewMouseUp">

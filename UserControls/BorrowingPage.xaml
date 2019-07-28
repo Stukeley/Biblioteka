@@ -5,8 +5,36 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Biblioteka.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="880" Background="LightGray">
+             d:DesignHeight="540" d:DesignWidth="1020" Background="LightGray">
     <Grid>
-            
+
+		<TextBlock Text="Obecne wypożyczenia" VerticalAlignment="Top" FontSize="20" Margin="0,5,0,0" d:LayoutOverrides="Width"
+				   HorizontalAlignment="Center"/>
+		<TextBlock x:Name="FeesBox" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,5,20,0" FontSize="20"
+				   Text="Suma kar: "/>
+		<TextBlock Text="Porada: kliknij dwukrotnie na rekord, aby przejść do okna oddawania książki lub przedłużania terminu oddania."
+				   Foreground="Gray" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center"
+				   Margin="0,50,0,0"/>
+
+
+		<DataGrid x:Name="WszystkieWypożyczeniaDataGrid" Height="300" Width="980" VerticalAlignment="Bottom" HorizontalAlignment="Center"
+				  Margin="20,0,20,20" VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False"
+				  CanUserAddRows="False" CanUserDeleteRows="False">
+			<DataGrid.Resources>
+				<Style TargetType="{x:Type DataGridColumnHeader}">
+					<Setter Property="FontWeight" Value="Bold"/>
+				</Style>
+				<Style TargetType="{x:Type DataGridRow}">
+					<EventSetter Event="MouseDoubleClick" Handler="DataGridRow_MouseDoubleClick"/>
+				</Style>
+			</DataGrid.Resources>
+
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Id" Width="100" Binding="{Binding Id}"/>
+				<DataGridTextColumn Header="Autor" Width="250" Binding="{Binding NazwaAutora}"/>
+				<DataGridTextColumn Header="Tytuł" Width="400" Binding="{Binding Tytuł}"/>
+				<DataGridTextColumn Header="Data Oddania" Width="150" Binding="{Binding DataUrodzenia}"/>
+			</DataGrid.Columns>
+		</DataGrid>
     </Grid>
 </UserControl>

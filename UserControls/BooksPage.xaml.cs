@@ -1,5 +1,7 @@
 ﻿using Biblioteka.Controllers;
+using Biblioteka.Exceptions;
 using Biblioteka.Models;
+using Biblioteka.Windows;
 using System.Collections.Generic;
 using System.Windows.Controls;
 
@@ -52,6 +54,34 @@ namespace Biblioteka.UserControls
 		private void ResetFiltersButton_Click(object sender, System.Windows.RoutedEventArgs e)
 		{
 			UpdateDataGrids();
+		}
+
+		private void ShowAvailableBooksCheckbox_Checked(object sender, System.Windows.RoutedEventArgs e)
+		{
+			var availableBooks = BookDatabaseConnectionController.GetUnborrowedBooks();
+			WszystkieKsiążkiDataGrid.ItemsSource = availableBooks;
+			WszystkieKsiążkiDataGrid.UpdateLayout();
+		}
+
+		private void ShowAvailableBooksCheckbox_Unchecked(object sender, System.Windows.RoutedEventArgs e)
+		{
+			UpdateDataGrids();
+		}
+
+		private void DataGridRow_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		{
+			var row = sender as DataGridRow;
+			var book = row.Item as BookModel;
+
+			if (!book.IsBorrowed)
+			{
+				var borrowWindow = new BorrowBookWindow(book);
+				borrowWindow.Show();
+			}
+			else
+			{
+				BookBorrowedException.ShowGenericMessageBox();
+			}
 		}
 	}
 }

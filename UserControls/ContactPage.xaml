@@ -9,13 +9,18 @@
              d:DesignHeight="540" d:DesignWidth="1020" Background="LightGray">
     <Grid>
 		<Grid Width="300" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left">
-			<materialDesign:PackIcon Kind="EmailOutline" Width="40" Height="40" Margin="10,10" VerticalAlignment="Top"
+			<materialDesign:PackIcon Kind="EmailOutline" Width="40" Height="40" Margin="10,10,0,0" VerticalAlignment="Top"
 									 HorizontalAlignment="Left"/>
 			<TextBlock Text="asdf@123.com" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="60,19.36"/>
 
 			<materialDesign:PackIcon Kind="TelephoneInTalk" Width="40" Height="40" VerticalAlignment="Top"
-									 HorizontalAlignment="Left" Margin="10,80"/>
+									 HorizontalAlignment="Left" Margin="10,80,0,0"/>
 			<TextBlock Text="+48 123 456 789" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="60, 89.36"/>
+
+			<materialDesign:PackIcon Kind="Facebook" Width="40" Height="40" VerticalAlignment="Top"
+									 HorizontalAlignment="Left" Margin="10,150,0,0"/>
+			<TextBlock Text="facebook.com/BibliotekaJezStukeley" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left"
+					   Margin="60,159.36,0,0"/>
 		</Grid>
 
 		<Grid Width="300" Height="200" VerticalAlignment="Top" HorizontalAlignment="Right">
@@ -27,7 +32,7 @@
 
 		<Grid>
 			<TextBlock Text="Skontaktuj się z nami bezpośrednio z aplikacji!" VerticalAlignment="Top" 
-					   HorizontalAlignment="Center" Margin="0,180" FontSize="22"/>
+					   HorizontalAlignment="Center" Margin="0,200" FontSize="22"/>
 			
 			<TextBox x:Name="TitleBox" materialDesign:HintAssist.Hint="TYTUŁ" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
 					Margin="20,0" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left"

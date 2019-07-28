@@ -31,7 +31,7 @@
 			<CheckBox x:Name="RememberMeCheckBox" VerticalAlignment="Top" HorizontalAlignment="Center" Content="Zapamiętaj logowanie"
 					  Margin="0,140" FontSize="16" Foreground="Black" Checked="RememberMeCheckBox_Checked" Unchecked="RememberMeCheckBox_Unchecked"/>
 			<Button x:Name="PayButton" FontSize="16" Content="Zapłać opłaty za przetrzymanie książek" VerticalAlignment="Center" HorizontalAlignment="Center"
-					Margin="0,0,0,40"/>
+					Margin="0,0,0,40" Click="PayButton_Click"/>
 			<materialDesign:PackIcon Kind="CreditCard" Width="40" Height="40" HorizontalAlignment="Left" Margin="166,271,0,0"/>
 			<materialDesign:PackIcon Kind="Paypal" Width="40" Height="40" HorizontalAlignment="Left" Margin="236,271,0,0" Foreground="DarkBlue"/>
 			<materialDesign:PackIcon Kind="MobilePhone" Width="40" Height="40" HorizontalAlignment="Left" Margin="304,271,0,0"/>

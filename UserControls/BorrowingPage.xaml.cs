@@ -1,17 +1,9 @@
-﻿using System;
+﻿using Biblioteka.Controllers;
+using Biblioteka.Models;
+using Biblioteka.Windows;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Biblioteka.UserControls
 {
@@ -20,9 +12,33 @@ namespace Biblioteka.UserControls
 	/// </summary>
 	public partial class BorrowingPage : UserControl
 	{
+		public static List<BorrowingModel> Wypożyczenia;
+
 		public BorrowingPage()
 		{
 			InitializeComponent();
+
+			UpdateDataGrid();
+		}
+
+		public void UpdateDataGrid()
+		{
+			Wypożyczenia = LibraryDatabaseConnectionController.RetrieveBorrowingsForUser();
+			WszystkieWypożyczeniaDataGrid.ItemsSource = Wypożyczenia;
+			WszystkieWypożyczeniaDataGrid.UpdateLayout();
+
+			FeesBox.Text = FeesBox.Text + UserModel.CurrentUser.Fees.ToString() + "zł";
+		}
+
+		private void DataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+		{
+			var row = sender as DataGridRow;
+			var borrowing = row.Item as BorrowingModel;
+			var returnWindow = new ReturnBookWindow
+			{
+				CurrentBorrowing = borrowing
+			};
+			returnWindow.Show();
 		}
 	}
 }
