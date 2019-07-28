@@ -1,4 +1,5 @@
 ﻿using Biblioteka.Admin;
+using Biblioteka.Controllers;
 using Biblioteka.Exceptions;
 using Biblioteka.Models;
 using Biblioteka.UserControls;
@@ -31,11 +32,13 @@ namespace Biblioteka
 			InitializeComponent();
 
 			//hide unnecessary elements if the user is logged in
-			if (Biblioteka.Windows.LoginWindow.IsLoggedIn)
+			if (LoginWindow.IsLoggedIn)
 			{
 				LoginButton.Visibility = Visibility.Hidden;
 				PleaseLogInGrid.Visibility = Visibility.Hidden;
 				ChangeContent(new Homepage());
+
+				UserDatabaseConnectionController.CountUserFees();
 
 				//For simple adding of new books/authors - special privilege account/s. True means the account has special privileges
 				if (UserModel.CurrentUser.IsSpecialAccount)

@@ -102,6 +102,28 @@ namespace Biblioteka.Controllers
 			return books;
 		}
 
+		public static int? GetBookByModel(BookModel bookModel)
+		{
+			//null means book not found
+			int? id = null;
+
+			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
+			var connection = new SqlConnection(connString);
+
+			var command = new SqlCommand($"SELECT * FROM Książki WHERE Title='{bookModel.Tytuł}'", connection);
+
+			using (var reader = command.ExecuteReader())
+			{
+				if (reader.HasRows)
+				{
+					reader.Read();
+					id = reader.GetInt32(0);
+				}
+			}
+
+			return id;
+		}
+
 		public static List<BookModel> FilterBooks(string author = null, string title = null)
 		{
 			var allBooks = GetAllBooks();

@@ -8,37 +8,64 @@
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="1020" Background="LightGray">
     <Grid>
-		<Grid Height="270" VerticalAlignment="Top">
-			<TextBlock Text="Obecne wypożyczenia" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10"
-				   FontSize="16" Foreground="Black"/>
-			<DataGrid x:Name="WypożyczeniaDataGrid" Height="200" Width="940" VerticalAlignment="Top" HorizontalAlignment="Left" 
-				  Margin="40" RowBackground="BlueViolet" AlternatingRowBackground="LightBlue" AutoGenerateColumns="False">
-				<DataGrid.Effect>
-					<DropShadowEffect BlurRadius="10" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1" Opacity="0.75"/>
-				</DataGrid.Effect>
-			</DataGrid>
+		<TextBlock Text="Strona główna panelu Czytelnika" FontSize="30" FontWeight="SemiBold" HorizontalAlignment="Center"
+				   VerticalAlignment="Top" Margin="2" TextAlignment="Center"/>
+
+		<Rectangle x:Name="AuthorsAmountRectangle" Width="240" Height="160" Fill="White" RadiusX="10" RadiusY="10" VerticalAlignment="Top" 
+				   HorizontalAlignment="Left" Margin="140,80,0,0" PreviewMouseUp="AuthorsAmountRectangle_PreviewMouseUp">
+			<Rectangle.Effect>
+				<DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
+			</Rectangle.Effect>
+		</Rectangle>
+		<Grid Width="240" Height="160" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="140,80,0,0">
+			<materialDesign:PackIcon Kind="Pen" Width="60" Height="60" Foreground="Green"/>
+			<TextBlock x:Name="AmountOfAuthors" FontSize="64" Foreground="Black" TextAlignment="Center" Text="1234"
+					   VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20"/>
+			<TextBlock Text="Autorów w bazie danych" FontSize="16" VerticalAlignment="Bottom" HorizontalAlignment="Center"
+					   Margin="0,0,0,20"/>
 		</Grid>
 
-		<Grid Height="270" VerticalAlignment="Bottom">
-			<TextBlock Text="Ostatnie wypożyczenie" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="169.6,30"
-				   FontSize="16" Foreground="Black"/>
-			<DataGrid x:Name="OstatnieWypożyczenieDataGrid" Height="120" Width="420" Margin="40" VerticalAlignment="Center"
-				  HorizontalAlignment="Left" RowBackground="BlueViolet" AlternatingRowBackground="LightBlue" AutoGenerateColumns="False">
-				<DataGrid.Effect>
-					<DropShadowEffect BlurRadius="10" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1" Opacity="0.75"/>
-				</DataGrid.Effect>
-			</DataGrid>
-
-			<TextBlock Text="Wkrótce mija termin oddania" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="147.2,30"
-				   FontSize="16" Foreground="Black"/>
-			<DataGrid x:Name="KoniecTerminuDataGrid" Height="120" Width="420" Margin="40" VerticalAlignment="Center"
-				  HorizontalAlignment="Right" RowBackground="BlueViolet" AlternatingRowBackground="LightBlue" AutoGenerateColumns="False">
-				<DataGrid.Effect>
-					<DropShadowEffect BlurRadius="10" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1" Opacity="0.75"/>
-				</DataGrid.Effect>
-			</DataGrid>
+		<Rectangle x:Name="BorrowingsAmountRectangle" Width="240" Height="160" Fill="White" RadiusX="10" RadiusY="10" 
+				   VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,80,140,0" PreviewMouseUp="BorrowingsAmountRectangle_PreviewMouseUp">
+			<Rectangle.Effect>
+				<DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
+			</Rectangle.Effect>
+		</Rectangle>
+		<Grid Width="240" Height="160" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,80,140,0">
+			<materialDesign:PackIcon Kind="LibraryShelves" Width="60" Height="60" Foreground="Blue"/>
+			<TextBlock x:Name="AmountOfBorrowings" FontSize="64" Foreground="Black" TextAlignment="Center" Text="1234"
+					   VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20"/>
+			<TextBlock Text="Obecna ilość wypożyczeń" FontSize="16" VerticalAlignment="Bottom" HorizontalAlignment="Center"
+					   Margin="0,0,0,20"/>
 		</Grid>
 
+		<Rectangle x:Name="BooksAmountRectangle" Width="240" Height="160" Fill="White" RadiusX="10" RadiusY="10" 
+				   VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="140,0,0,80" PreviewMouseUp="BooksAmountRectangle_PreviewMouseUp">
+			<Rectangle.Effect>
+				<DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
+			</Rectangle.Effect>
+		</Rectangle>
+		<Grid Width="240" Height="160" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="140,0,0,80">
+			<materialDesign:PackIcon Kind="Book" Width="60" Height="60" Foreground="Brown"/>
+			<TextBlock x:Name="AmountOfBooks" FontSize="64" Foreground="Black" TextAlignment="Center" Text="1234"
+					   VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20"/>
+			<TextBlock Text="Książek w bazie danych" FontSize="16" VerticalAlignment="Bottom" HorizontalAlignment="Center"
+					   Margin="0,0,0,20"/>
+		</Grid>
+
+		<Rectangle x:Name="AvailableBooksAmountRectangle" Width="240" Height="160" Fill="White" RadiusX="10" RadiusY="10" 
+				   VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,140,80" PreviewMouseUp="AvailableBooksAmountRectangle_PreviewMouseUp">
+			<Rectangle.Effect>
+				<DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
+			</Rectangle.Effect>
+		</Rectangle>
+		<Grid Width="240" Height="160" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,140,80">
+			<materialDesign:PackIcon Kind="Book" Width="60" Height="60" Foreground="SandyBrown"/>
+			<TextBlock x:Name="AmountOfAvailableBooks" FontSize="64" Foreground="Black" TextAlignment="Center" Text="1234"
+					   VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20"/>
+			<TextBlock Text="Dostępnych książek" FontSize="16" VerticalAlignment="Bottom" HorizontalAlignment="Center"
+					   Margin="0,0,0,20"/>
+		</Grid>
 
 		<TextBlock x:Name="ContactUs" Text="Masz pytania? Skontaktuj się z nami!" Foreground="Gray" Cursor="Hand"
 				   PreviewMouseUp="ContactUs_PreviewMouseUp" TextAlignment="Center" VerticalAlignment="Bottom"

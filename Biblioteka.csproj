@@ -137,6 +137,9 @@
     <Compile Include="UserControls\BooksPage.xaml.cs">
       <DependentUpon>BooksPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\BorrowingPage.xaml.cs">
+      <DependentUpon>BorrowingPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ContactPage.xaml.cs">
       <DependentUpon>ContactPage.xaml</DependentUpon>
     </Compile>
@@ -202,6 +205,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\BooksPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\BorrowingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

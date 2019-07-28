@@ -1,7 +1,4 @@
-﻿using Biblioteka.Controllers;
-using Biblioteka.Exceptions;
-using Biblioteka.Models;
-using System.Collections.Generic;
+﻿using Biblioteka.Models;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -21,29 +18,37 @@ namespace Biblioteka.UserControls
 			{
 				this.Visibility = Visibility.Hidden;
 			}
-			else
-			{
-				try
-				{
-					WypożyczeniaDataGrid.ItemsSource = LibraryDatabaseConnectionController.RetrieveBorrowingsForUser();
-					OstatnieWypożyczenieDataGrid.ItemsSource = new List<BorrowingModel>()
-					{
-						LibraryDatabaseConnectionController.RetrieveRecentBorrowing()
-					};
-
-					KoniecTerminuDataGrid.ItemsSource = LibraryDatabaseConnectionController.RetrieveEndingBorrowings();
-
-				}
-				catch (NoBorrowingFoundException)
-				{
-					//NoBorrowingFoundException.ShowGenericMessageBox();
-				}
-			}
 		}
 
 		private void ContactUs_PreviewMouseUp(object sender, MouseButtonEventArgs e)
 		{
-			(Application.Current.Windows[0] as MainWindow).ChangeContent(new ContactPage());
+			var window = Window.GetWindow(this) as MainWindow;
+			window.ChangeContent(new ContactPage());
+		}
+
+		private void AuthorsAmountRectangle_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+		{
+			var window = Window.GetWindow(this) as MainWindow;
+			window.ChangeContent(new AuthorsPage());
+		}
+
+		private void BorrowingsAmountRectangle_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+		{
+			var window = Window.GetWindow(this) as MainWindow;
+			window.ChangeContent(new BorrowingPage());
+		}
+
+		private void BooksAmountRectangle_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+		{
+			var window = Window.GetWindow(this) as MainWindow;
+			window.ChangeContent(new BooksPage());
+		}
+
+		private void AvailableBooksAmountRectangle_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+		{
+			//filter books when this is clicked - to be done after the checkbox for showing unborrowed books only is added!
+			var window = Window.GetWindow(this) as MainWindow;
+			window.ChangeContent(new BooksPage());
 		}
 	}
 }

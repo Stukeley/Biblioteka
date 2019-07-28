@@ -246,5 +246,40 @@ namespace Biblioteka.Controllers
 
 			return użytkownicy;
 		}
+
+		public static void CountUserFees()
+		{
+			//(UserId, fee)
+			var userIds = new Dictionary<int, int>();
+
+			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
+			var connection = new SqlConnection(connString);
+
+			var allBorrowings = LibraryDatabaseConnectionController.GetAllBorrowings();
+
+			foreach (var borrowing in allBorrowings)
+			{
+				if (borrowing.TerminOddania < DateTime.Now)
+				{
+					var amountOfWeeks = (int)(DateTime.Now - borrowing.TerminOddania).TotalDays / 7;
+					var fee = amountOfWeeks * 5;
+					LibraryDatabaseConnectionController.ExtendUserBorrowing(borrowing.BookId);
+					userIds.Add(borrowing.UserId, fee);
+				}
+			}
+
+			connection.Open();
+
+			foreach (var pair in userIds)
+			{
+				var getCurrentFees = new SqlCommand($"SELECT Fees FROM Czytelnicy WHERE Id={pair.Key}");
+				var currentFees = (int)(getCurrentFees.ExecuteScalar());
+
+				var command = new SqlCommand($"UPDATE Czytelnicy SET Fees={currentFees + pair.Value} WHERE Id={pair.Key}", connection);
+				command.ExecuteNonQuery();
+			}
+
+			connection.Close();
+		}
 	}
 }

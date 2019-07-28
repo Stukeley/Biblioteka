@@ -254,26 +254,39 @@ namespace Biblioteka.Controllers
 			connection.Close();
 		}
 
-		public static int? GetBookByModel(BookModel bookModel)
+		public static List<BorrowingModel> GetAllBorrowings()
 		{
-			//null means book not found
-			int? id = null;
-
+			List<BorrowingModel> wypożyczenia = null;
 			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
 			var connection = new SqlConnection(connString);
 
-			var command = new SqlCommand($"SELECT * FROM Książki WHERE Title='{bookModel.Tytuł}'", connection);
+			connection.Open();
+
+			var command = new SqlCommand($"SELECT * FROM Wypożyczenia", connection);
 
 			using (var reader = command.ExecuteReader())
 			{
 				if (reader.HasRows)
 				{
-					reader.Read();
-					id = reader.GetInt32(0);
+					while (reader.Read())
+					{
+						var borrowing = new BorrowingModel()
+						{
+							Id = reader.GetInt32(0),
+							BookId = reader.GetInt32(1),
+							UserId = reader.GetInt32(2),
+							DataWypożyczenia = reader.GetDateTime(3),
+							TerminOddania = reader.GetDateTime(4)
+						};
+
+						wypożyczenia.Add(borrowing);
+					}
 				}
 			}
 
-			return id;
+			connection.Close();
+
+			return wypożyczenia;
 		}
 
 		public static void ReturnBook(int bookId)
