@@ -31,7 +31,20 @@ namespace Biblioteka.Admin
 			var genreNamesAndIds = new Dictionary<int, string>();
 
 			Autorzy = AuthorsDatabaseConnectionController.GetAllAuthors();
+			var autorzyString = new List<string>();
+			foreach (var autor in Autorzy)
+			{
+				autorzyString.Add(autor.Imię + autor.Nazwisko);
+			}
+			AuthorNameBox.ItemsSource = autorzyString;
+
 			Gatunki = GenresDatabaseConnectionController.GetAllGenres();
+			var gatunkiString = new List<string>();
+			foreach (var gatunek in Gatunki)
+			{
+				gatunkiString.Add(gatunek.Nazwa);
+			}
+			BookGenreBox.ItemsSource = gatunkiString;
 
 			foreach (var autor in Autorzy)
 			{
@@ -43,7 +56,6 @@ namespace Biblioteka.Admin
 				genreNamesAndIds.Add(gatunek.Id, gatunek.Nazwa);
 			}
 
-			//check the method
 			Książki = BookDatabaseConnectionController.GetAllBooks();
 
 			for (int i = 0; i < Książki.Count; i++)
@@ -68,7 +80,28 @@ namespace Biblioteka.Admin
 
 		private void AddBookButton_Click(object sender, RoutedEventArgs e)
 		{
+			if (string.IsNullOrEmpty(BookTitleBox.Text) || string.IsNullOrWhiteSpace(BookTitleBox.Text) || string.IsNullOrEmpty(BookGenreBox.Text)
+				|| string.IsNullOrWhiteSpace(BookGenreBox.Text) || string.IsNullOrEmpty(AuthorNameBox.Text) || string.IsNullOrWhiteSpace(AuthorNameBox.Text))
+			{
+				MessageBox.Show("Puste pola!", "Błąd przy dodawaniu do bazy danych", MessageBoxButton.OK, MessageBoxImage.Error);
+			}
+			else
+			{
+				var title = BookTitleBox.Text;
+				var authorName = AuthorNameBox.Text;
+				var genreName = BookGenreBox.Text;
 
+				var author = authorName.Split(new[] { ' ' });
+
+				var książka = new BookModel()
+				{
+					Tytuł = title,
+					Autor = AuthorsDatabaseConnectionController.GetAuthorByName(author[0], author[1]),
+					Gatunek = GenresDatabaseConnectionController.GetGenreByName(genreName),
+					IsBorrowed = false
+				};
+				DataInsertionController.InsertBookIntoDatabase(książka);
+			}
 		}
 	}
 }

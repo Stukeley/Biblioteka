@@ -11,7 +11,7 @@
 		<Grid Width="300" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left">
 			<TextBlock Text="Nowe książki" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="16" Margin="0,5"/>
 			<DataGrid x:Name="NoweKsiążkiDataGrid" Margin="20,40,0,0" AutoGenerateColumns="False" FontSize="12"
-					  CanUserAddRows="False" CanUserDeleteRows="False">
+					  CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
 				<DataGrid.Resources>
 					<Style TargetType="{x:Type DataGridColumnHeader}">
 						<Setter Property="FontWeight" Value="Bold"/>
@@ -47,7 +47,7 @@
 
 		<DataGrid x:Name="WszystkieKsiążkiDataGrid" Height="300" Width="980" VerticalAlignment="Bottom" HorizontalAlignment="Center"
 				  Margin="20,0,20,20" VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False" FontSize="14"
-				  CanUserAddRows="False" CanUserDeleteRows="False">
+				  CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
 
 			<DataGrid.Resources>
 				<Style TargetType="{x:Type DataGridColumnHeader}">

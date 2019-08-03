@@ -38,10 +38,10 @@ namespace Biblioteka.Controllers
 								author = new AuthorModel()
 								{
 									Id = authorId,
-									Imię = authorReader.GetString(1),
-									Nazwisko = authorReader.GetString(2),
+									Imię = authorReader.GetString(1).Trim(),
+									Nazwisko = authorReader.GetString(2).Trim(),
 									DataUrodzenia = authorReader.GetDateTime(3),
-									Biografia = authorReader.GetString(4)
+									Biografia = authorReader.GetString(4).Trim()
 								};
 							}
 						}
@@ -59,7 +59,7 @@ namespace Biblioteka.Controllers
 								genre = new GenreModel()
 								{
 									Id = genreId,
-									Nazwa = genreReader.GetString(1)
+									Nazwa = genreReader.GetString(1).Trim()
 								};
 							}
 						}
@@ -69,7 +69,7 @@ namespace Biblioteka.Controllers
 							Id = reader.GetInt32(0),
 							Autor = author,
 							Gatunek = genre,
-							Tytuł = reader.GetString(3)
+							Tytuł = reader.GetString(3).Trim()
 						};
 
 						books.Add(book);

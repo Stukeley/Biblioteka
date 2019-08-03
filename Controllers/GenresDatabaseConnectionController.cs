@@ -27,7 +27,7 @@ namespace Biblioteka.Controllers
 						var genre = new GenreModel()
 						{
 							Id = reader.GetInt32(0),
-							Nazwa = reader.GetString(1)
+							Nazwa = reader.GetString(1).Trim()
 						};
 						genres.Add(genre);
 					}
@@ -37,6 +37,32 @@ namespace Biblioteka.Controllers
 			connection.Close();
 
 			return genres;
+		}
+
+		public static GenreModel GetGenreByName(string name)
+		{
+			var genre = new GenreModel();
+
+			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
+			var connection = new SqlConnection(connString);
+
+			connection.Open();
+
+			var command = new SqlCommand($"SELECT * FROM Gatunki WHERE Genre='{name}'", connection);
+
+			using (var reader = command.ExecuteReader())
+			{
+				if (reader.HasRows)
+				{
+					reader.Read();
+					genre.Id = reader.GetInt32(0);
+					genre.Nazwa = name;
+				}
+			}
+
+			connection.Close();
+
+			return genre;
 		}
 	}
 }

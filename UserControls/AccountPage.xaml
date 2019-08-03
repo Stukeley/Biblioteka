@@ -12,6 +12,18 @@
 								 Foreground="#FF2281D1"/>
 		<Grid Width="510" HorizontalAlignment="Left">
 			<TextBlock Text="Dane użytkownika" FontSize="20" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,30"/>
+
+			<TextBlock Text="IMIĘ" FontSize="12" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,100,0,0"
+					   Foreground="Gray"/>
+			<TextBlock Text="NAZWISKO" FontSize="12" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,160,0,0"
+					   Foreground="Gray"/>
+			<TextBlock Text="EMAIL" FontSize="12" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,220,0,0"
+					   Foreground="Gray"/>
+			<TextBlock Text="HASŁO" FontSize="12" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,280,0,0"
+					   Foreground="Gray"/>
+			<TextBlock Text="OPŁATY" FontSize="12" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,340,0,0"
+					   Foreground="Gray"/>
+
 			<TextBox x:Name="NameBox" IsReadOnly="True" materialDesign:HintAssist.Hint="IMIĘ" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
 					 VerticalAlignment="Top" HorizontalAlignment="Left"	FontSize="16" Text="" Margin="50,100" Width="200"/>
 			<TextBox x:Name="SurnameBox" IsReadOnly="True" materialDesign:HintAssist.Hint="NAZWISKO" Style="{StaticResource MaterialDesignFloatingHintTextBox}"

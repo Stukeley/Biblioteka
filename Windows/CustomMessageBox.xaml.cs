@@ -89,5 +89,13 @@ namespace Biblioteka.Windows
 				this.DragMove();
 			}
 		}
+
+		private void Window_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.Key == Key.Enter)
+			{
+				OkButton.Click += OkButton_Click;
+			}
+		}
 	}
 }

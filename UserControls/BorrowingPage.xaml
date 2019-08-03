@@ -19,7 +19,7 @@
 
 		<DataGrid x:Name="WszystkieWypożyczeniaDataGrid" Height="300" Width="980" VerticalAlignment="Bottom" HorizontalAlignment="Center"
 				  Margin="20,0,20,20" VerticalScrollBarVisibility="Auto" AutoGenerateColumns="False"
-				  CanUserAddRows="False" CanUserDeleteRows="False">
+				  CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
 			<DataGrid.Resources>
 				<Style TargetType="{x:Type DataGridColumnHeader}">
 					<Setter Property="FontWeight" Value="Bold"/>

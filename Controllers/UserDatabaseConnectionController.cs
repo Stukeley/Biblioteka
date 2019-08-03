@@ -14,7 +14,7 @@ namespace Biblioteka.Controllers
 	{
 		/// <summary>
 		/// This method will check for the user assigned to the provided email in the database, and will check if passwords match.
-		/// In such case, it returns the user
+		/// In such case, it makes the user the CurrentUser
 		/// </summary>
 		/// <param name="email">The email of the user to look for</param>
 		/// <param name="password">The password that has to match the one saved in the database</param>
@@ -46,8 +46,8 @@ namespace Biblioteka.Controllers
 					}
 					else
 					{
-						var dbName = reader["Name"].ToString();
-						var dbSurname = reader["Surname"].ToString();
+						var dbName = reader["Name"].ToString().Trim();
+						var dbSurname = reader["Surname"].ToString().Trim();
 						var dbId = int.Parse(reader["Id"].ToString());
 						var fees = int.Parse(reader["Fees"].ToString());
 
@@ -117,8 +117,8 @@ namespace Biblioteka.Controllers
 				}
 				else
 				{
-					var dbName = reader.GetString(1);
-					var dbSurname = reader.GetString(2);
+					var dbName = reader.GetString(1).Trim();
+					var dbSurname = reader.GetString(2).Trim();
 
 					if (dbName != name || dbSurname != surname)
 					{
@@ -232,10 +232,10 @@ namespace Biblioteka.Controllers
 						var użytkownik = new UserModel()
 						{
 							Id = reader.GetInt32(0),
-							Imię = reader.GetString(1),
-							Nazwisko = reader.GetString(2),
-							Email = reader.GetString(3),
-							Hasło = reader.GetString(4),
+							Imię = reader.GetString(1).Trim(),
+							Nazwisko = reader.GetString(2).Trim(),
+							Email = reader.GetString(3).Trim(),
+							Hasło = reader.GetString(4).Trim(),
 							IsSpecialAccount = reader.GetBoolean(6)
 						};
 

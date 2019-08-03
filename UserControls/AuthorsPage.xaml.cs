@@ -65,14 +65,5 @@ namespace Biblioteka.UserControls
 		{
 			UpdateDataGrids();
 		}
-
-		private void WszyscyAutorzyDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-		{
-			var row = sender as DataGridRow;
-			var authorId = (row.Item as AuthorModel).Id;
-			var nameAndSurname = (row.Item as AuthorModel).Imię + (row.Item as AuthorModel).Nazwisko;
-
-			MessageBox.Show(AuthorsDatabaseConnectionController.GetAuthorBiography(authorId), nameAndSurname);
-		}
 	}
 }

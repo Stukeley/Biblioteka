@@ -56,7 +56,7 @@ namespace Biblioteka.Controllers
 							{
 								while (reader2.Read())
 								{
-									wypożyczenie.TytułKsiążki = reader2.GetString(3);
+									wypożyczenie.TytułKsiążki = reader2.GetString(3).Trim();
 									var authorId = reader2.GetInt32(1);
 
 									var getAuthor = new SqlCommand($"SELECT * FROM Autorzy WHERE Id={authorId}", connection);
@@ -66,7 +66,7 @@ namespace Biblioteka.Controllers
 										{
 											while (reader3.Read())
 											{
-												wypożyczenie.NazwaAutora = reader3.GetString(1) + reader3.GetString(2);
+												wypożyczenie.NazwaAutora = reader3.GetString(1).Trim() + reader3.GetString(2).Trim();
 											}
 										}
 									}

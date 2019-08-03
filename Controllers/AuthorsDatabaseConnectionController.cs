@@ -28,10 +28,10 @@ namespace Biblioteka.Controllers
 						var author = new AuthorModel()
 						{
 							Id = reader.GetInt32(0),
-							Imię = reader.GetString(1),
-							Nazwisko = reader.GetString(2),
+							Imię = reader.GetString(1).Trim(),
+							Nazwisko = reader.GetString(2).Trim(),
 							DataUrodzenia = reader.GetDateTime(3),
-							Biografia = reader.GetString(4)
+							Biografia = reader.GetString(4).Trim()
 						};
 
 						authors.Add(author);
@@ -42,6 +42,33 @@ namespace Biblioteka.Controllers
 			connection.Close();
 
 			return authors;
+		}
+
+		public static AuthorModel GetAuthorByName(string name, string surname)
+		{
+			var author = new AuthorModel();
+			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
+			var connection = new SqlConnection(connString);
+
+			connection.Open();
+
+			var command = new SqlCommand($"SELECT * FROM Autorzy WHERE Name='{name}' AND Surname='{surname}'", connection);
+
+			using (var reader = command.ExecuteReader())
+			{
+				if (reader.HasRows)
+				{
+					reader.Read();
+					author.Id = reader.GetInt32(0);
+					author.Imię = name;
+					author.Nazwisko = surname;
+					author.DataUrodzenia = reader.GetDateTime(3);
+					author.Biografia = reader.GetString(4).Trim();
+				}
+			}
+
+			connection.Close();
+			return author;
 		}
 
 		public static List<AuthorModel> GetRecentAuthors()
@@ -92,14 +119,14 @@ namespace Biblioteka.Controllers
 
 			connection.Open();
 
-			var command = new SqlCommand($"SELECT Biografia FROM Autorzy WHERE Id={id}", connection);
+			var command = new SqlCommand($"SELECT Biography FROM Autorzy WHERE Id={id}", connection);
 
 			using (var reader = command.ExecuteReader())
 			{
 				if (reader.HasRows)
 				{
 					reader.Read();
-					biography = reader.GetString(0);
+					biography = reader.GetString(0).Trim();
 				}
 			}
 

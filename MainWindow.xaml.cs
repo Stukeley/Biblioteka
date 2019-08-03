@@ -19,7 +19,6 @@ namespace Biblioteka
 		//TODO: (in the future) make tooltips
 		//TODO: (in the future) machine learning for live chat
 		//TODO: add borrowing limit (every book can be borrowed by 1 person at a time, and every person can borrow up to 5 books at a time)
-		//TODO: fees for holding a book for too long without extending
 		//TODO: try-catches everywhere
 		//TODO: get current directory at runtime and look for the database
 		//might have trouble with inserting NULL into the database - to be checked

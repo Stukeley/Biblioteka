@@ -37,11 +37,11 @@
 					   Foreground="Gray" FontSize="20"/>
 			<StackPanel VerticalAlignment="Center" Margin="10">
 				<TextBox x:Name="AuthorBox" materialDesign:HintAssist.Hint="AUTOR" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-						 Margin="0,5"/>
+						 Margin="0,5" IsReadOnly="True"/>
 				<TextBox x:Name="TitleBox" materialDesign:HintAssist.Hint="TYTUŁ" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-						 Margin="0,5"/>
+						 Margin="0,5" IsReadOnly="True"/>
 				<TextBox x:Name="DateBox" materialDesign:HintAssist.Hint="DATA ODDANIA" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-						 Margin="0,5"/>
+						 Margin="0,5" IsReadOnly="True"/>
 			</StackPanel>
 		</Grid>
 
