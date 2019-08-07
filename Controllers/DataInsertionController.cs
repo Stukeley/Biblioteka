@@ -7,6 +7,10 @@ namespace Biblioteka.Controllers
 {
 	internal static class DataInsertionController
 	{
+		/// <summary>
+		/// Inserts a genre into the database
+		/// </summary>
+		/// <param name="genre">GenreModel of the genre to insert</param>
 		public static void InsertGenreIntoDatabase(GenreModel genre)
 		{
 			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
@@ -22,6 +26,10 @@ namespace Biblioteka.Controllers
 			connection.Close();
 		}
 
+		/// <summary>
+		/// Inserts an author into the database
+		/// </summary>
+		/// <param name="author">AuthorModel of the author to insert</param>
 		public static void InsertAuthorIntoDatabase(AuthorModel author)
 		{
 			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
@@ -41,6 +49,10 @@ namespace Biblioteka.Controllers
 			connection.Close();
 		}
 
+		/// <summary>
+		/// Inserts a book into the database
+		/// </summary>
+		/// <param name="book">BookModel of the book to insert</param>
 		public static void InsertBookIntoDatabase(BookModel book)
 		{
 			//find the genre ID and author ID in the database
@@ -68,7 +80,7 @@ namespace Biblioteka.Controllers
 		}
 
 		/// <summary>
-		/// This method will return a tuple containing the amounts of Books, Authors, Genres and Users in the database (in this order)
+		/// Returns a tuple containing the amounts of Books, Authors, Genres and Users in the database (in this order)
 		/// </summary>
 		/// <returns></returns>
 		public static Tuple<int, int, int, int> GetAmountsOfItems()

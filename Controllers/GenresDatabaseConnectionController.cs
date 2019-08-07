@@ -7,6 +7,10 @@ namespace Biblioteka.Controllers
 {
 	internal static class GenresDatabaseConnectionController
 	{
+		/// <summary>
+		/// Returns a list of all genres in the database
+		/// </summary>
+		/// <returns></returns>
 		public static List<GenreModel> GetAllGenres()
 		{
 			var genres = new List<GenreModel>();
@@ -39,6 +43,11 @@ namespace Biblioteka.Controllers
 			return genres;
 		}
 
+		/// <summary>
+		/// Returns a GenreModel for a given genre name
+		/// </summary>
+		/// <param name="name">Name of the genre to look for</param>
+		/// <returns></returns>
 		public static GenreModel GetGenreByName(string name)
 		{
 			var genre = new GenreModel();

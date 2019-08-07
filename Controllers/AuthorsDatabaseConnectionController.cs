@@ -8,6 +8,10 @@ namespace Biblioteka.Controllers
 {
 	internal static class AuthorsDatabaseConnectionController
 	{
+		/// <summary>
+		/// Returns a list of all authors in the database
+		/// </summary>
+		/// <returns></returns>
 		public static List<AuthorModel> GetAllAuthors()
 		{
 			var authors = new List<AuthorModel>();
@@ -45,6 +49,12 @@ namespace Biblioteka.Controllers
 			return authors;
 		}
 
+		/// <summary>
+		/// Returns an author model based on the provided Name and Surname
+		/// </summary>
+		/// <param name="name">Name of the author to return</param>
+		/// <param name="surname">Surname of the author to return</param>
+		/// <returns></returns>
 		public static AuthorModel GetAuthorByName(string name, string surname)
 		{
 			var author = new AuthorModel();
@@ -72,6 +82,10 @@ namespace Biblioteka.Controllers
 			return author;
 		}
 
+		/// <summary>
+		/// Returns a list of three most recently added authors
+		/// </summary>
+		/// <returns></returns>
 		public static List<AuthorModel> GetRecentAuthors()
 		{
 			//3 latest authors
@@ -83,6 +97,12 @@ namespace Biblioteka.Controllers
 			return recentAuthors;
 		}
 
+		/// <summary>
+		/// Returns a list of filtered authors, based on either the Name, or the Surname, or both
+		/// </summary>
+		/// <param name="name">Optional name of the Author to look for</param>
+		/// <param name="surname">Optional surname of the Author to look for</param>
+		/// <returns></returns>
 		public static List<AuthorModel> FilterAuthors(string name = null, string surname = null)
 		{
 			var allAuthors = GetAllAuthors();
@@ -111,6 +131,11 @@ namespace Biblioteka.Controllers
 			return filteredAuthors;
 		}
 
+		/// <summary>
+		/// Returns biography of the author tied to the provided Id
+		/// </summary>
+		/// <param name="id">Id of the author to retrieve biography for</param>
+		/// <returns></returns>
 		public static string GetAuthorBiography(int id)
 		{
 			string biography = "";

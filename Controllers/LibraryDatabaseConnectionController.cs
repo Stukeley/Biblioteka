@@ -7,11 +7,12 @@ using System.Data.SqlClient;
 
 namespace Biblioteka.Controllers
 {
-	/// <summary>
-	/// This class is used for the Wypożyczenia (borrowing) table that joins the Readers and Books tables to create a functioning library
-	/// </summary>
 	internal static class LibraryDatabaseConnectionController
 	{
+		/// <summary>
+		/// Returns a list of all borrowings of currently logged in user
+		/// </summary>
+		/// <returns></returns>
 		public static List<BorrowingModel> RetrieveBorrowingsForUser()
 		{
 			var listaWypożyczeń = new List<BorrowingModel>();
@@ -88,6 +89,10 @@ namespace Biblioteka.Controllers
 			return listaWypożyczeń;
 		}
 
+		/// <summary>
+		/// Returns the most recent borrowing of currently logged in user
+		/// </summary>
+		/// <returns></returns>
 		public static BorrowingModel RetrieveRecentBorrowing()
 		{
 			BorrowingModel ostatnieWypożyczenie = null;
@@ -130,6 +135,10 @@ namespace Biblioteka.Controllers
 			return ostatnieWypożyczenie;
 		}
 
+		/// <summary>
+		/// Returns a list of soon-ending (within two days from now) borrowings of currently logged in user
+		/// </summary>
+		/// <returns></returns>
 		public static List<BorrowingModel> RetrieveEndingBorrowings()
 		{
 			var endingBorrowings = new List<BorrowingModel>();
@@ -148,6 +157,10 @@ namespace Biblioteka.Controllers
 			return endingBorrowings;
 		}
 
+		/// <summary>
+		/// Marks the chosen book as borrowed if the user has less than five borrowings
+		/// </summary>
+		/// <param name="bookModel">BookModel of the borrowed book</param>
 		public static void BorrowBook(BookModel bookModel)
 		{
 			if (UserModel.CurrentUser == null)
@@ -198,6 +211,10 @@ namespace Biblioteka.Controllers
 			connection.Close();
 		}
 
+		/// <summary>
+		/// Extend a borrowing by an additional week
+		/// </summary>
+		/// <param name="borrowing">BorrowingModel to extend return time for</param>
 		public static void ExtendUserBorrowing(BorrowingModel borrowing)
 		{
 			if (UserModel.CurrentUser == null)
@@ -235,6 +252,10 @@ namespace Biblioteka.Controllers
 			connection.Close();
 		}
 
+		/// <summary>
+		/// Returns a list of all borrowings in the database
+		/// </summary>
+		/// <returns></returns>
 		public static List<BorrowingModel> GetAllBorrowings()
 		{
 			var wypożyczenia = new List<BorrowingModel>();
@@ -270,6 +291,10 @@ namespace Biblioteka.Controllers
 			return wypożyczenia;
 		}
 
+		/// <summary>
+		/// Returns a borrowing, making the book available and reducing user's amount of concurrent borrowings
+		/// </summary>
+		/// <param name="borrowing">BorrowingModel to return</param>
 		public static void ReturnBook(BorrowingModel borrowing)
 		{
 			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();

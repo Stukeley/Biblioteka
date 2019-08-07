@@ -7,9 +7,6 @@ using System.Data.SqlClient;
 
 namespace Biblioteka.Controllers
 {
-	/// <summary>
-	/// This class is used for connecting with the database and retrieving user information, or inserting new users into it
-	/// </summary>
 	internal static class UserDatabaseConnectionController
 	{
 		/// <summary>
@@ -185,6 +182,13 @@ namespace Biblioteka.Controllers
 			connection.Close();
 		}
 
+		/// <summary>
+		/// This method is responsible for updating user's credentials if requested
+		/// </summary>
+		/// <param name="name">New name of the user</param>
+		/// <param name="surname">New surname of the user</param>
+		/// <param name="email">New email of the user</param>
+		/// <param name="password">New password of the user</param>
 		public static void UpdateUserCredentials(string name, string surname, string email, string password)
 		{
 			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
@@ -228,6 +232,10 @@ namespace Biblioteka.Controllers
 			return isSpecialAccount;
 		}
 
+		/// <summary>
+		/// Returns a list of all users in the database
+		/// </summary>
+		/// <returns></returns>
 		public static List<UserModel> GetAllUsers()
 		{
 			var użytkownicy = new List<UserModel>();
@@ -265,6 +273,9 @@ namespace Biblioteka.Controllers
 			return użytkownicy;
 		}
 
+		/// <summary>
+		/// Count overdue fees for currently borrowed books of all users
+		/// </summary>
 		public static void CountUserFees()
 		{
 			//(UserId, fee)
@@ -300,6 +311,9 @@ namespace Biblioteka.Controllers
 			connection.Close();
 		}
 
+		/// <summary>
+		/// Clear currently-logged-in user's fees
+		/// </summary>
 		public static void ClearUserFees()
 		{
 			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();

@@ -9,6 +9,10 @@ namespace Biblioteka.Controllers
 {
 	internal static class BookDatabaseConnectionController
 	{
+		/// <summary>
+		/// Returns a list of all books in the database
+		/// </summary>
+		/// <returns></returns>
 		public static List<BookModel> GetAllBooks()
 		{
 			var books = new List<BookModel>();
@@ -93,6 +97,10 @@ namespace Biblioteka.Controllers
 			return books;
 		}
 
+		/// <summary>
+		/// Returns a list of three most recently added books
+		/// </summary>
+		/// <returns></returns>
 		public static List<BookModel> GetRecentBooks()
 		{
 			//3 latest books
@@ -104,6 +112,10 @@ namespace Biblioteka.Controllers
 			return recentBooks;
 		}
 
+		/// <summary>
+		/// Returns a list of books that are available right now
+		/// </summary>
+		/// <returns></returns>
 		public static List<BookModel> GetUnborrowedBooks()
 		{
 			var allBooks = GetAllBooks();
@@ -113,28 +125,12 @@ namespace Biblioteka.Controllers
 			return books;
 		}
 
-		public static int? GetBookByModel(BookModel bookModel)
-		{
-			//null means book not found
-			int? id = null;
-
-			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
-			var connection = new SqlConnection(connString);
-
-			var command = new SqlCommand($"SELECT * FROM Książki WHERE Title='{bookModel.Tytuł}'", connection);
-
-			using (var reader = command.ExecuteReader())
-			{
-				if (reader.HasRows)
-				{
-					reader.Read();
-					id = reader.GetInt32(0);
-				}
-			}
-
-			return id;
-		}
-
+		/// <summary>
+		/// Returns a list of filtered books, based on either the Author (name, surname) or the Title (or both)
+		/// </summary>
+		/// <param name="author">Optional name and/or surname of the Author to look for</param>
+		/// <param name="title">Optional title of the Book to look for</param>
+		/// <returns></returns>
 		public static List<BookModel> FilterBooks(string author = null, string title = null)
 		{
 			var allBooks = GetAllBooks();
