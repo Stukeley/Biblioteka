@@ -95,14 +95,6 @@
     <Compile Include="Admin\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BibliotekaDBDataSet.cs">
-      <DependentUpon>BibliotekaDBDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="BibliotekaDBDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BibliotekaDBDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\AuthorsDatabaseConnectionController.cs" />
     <Compile Include="Controllers\BookDatabaseConnectionController.cs" />
     <Compile Include="Controllers\DataInsertionController.cs" />
@@ -271,17 +263,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="BibliotekaDBDataSet.xsc">
-      <DependentUpon>BibliotekaDBDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="BibliotekaDBDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>BibliotekaDBDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="BibliotekaDBDataSet.xss">
-      <DependentUpon>BibliotekaDBDataSet.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

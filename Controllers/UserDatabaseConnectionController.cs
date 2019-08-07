@@ -179,7 +179,7 @@ namespace Biblioteka.Controllers
 
 			var getUserId = new SqlCommand($"SELECT Id FROM Czytelnicy WHERE Email='{email}'", connection);
 
-			var id = getUserId.ExecuteScalar();
+			var id = (int)getUserId.ExecuteScalar();
 			UserModel.CurrentUser.Id = id;
 
 			connection.Close();
