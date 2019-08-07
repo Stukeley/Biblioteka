@@ -1,4 +1,5 @@
 ﻿using Biblioteka.Models;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -11,6 +12,9 @@ namespace Biblioteka.Controllers
 		public static List<BookModel> GetAllBooks()
 		{
 			var books = new List<BookModel>();
+
+			//BookModel, authorId, genreId
+			var authorAndGenreIds = new List<Tuple<BookModel, int, int>>();
 
 			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
 			var connection = new SqlConnection(connString);
@@ -25,56 +29,63 @@ namespace Biblioteka.Controllers
 				{
 					while (reader.Read())
 					{
-						AuthorModel author = null;
-						var authorId = reader.GetInt32(1);
-
-						var getAuthorModel = new SqlCommand($"SELECT * FROM Autorzy WHERE Id={authorId}", connection);
-
-						using (var authorReader = getAuthorModel.ExecuteReader())
-						{
-							if (authorReader.HasRows)
-							{
-								authorReader.Read();
-								author = new AuthorModel()
-								{
-									Id = authorId,
-									Imię = authorReader.GetString(1).Trim(),
-									Nazwisko = authorReader.GetString(2).Trim(),
-									DataUrodzenia = authorReader.GetDateTime(3),
-									Biografia = authorReader.GetString(4).Trim()
-								};
-							}
-						}
-
-						GenreModel genre = null;
-						var genreId = reader.GetInt32(2);
-
-						var getGenreModel = new SqlCommand($"SELECT * FROM Gatunki WHERE Id={genreId}", connection);
-
-						using (var genreReader = getGenreModel.ExecuteReader())
-						{
-							if (genreReader.HasRows)
-							{
-								genreReader.Read();
-								genre = new GenreModel()
-								{
-									Id = genreId,
-									Nazwa = genreReader.GetString(1).Trim()
-								};
-							}
-						}
-
 						var book = new BookModel()
 						{
 							Id = reader.GetInt32(0),
-							Autor = author,
-							Gatunek = genre,
 							Tytuł = reader.GetString(3).Trim()
 						};
+						var authorId = reader.GetInt32(1);
 
-						books.Add(book);
+						var genreId = reader.GetInt32(2);
+
+						authorAndGenreIds.Add(new Tuple<BookModel, int, int>(book, authorId, genreId));
 					}
 				}
+			}
+
+			foreach (var elem in authorAndGenreIds)
+			{
+				AuthorModel author = null;
+				var getAuthorModel = new SqlCommand($"SELECT * FROM Autorzy WHERE Id={elem.Item2}", connection);
+				using (var authorReader = getAuthorModel.ExecuteReader())
+				{
+					if (authorReader.HasRows)
+					{
+						authorReader.Read();
+						author = new AuthorModel()
+						{
+							Id = elem.Item2,
+							Imię = authorReader.GetString(1).Trim(),
+							Nazwisko = authorReader.GetString(2).Trim(),
+							DataUrodzenia = authorReader.GetDateTime(3),
+							Biografia = authorReader.GetString(4).Trim()
+						};
+					}
+				}
+
+
+				GenreModel genre = null;
+				var getGenreModel = new SqlCommand($"SELECT * FROM Gatunki WHERE Id={elem.Item3}", connection);
+				using (var genreReader = getGenreModel.ExecuteReader())
+				{
+					if (genreReader.HasRows)
+					{
+						genreReader.Read();
+						genre = new GenreModel()
+						{
+							Id = elem.Item3,
+							Nazwa = genreReader.GetString(1).Trim()
+						};
+					}
+				}
+
+				elem.Item1.Autor = author;
+				elem.Item1.NazwaAutora = elem.Item1.Autor.Imię + " " + elem.Item1.Autor.Nazwisko;
+
+				elem.Item1.Gatunek = genre;
+				elem.Item1.NazwaGatunku = elem.Item1.Gatunek.Nazwa;
+
+				books.Add(elem.Item1);
 			}
 
 			connection.Close();

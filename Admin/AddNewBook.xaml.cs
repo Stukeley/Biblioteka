@@ -34,7 +34,7 @@ namespace Biblioteka.Admin
 			var autorzyString = new List<string>();
 			foreach (var autor in Autorzy)
 			{
-				autorzyString.Add(autor.Imię + autor.Nazwisko);
+				autorzyString.Add(autor.Imię + " " + autor.Nazwisko);
 			}
 			AuthorNameBox.ItemsSource = autorzyString;
 
@@ -48,7 +48,7 @@ namespace Biblioteka.Admin
 
 			foreach (var autor in Autorzy)
 			{
-				authorNamesAndIds.Add(autor.Id, autor.Imię + autor.Nazwisko);
+				authorNamesAndIds.Add(autor.Id, autor.Imię + " " + autor.Nazwisko);
 			}
 
 			foreach (var gatunek in Gatunki)
@@ -88,19 +88,27 @@ namespace Biblioteka.Admin
 			else
 			{
 				var title = BookTitleBox.Text;
+				//imię + nazwisko
 				var authorName = AuthorNameBox.Text;
 				var genreName = BookGenreBox.Text;
 
-				var author = authorName.Split(new[] { ' ' });
+				var author = Autorzy.First(x => x.Nazwa == authorName);
 
 				var książka = new BookModel()
 				{
 					Tytuł = title,
-					Autor = AuthorsDatabaseConnectionController.GetAuthorByName(author[0], author[1]),
+					Autor = author,
 					Gatunek = GenresDatabaseConnectionController.GetGenreByName(genreName),
-					IsBorrowed = false
+					IsBorrowed = false,
+					NazwaAutora = authorName,
+					NazwaGatunku = genreName
 				};
 				DataInsertionController.InsertBookIntoDatabase(książka);
+				UpdateDataGrid();
+
+				AuthorNameBox.Text = "";
+				BookTitleBox.Text = "";
+				BookGenreBox.Text = "";
 			}
 		}
 	}

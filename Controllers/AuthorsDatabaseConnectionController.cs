@@ -33,6 +33,7 @@ namespace Biblioteka.Controllers
 							DataUrodzenia = reader.GetDateTime(3),
 							Biografia = reader.GetString(4).Trim()
 						};
+						author.Nazwa = author.Imię + " " + author.Nazwisko;
 
 						authors.Add(author);
 					}

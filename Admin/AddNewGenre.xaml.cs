@@ -55,6 +55,7 @@ namespace Biblioteka.Admin
 
 				DataInsertionController.InsertGenreIntoDatabase(gatunek);
 				UpdateDataGrid();
+				GenreNameBox.Text = "";
 			}
 		}
 	}

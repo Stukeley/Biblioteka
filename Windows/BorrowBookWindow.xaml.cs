@@ -23,7 +23,7 @@ namespace Biblioteka.Windows
 
 			if (CurrentBook != null)
 			{
-				AuthorBox.Text = CurrentBook.Autor.Imię + CurrentBook.Autor.Nazwisko;
+				AuthorBox.Text = CurrentBook.Autor.Imię + " " + CurrentBook.Autor.Nazwisko;
 				TitleBox.Text = CurrentBook.Tytuł;
 				DateBox.Text = DateTime.Now.AddDays(14).ToString();
 			}

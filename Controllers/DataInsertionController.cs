@@ -48,13 +48,14 @@ namespace Biblioteka.Controllers
 			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
 
 			var connection = new SqlConnection(connString);
+			connection.Open();
 
-			var getAuthorId = new SqlCommand($"SELECT Id FROM Autorzy WHERE Name='{book.Autor.Imię}' AND Surname='{book.Autor.Nazwisko}'" +
-				$"AND DateOfBirth={book.Autor.DataUrodzenia}", connection);
-			var authorId = getAuthorId.ExecuteNonQuery();
+			var getAuthorId = new SqlCommand($"SELECT Id FROM Autorzy WHERE Name='{book.Autor.Imię}' AND Surname='{book.Autor.Nazwisko}'", connection);
+
+			var authorId = (int)getAuthorId.ExecuteScalar();
 
 			var getGenreId = new SqlCommand($"SELECT Id FROM Gatunki WHERE Genre='{book.Gatunek.Nazwa}'", connection);
-			var genreId = getGenreId.ExecuteNonQuery();
+			var genreId = (int)getGenreId.ExecuteScalar();
 
 			var command = new SqlCommand($"INSERT INTO Książki (AuthorId, GenreId, Title) VALUES (@AuthorId, @GenreId, @Title)", connection);
 
@@ -62,7 +63,6 @@ namespace Biblioteka.Controllers
 			command.Parameters.AddWithValue("@GenreId", genreId);
 			command.Parameters.AddWithValue("@Title", book.Tytuł);
 
-			connection.Open();
 			command.ExecuteNonQuery();
 			connection.Close();
 		}

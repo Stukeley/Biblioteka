@@ -6,7 +6,7 @@
 		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Biblioteka.Admin"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="500" Width="350" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None"
+        Title="Biblioteka - Logowanie" Height="500" Width="350" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None"
 		Background="#F8F8F8">
     <Grid>
 		<Rectangle Height="280" VerticalAlignment="Top">

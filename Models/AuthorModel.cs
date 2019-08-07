@@ -10,16 +10,11 @@ namespace Biblioteka.Models
 		public DateTime? DataUrodzenia { get; set; }
 		public string Biografia { get; set; }
 
+		//imię + nazwisko
+		public string Nazwa { get; set; }
+
 		public AuthorModel()
 		{
-		}
-
-		public AuthorModel(string imię, string nazwisko, DateTime? dataUrodzenia = null, string biografia = null)
-		{
-			Imię = imię;
-			Nazwisko = nazwisko;
-			DataUrodzenia = dataUrodzenia;
-			Biografia = biografia;
 		}
 	}
 }

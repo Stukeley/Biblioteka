@@ -21,7 +21,7 @@ namespace Biblioteka.Windows
 
 			if (CurrentBorrowing != null)
 			{
-				AuthorBox.Text = CurrentBorrowing.Autor.Imię + CurrentBorrowing.Autor.Nazwisko;
+				AuthorBox.Text = CurrentBorrowing.Autor.Imię + " " + CurrentBorrowing.Autor.Nazwisko;
 				TitleBox.Text = CurrentBorrowing.TytułKsiążki;
 				TimeLeftBox.Text = (CurrentBorrowing.TerminOddania - DateTime.Now).TotalDays.ToString();
 			}

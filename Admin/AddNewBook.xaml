@@ -35,17 +35,17 @@
 
 		<Grid>
 			<TextBox x:Name="BookTitleBox" materialDesign:HintAssist.Hint="TYTUŁ" VerticalAlignment="Bottom" HorizontalAlignment="Left"
-					 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="150" FontSize="16"
+					 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="300" FontSize="16"
 					 Margin="20,0,0,200"/>
 
 			<ComboBox x:Name="BookGenreBox" materialDesign:HintAssist.Hint="GATUNEK" FontSize="16" VerticalAlignment="Bottom"
-					  HorizontalAlignment="Left" Width="150" Margin="20,0,0,140"/>
+					  HorizontalAlignment="Left" Width="300" Margin="20,0,0,140"/>
 
 			<ComboBox x:Name="AuthorNameBox" materialDesign:HintAssist.Hint="AUTOR" FontSize="16" VerticalAlignment="Bottom"
-					  HorizontalAlignment="Left" Width="200" Margin="20,0,0,80"/>
+					  HorizontalAlignment="Left" Width="300" Margin="20,0,0,80"/>
 
 			<Button x:Name="AddBookButton" FontSize="16" Content="DODAJ KSIĄŻKĘ" VerticalAlignment="Bottom" HorizontalAlignment="Right"
-					Margin="0,0,500,140" Click="AddBookButton_Click"/>
+					Margin="0,0,350,140" Click="AddBookButton_Click"/>
 		</Grid>
 	</Grid>
 </UserControl>

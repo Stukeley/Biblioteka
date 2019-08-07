@@ -60,7 +60,9 @@ namespace Biblioteka.Admin
 				DataInsertionController.InsertAuthorIntoDatabase(author);
 				//WszyscyAutorzyDataGrid.Items.Add(author);
 				UpdateDataGrid();
-
+				AuthorNameBox.Text = "";
+				AuthorSurnameBox.Text = "";
+				AuthorBiographyBox.Text = "";
 			}
 		}
 
@@ -68,7 +70,7 @@ namespace Biblioteka.Admin
 		{
 			var row = sender as DataGridRow;
 			var authorId = (row.Item as AuthorModel).Id;
-			var nameAndSurname = (row.Item as AuthorModel).Imię + (row.Item as AuthorModel).Nazwisko;
+			var nameAndSurname = (row.Item as AuthorModel).Imię + " " + (row.Item as AuthorModel).Nazwisko;
 
 			MessageBox.Show(AuthorsDatabaseConnectionController.GetAuthorBiography(authorId), nameAndSurname);
 		}
