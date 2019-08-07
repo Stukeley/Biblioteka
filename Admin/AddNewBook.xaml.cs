@@ -60,8 +60,8 @@ namespace Biblioteka.Admin
 
 			for (int i = 0; i < Książki.Count; i++)
 			{
-				Książki[i].NazwaAutora = authorNamesAndIds.First(x => x.Key == Książki[i].IdAutora).Value;
-				Książki[i].NazwaGatunku = genreNamesAndIds.First(x => x.Key == Książki[i].IdGatunku).Value;
+				Książki[i].NazwaAutora = authorNamesAndIds.First(x => x.Key == Książki[i].Autor.Id).Value;
+				Książki[i].NazwaGatunku = genreNamesAndIds.First(x => x.Key == Książki[i].Gatunek.Id).Value;
 			}
 
 			WszystkieKsiążkiDataGrid.ItemsSource = Książki;

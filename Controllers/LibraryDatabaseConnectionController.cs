@@ -22,7 +22,7 @@ namespace Biblioteka.Controllers
 				throw new UserNotLoggedInException();
 			}
 
-			var userId = UserModel.CurrentUser.UserId;
+			var userId = UserModel.CurrentUser.Id;
 
 			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
 			var connection = new SqlConnection(connString);
@@ -92,7 +92,7 @@ namespace Biblioteka.Controllers
 		{
 			BorrowingModel ostatnieWypożyczenie = null;
 
-			var userId = UserModel.CurrentUser.UserId;
+			var userId = UserModel.CurrentUser.Id;
 
 			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
 			var connection = new SqlConnection(connString);
@@ -167,7 +167,7 @@ namespace Biblioteka.Controllers
 
 			//Check if the user has no more than 5 borrowings (that's the limit at a time)
 
-			var amountOfBorrowings = new SqlCommand($"SELECT COUNT(*) FROM Wypożyczenia WHERE ReaderId={UserModel.CurrentUser.UserId}", connection);
+			var amountOfBorrowings = new SqlCommand($"SELECT COUNT(*) FROM Wypożyczenia WHERE ReaderId={UserModel.CurrentUser.Id}", connection);
 
 			var amount = (int)(amountOfBorrowings.ExecuteScalar());
 
@@ -177,7 +177,13 @@ namespace Biblioteka.Controllers
 			}
 
 
-			var borrowing = new BorrowingModel(UserModel.CurrentUser.UserId, bookModel.Id, DateTime.Now, DateTime.Now.AddDays(14));
+			var borrowing = new BorrowingModel()
+			{
+				UserId = UserModel.CurrentUser.Id,
+				BookId = bookModel.Id,
+				DataWypożyczenia = DateTime.Now,
+				TerminOddania = DateTime.Now.AddDays(14)
+			};
 
 			var addBorrowing = new SqlCommand($"INSERT INTO Wypożyczenia (BookId, ReaderId, StartDate, EndDate) VALUES " +
 				$"(@BookId, @ReaderId, @StartDate, @EndDate)", connection);
@@ -199,7 +205,7 @@ namespace Biblioteka.Controllers
 				throw new UserNotLoggedInException();
 			}
 
-			var userId = UserModel.CurrentUser.UserId;
+			var userId = UserModel.CurrentUser.Id;
 
 			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
 			var connection = new SqlConnection(connString);

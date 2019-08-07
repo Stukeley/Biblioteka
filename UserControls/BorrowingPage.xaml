@@ -32,8 +32,8 @@
 			<DataGrid.Columns>
 				<DataGridTextColumn Header="Id" Width="100" Binding="{Binding Id}"/>
 				<DataGridTextColumn Header="Autor" Width="250" Binding="{Binding NazwaAutora}"/>
-				<DataGridTextColumn Header="Tytuł" Width="400" Binding="{Binding Tytuł}"/>
-				<DataGridTextColumn Header="Data Oddania" Width="150" Binding="{Binding DataUrodzenia}"/>
+				<DataGridTextColumn Header="Tytuł" Width="400" Binding="{Binding TytułKsiążki}"/>
+				<DataGridTextColumn Header="Data Oddania" Width="150" Binding="{Binding TerminOddania}"/>
 			</DataGrid.Columns>
 		</DataGrid>
     </Grid>

@@ -15,8 +15,6 @@ namespace Biblioteka.Windows
 	{
 		//TODO: hash passwords
 
-		public static bool IsLoggedIn = false;
-
 		public LoginWindow()
 		{
 			InitializeComponent();

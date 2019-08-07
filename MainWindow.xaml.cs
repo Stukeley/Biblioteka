@@ -17,19 +17,14 @@ namespace Biblioteka
 	{
 		//TODO: live chat in Contact section
 		//TODO: (in the future) make tooltips
-		//TODO: (in the future) machine learning for live chat
-		//TODO: add borrowing limit (every book can be borrowed by 1 person at a time, and every person can borrow up to 5 books at a time)
-		//TODO: try-catches everywhere
-		//TODO: get current directory at runtime and look for the database
 		//might have trouble with inserting NULL into the database - to be checked
-
 
 		public MainWindow()
 		{
 			InitializeComponent();
 
 			//hide unnecessary elements if the user is logged in
-			if (LoginWindow.IsLoggedIn)
+			if (UserModel.CurrentUser != null)
 			{
 				LoginButton.Visibility = Visibility.Hidden;
 				PleaseLogInGrid.Visibility = Visibility.Hidden;

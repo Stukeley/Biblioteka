@@ -49,7 +49,13 @@ namespace Biblioteka.Admin
 				var dateOfBirth = AuthorDateOfBirthPicker.SelectedDate;
 				var biography = AuthorBiographyBox.Text;
 
-				var author = new AuthorModel(name, surname, dateOfBirth, biography);
+				var author = new AuthorModel()
+				{
+					Imię = name,
+					Nazwisko = surname,
+					DataUrodzenia = dateOfBirth,
+					Biografia = biography
+				};
 
 				DataInsertionController.InsertAuthorIntoDatabase(author);
 				//WszyscyAutorzyDataGrid.Items.Add(author);

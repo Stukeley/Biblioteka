@@ -8,10 +8,5 @@
 		public GenreModel()
 		{
 		}
-
-		public GenreModel(string nazwa)
-		{
-			Nazwa = nazwa;
-		}
 	}
 }

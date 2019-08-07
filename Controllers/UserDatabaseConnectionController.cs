@@ -70,9 +70,12 @@ namespace Biblioteka.Controllers
 							}
 						}
 
-						Biblioteka.Windows.LoginWindow.IsLoggedIn = true;
-						var userModel = new UserModel(dbName, dbSurname, email, password)
+						var userModel = new UserModel()
 						{
+							Imię = dbName,
+							Nazwisko = dbSurname,
+							Email = email,
+							Hasło = password,
 							Id = dbId,
 							Fees = fees,
 							DateOfCreation = DateTime.Now
@@ -164,9 +167,22 @@ namespace Biblioteka.Controllers
 			command.Parameters.AddWithValue("@DateOfCreation", currentDate);
 
 			command.ExecuteNonQuery();
-			connection.Close();
 
-			UserModel.CurrentUser = new UserModel(name, surname, email, password, currentDate);
+			UserModel.CurrentUser = new UserModel()
+			{
+				Imię = name,
+				Nazwisko = surname,
+				Email = email,
+				Hasło = password,
+				DateOfCreation = currentDate
+			};
+
+			var getUserId = new SqlCommand($"SELECT Id FROM Czytelnicy WHERE Email='{email}'", connection);
+
+			var id = getUserId.ExecuteScalar();
+			UserModel.CurrentUser.Id = id;
+
+			connection.Close();
 		}
 
 		public static void UpdateUserCredentials(string name, string surname, string email, string password)

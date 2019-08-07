@@ -48,7 +48,10 @@ namespace Biblioteka.Admin
 			{
 				var name = GenreNameBox.Text;
 
-				var gatunek = new GenreModel(name);
+				var gatunek = new GenreModel()
+				{
+					Nazwa = name
+				};
 
 				DataInsertionController.InsertGenreIntoDatabase(gatunek);
 				UpdateDataGrid();

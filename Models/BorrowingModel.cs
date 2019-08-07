@@ -19,13 +19,5 @@ namespace Biblioteka.Models
 		public BorrowingModel()
 		{
 		}
-
-		public BorrowingModel(int userId, int bookId, DateTime dataWypożyczenia, DateTime terminOddania)
-		{
-			UserId = userId;
-			BookId = bookId;
-			DataWypożyczenia = dataWypożyczenia;
-			TerminOddania = terminOddania;
-		}
 	}
 }
