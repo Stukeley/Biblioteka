@@ -41,7 +41,7 @@
 	</Window.Triggers>
     
     <Grid Background="LightGray">
-        <Grid Height="60" VerticalAlignment="Top" Background="#FF1368BD" >
+        <Grid x:Name="DragableTop" Height="60" VerticalAlignment="Top" Background="#FF1368BD" MouseDown="DragableTop_MouseDown">
 			<TextBlock Text="Witamy w Bibliotece im. Jeza Stukeleya!" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="LightGray"
                        FontSize="26" FontFamily="Berlin Sans FB"/>
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">

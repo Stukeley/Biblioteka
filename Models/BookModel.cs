@@ -9,8 +9,8 @@
 		public bool IsBorrowed { get; set; }
 
 		//bonus properties for DataGrids
-		public string NazwaAutora { get; set; } //Imię + Nazwisko
-		public string NazwaGatunku { get; set; }//Nazwa
+		public string NazwaAutora => Autor.Nazwa;
+		public string NazwaGatunku => Gatunek.Nazwa;
 
 		public BookModel()
 		{

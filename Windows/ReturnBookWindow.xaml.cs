@@ -2,6 +2,7 @@
 using Biblioteka.Models;
 using System;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace Biblioteka.Windows
@@ -11,17 +12,15 @@ namespace Biblioteka.Windows
 	/// </summary>
 	public partial class ReturnBookWindow : Window
 	{
-		public BorrowingModel CurrentBorrowing;
+		public BorrowingModel CurrentBorrowing = null;
 
-		public ReturnBookWindow(BorrowingModel borrowing = null)
+		public ReturnBookWindow()
 		{
 			InitializeComponent();
 
-			CurrentBorrowing = borrowing;
-
 			if (CurrentBorrowing != null)
 			{
-				AuthorBox.Text = CurrentBorrowing.Autor.Imię + " " + CurrentBorrowing.Autor.Nazwisko;
+				AuthorBox.Text = CurrentBorrowing.NazwaAutora;
 				TitleBox.Text = CurrentBorrowing.TytułKsiążki;
 				TimeLeftBox.Text = (CurrentBorrowing.TerminOddania - DateTime.Now).TotalDays.ToString();
 			}
@@ -50,14 +49,22 @@ namespace Biblioteka.Windows
 			this.Close();
 		}
 
-		private void ExitButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+		private void ExitButton_MouseEnter(object sender, MouseEventArgs e)
 		{
 			ExitButton.Foreground = new SolidColorBrush(Colors.Black);
 		}
 
-		private void ExitButton_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+		private void ExitButton_MouseLeave(object sender, MouseEventArgs e)
 		{
 			ExitButton.Foreground = new SolidColorBrush(Colors.DarkSlateGray);
+		}
+
+		private void TopRectangle_MouseDown(object sender, MouseButtonEventArgs e)
+		{
+			if (e.ChangedButton == MouseButton.Left)
+			{
+				this.DragMove();
+			}
 		}
 	}
 }

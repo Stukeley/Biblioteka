@@ -73,5 +73,39 @@ namespace Biblioteka.Controllers
 
 			return genre;
 		}
+
+		/// <summary>
+		/// Returns a GenreModel for the specified Id
+		/// </summary>
+		/// <param name="id">The Id of genre to look for</param>
+		/// <returns></returns>
+		public static GenreModel GetGenreById(int id)
+		{
+			GenreModel genre = null;
+
+			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
+			var connection = new SqlConnection(connString);
+
+			connection.Open();
+
+			var command = new SqlCommand($"SELECT * FROM Gatunki WHERE Id={id}", connection);
+
+			using (var reader = command.ExecuteReader())
+			{
+				if (reader.HasRows)
+				{
+					reader.Read();
+					genre = new GenreModel()
+					{
+						Id = id,
+						Nazwa = reader.GetString(1)
+					};
+				}
+			}
+
+			connection.Close();
+
+			return genre;
+		}
 	}
 }

@@ -6,6 +6,7 @@ using Biblioteka.UserControls;
 using Biblioteka.Windows;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace Biblioteka
@@ -15,7 +16,6 @@ namespace Biblioteka
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		//TODO: live chat in Contact section
 		//TODO: (in the future) make tooltips
 		//might have trouble with inserting NULL into the database - to be checked
 
@@ -64,7 +64,7 @@ namespace Biblioteka
 
 		private void LoginButton_Click(object sender, RoutedEventArgs e)
 		{
-			var loginWindow = new Biblioteka.Windows.LoginWindow();
+			var loginWindow = new LoginWindow();
 			loginWindow.Show();
 			this.Close();
 		}
@@ -74,24 +74,24 @@ namespace Biblioteka
 			Application.Current.Shutdown();
 		}
 
-		private void PleaseLogInGrid_PreviewMouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		private void PleaseLogInGrid_PreviewMouseUp(object sender, MouseButtonEventArgs e)
 		{
-			var loginWindow = new Biblioteka.Windows.LoginWindow();
+			var loginWindow = new LoginWindow();
 			loginWindow.Show();
 			this.Close();
 		}
 
-		private void ExitButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+		private void ExitButton_MouseEnter(object sender, MouseEventArgs e)
 		{
 			ExitButton.Foreground = new SolidColorBrush(Colors.Black);
 		}
 
-		private void ExitButton_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+		private void ExitButton_MouseLeave(object sender, MouseEventArgs e)
 		{
 			ExitButton.Foreground = new SolidColorBrush(Colors.DarkSlateGray);
 		}
 
-		private void Homepage_PreviewMouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		private void Homepage_PreviewMouseUp(object sender, MouseButtonEventArgs e)
 		{
 			if (UserModel.CurrentUser == null)
 			{
@@ -103,7 +103,7 @@ namespace Biblioteka
 			}
 		}
 
-		private void Books_PreviewMouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		private void Books_PreviewMouseUp(object sender, MouseButtonEventArgs e)
 		{
 			if (UserModel.CurrentUser == null)
 			{
@@ -115,7 +115,7 @@ namespace Biblioteka
 			}
 		}
 
-		private void Authors_PreviewMouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		private void Authors_PreviewMouseUp(object sender, MouseButtonEventArgs e)
 		{
 			if (UserModel.CurrentUser == null)
 			{
@@ -127,7 +127,7 @@ namespace Biblioteka
 			}
 		}
 
-		private void Contact_PreviewMouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		private void Contact_PreviewMouseUp(object sender, MouseButtonEventArgs e)
 		{
 			if (UserModel.CurrentUser == null)
 			{
@@ -139,7 +139,7 @@ namespace Biblioteka
 			}
 		}
 
-		private void Account_PreviewMouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		private void Account_PreviewMouseUp(object sender, MouseButtonEventArgs e)
 		{
 			if (UserModel.CurrentUser == null)
 			{
@@ -151,7 +151,7 @@ namespace Biblioteka
 			}
 		}
 
-		private void LogOut_PreviewMouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		private void LogOut_PreviewMouseUp(object sender, MouseButtonEventArgs e)
 		{
 			if (UserModel.CurrentUser == null)
 			{
@@ -171,6 +171,14 @@ namespace Biblioteka
 			var addContentWindow = new AdminAddContentWindow();
 			addContentWindow.Show();
 			this.Close();
+		}
+
+		private void DragableTop_MouseDown(object sender, MouseButtonEventArgs e)
+		{
+			if (e.ChangedButton == MouseButton.Left)
+			{
+				this.DragMove();
+			}
 		}
 	}
 }

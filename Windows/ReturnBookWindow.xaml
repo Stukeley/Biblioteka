@@ -9,7 +9,7 @@
         Title="Biblioteka - Zwrot książki" Height="500" Width="350" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen"
 		Background="#F8F8F8">
     <Grid>
-		<Rectangle Height="280" VerticalAlignment="Top">
+		<Rectangle x:Name="TopRectangle" Height="280" VerticalAlignment="Top" MouseDown="TopRectangle_MouseDown">
 			<Rectangle.Fill>
 				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
 					<GradientStop Color="#FF2281D1"/>
@@ -48,7 +48,7 @@
 		<Button x:Name="ExtendButton" VerticalAlignment="Bottom" Margin="0,120" Width="150"
 				Content="PRZEDŁUŻ" Click="ExtendButton_Click"/>
 		<Button x:Name="ReturnButton" VerticalAlignment="Bottom" Margin="0,85" Width="150"
-				Content="WYPOŻYCZ" Click="ReturnButton_Click"/>
+				Content="ODDAJ" Click="ReturnButton_Click"/>
 		<TextBlock Text="Przypomnienie: każdy tydzień przetrzymania książki bez wcześniejszego poinformowania Biblioteki kosztuje 5zł!"
 				   Foreground="Gray" VerticalAlignment="Bottom" HorizontalAlignment="Center" TextAlignment="Center"
 				   TextWrapping="Wrap" Margin="0,0,0,20" FontSize="13" FontWeight="SemiBold"/>

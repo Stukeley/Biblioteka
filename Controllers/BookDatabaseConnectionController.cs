@@ -84,10 +84,8 @@ namespace Biblioteka.Controllers
 				}
 
 				elem.Item1.Autor = author;
-				elem.Item1.NazwaAutora = elem.Item1.Autor.Imię + " " + elem.Item1.Autor.Nazwisko;
 
 				elem.Item1.Gatunek = genre;
-				elem.Item1.NazwaGatunku = elem.Item1.Gatunek.Nazwa;
 
 				books.Add(elem.Item1);
 			}
@@ -179,6 +177,43 @@ namespace Biblioteka.Controllers
 			}
 
 			return filteredBooks;
+		}
+
+		/// <summary>
+		/// Returns a BookModel for the specified Id
+		/// </summary>
+		/// <param name="id">The Id of book to look for</param>
+		/// <returns></returns>
+		public static BookModel GetBookById(int id)
+		{
+			BookModel book = null;
+
+			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
+			var connection = new SqlConnection(connString);
+
+			connection.Open();
+
+			var command = new SqlCommand($"SELECT * FROM Książki WHERE Id={id}", connection);
+
+			using (var reader = command.ExecuteReader())
+			{
+				if (reader.HasRows)
+				{
+					reader.Read();
+					book = new BookModel()
+					{
+						Id = id,
+						Tytuł = reader.GetString(3),
+						IsBorrowed = reader.GetBoolean(4),
+						Autor = AuthorsDatabaseConnectionController.GetAuthorById(reader.GetInt32(1)),
+						Gatunek = GenresDatabaseConnectionController.GetGenreById(reader.GetInt32(2))
+					};
+				}
+			}
+
+			connection.Close();
+
+			return book;
 		}
 	}
 }

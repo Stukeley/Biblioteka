@@ -129,5 +129,13 @@ namespace Biblioteka.Windows
 				VisiblePasswordBox.Visibility = Visibility.Collapsed;
 			}
 		}
+
+		private void TopRectangle_MouseDown(object sender, MouseButtonEventArgs e)
+		{
+			if (e.ChangedButton == MouseButton.Left)
+			{
+				this.DragMove();
+			}
+		}
 	}
 }

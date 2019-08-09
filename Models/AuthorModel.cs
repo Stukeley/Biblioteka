@@ -11,7 +11,7 @@ namespace Biblioteka.Models
 		public string Biografia { get; set; }
 
 		//imię + nazwisko
-		public string Nazwa { get; set; }
+		public string Nazwa => Imię + " " + Nazwisko;
 
 		public AuthorModel()
 		{

@@ -58,12 +58,6 @@ namespace Biblioteka.Admin
 
 			Książki = BookDatabaseConnectionController.GetAllBooks();
 
-			for (int i = 0; i < Książki.Count; i++)
-			{
-				Książki[i].NazwaAutora = authorNamesAndIds.First(x => x.Key == Książki[i].Autor.Id).Value;
-				Książki[i].NazwaGatunku = genreNamesAndIds.First(x => x.Key == Książki[i].Gatunek.Id).Value;
-			}
-
 			WszystkieKsiążkiDataGrid.ItemsSource = Książki;
 			WszystkieKsiążkiDataGrid.UpdateLayout();
 		}
@@ -100,8 +94,6 @@ namespace Biblioteka.Admin
 					Autor = author,
 					Gatunek = GenresDatabaseConnectionController.GetGenreByName(genreName),
 					IsBorrowed = false,
-					NazwaAutora = authorName,
-					NazwaGatunku = genreName
 				};
 				DataInsertionController.InsertBookIntoDatabase(książka);
 				UpdateDataGrid();

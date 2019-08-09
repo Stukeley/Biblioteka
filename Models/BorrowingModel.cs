@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Biblioteka.Controllers;
+using System;
 
 namespace Biblioteka.Models
 {
@@ -10,11 +11,10 @@ namespace Biblioteka.Models
 		public DateTime DataWypożyczenia { get; set; }
 		public DateTime TerminOddania { get; set; }
 
-		public string NazwaAutora { get; set; }
-		public string TytułKsiążki { get; set; }
+		public BookModel Książka => BookDatabaseConnectionController.GetBookById(BookId);
 
-		public AuthorModel Autor { get; set; }
-		public BookModel Książka { get; set; }
+		public string NazwaAutora => Książka.Autor.Nazwa;
+		public string TytułKsiążki => Książka.Tytuł;
 
 		public BorrowingModel()
 		{

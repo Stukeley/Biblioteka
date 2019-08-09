@@ -106,5 +106,13 @@ namespace Biblioteka.Windows
 		{
 			ExitButton.Foreground = new SolidColorBrush(Colors.DarkSlateGray);
 		}
+
+		private void TopRectangle_MouseDown(object sender, MouseButtonEventArgs e)
+		{
+			if (e.ChangedButton == MouseButton.Left)
+			{
+				this.DragMove();
+			}
+		}
 	}
 }

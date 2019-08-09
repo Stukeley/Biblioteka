@@ -46,35 +46,6 @@ namespace Biblioteka.Controllers
 							TerminOddania = reader.GetDateTime(4)
 						};
 
-						var bookId = reader.GetInt32(1);
-
-						//get the book's title and its author name
-
-						var getBook = new SqlCommand($"SELECT * FROM Książki WHERE Id={bookId}", connection);
-						using (var reader2 = getBook.ExecuteReader())
-						{
-							if (reader2.HasRows)
-							{
-								while (reader2.Read())
-								{
-									wypożyczenie.TytułKsiążki = reader2.GetString(3).Trim();
-									var authorId = reader2.GetInt32(1);
-
-									var getAuthor = new SqlCommand($"SELECT * FROM Autorzy WHERE Id={authorId}", connection);
-									using (var reader3 = getAuthor.ExecuteReader())
-									{
-										if (reader3.HasRows)
-										{
-											while (reader3.Read())
-											{
-												wypożyczenie.NazwaAutora = reader3.GetString(1).Trim() + reader3.GetString(2).Trim();
-											}
-										}
-									}
-								}
-							}
-						}
-
 						listaWypożyczeń.Add(wypożyczenie);
 					}
 				}

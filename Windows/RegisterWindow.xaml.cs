@@ -13,7 +13,6 @@ namespace Biblioteka.Windows
 	/// </summary>
 	public partial class RegisterWindow : Window
 	{
-		//TODO: What if the Email already exists in the database? To be checked
 		public RegisterWindow()
 		{
 			InitializeComponent();
@@ -102,6 +101,14 @@ namespace Biblioteka.Windows
 				PasswordBox.Visibility = Visibility.Visible;
 				PasswordBox.Password = enteredPassword;
 				VisiblePasswordBox.Visibility = Visibility.Collapsed;
+			}
+		}
+
+		private void TopRectangle_MouseDown(object sender, MouseButtonEventArgs e)
+		{
+			if (e.ChangedButton == MouseButton.Left)
+			{
+				this.DragMove();
 			}
 		}
 	}

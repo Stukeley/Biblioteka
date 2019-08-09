@@ -34,7 +34,7 @@ namespace Biblioteka.UserControls
 		{
 			var row = sender as DataGridRow;
 			var borrowing = row.Item as BorrowingModel;
-			var returnWindow = new ReturnBookWindow
+			var returnWindow = new ReturnBookWindow()
 			{
 				CurrentBorrowing = borrowing
 			};

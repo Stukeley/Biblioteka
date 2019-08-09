@@ -37,7 +37,6 @@ namespace Biblioteka.Controllers
 							DataUrodzenia = reader.GetDateTime(3),
 							Biografia = reader.GetString(4).Trim()
 						};
-						author.Nazwa = author.Imię + " " + author.Nazwisko;
 
 						authors.Add(author);
 					}
@@ -159,6 +158,43 @@ namespace Biblioteka.Controllers
 			connection.Close();
 
 			return biography;
+		}
+
+		/// <summary>
+		/// Returns an AuthorModel for the specified Id
+		/// </summary>
+		/// <param name="id">The Id of author to look for</param>
+		/// <returns></returns>
+		public static AuthorModel GetAuthorById(int id)
+		{
+			AuthorModel author = null;
+
+			var connString = ConfigurationManager.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ToString();
+			var connection = new SqlConnection(connString);
+
+			connection.Open();
+
+			var command = new SqlCommand($"SELECT * FROM Autorzy WHERE Id={id}", connection);
+
+			using (var reader = command.ExecuteReader())
+			{
+				if (reader.HasRows)
+				{
+					reader.Read();
+					author = new AuthorModel()
+					{
+						Id = id,
+						Imię = reader.GetString(1),
+						Nazwisko = reader.GetString(2),
+						DataUrodzenia = reader.GetDateTime(3),
+						Biografia = reader.GetString(4)
+					};
+				}
+			}
+
+			connection.Close();
+
+			return author;
 		}
 	}
 }
