@@ -19,8 +19,6 @@ namespace Biblioteka
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		//TODO: (in the future) make tooltips
-		//might have trouble with inserting NULL into the database - to be checked
 		//! Current BibliotekaDBConnectionString: 
 		//? Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Programowanie\Biblioteka\BibliotekaDB.mdf;Integrated Security=True;Connect Timeout=30
 

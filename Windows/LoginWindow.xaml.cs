@@ -72,7 +72,6 @@ namespace Biblioteka.Windows
 			}
 			else
 			{
-				//this situation should not be possible
 				UserNotLoggedInException.ShowGenericMessageBox();
 			}
 		}

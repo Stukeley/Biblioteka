@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:Biblioteka.Admin"
         mc:Ignorable="d"
         Title="Biblioteka - Okno informacyjne" Height="160" Width="420" Background="#F8F8F8" WindowStartupLocation="CenterScreen"
-		ShowInTaskbar="True" WindowStyle="None" ResizeMode="NoResize" PreviewKeyDown="Window_KeyDown">
+		ShowInTaskbar="True" WindowStyle="None" ResizeMode="NoResize">
     <Grid>
 		<Grid Height="40" VerticalAlignment="Top">
 			<Rectangle x:Name="TopRectangle" MouseDown="TopRectangle_MouseDown">
