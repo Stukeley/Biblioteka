@@ -4,6 +4,9 @@ using Biblioteka.Exceptions;
 using Biblioteka.Models;
 using Biblioteka.UserControls;
 using Biblioteka.Windows;
+using System;
+using System.Configuration;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -18,6 +21,19 @@ namespace Biblioteka
 	{
 		//TODO: (in the future) make tooltips
 		//might have trouble with inserting NULL into the database - to be checked
+		//! Current BibliotekaDBConnectionString: 
+		//? Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Programowanie\Biblioteka\BibliotekaDB.mdf;Integrated Security=True;Connect Timeout=30
+
+		private static string ConnectionStringBase = @"Data Source=(LocalDB)\MSSQLLocalDB;Integrated Security=True;Connect Timeout=30;" +
+			"AttachDbFilename=" + Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\BibliotekaDB.mdf;";
+
+		static MainWindow()
+		{
+			var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+			config.ConnectionStrings.ConnectionStrings["Biblioteka.Properties.Settings.BibliotekaDBConnectionString"].ConnectionString = ConnectionStringBase;
+			config.Save();
+			ConfigurationManager.RefreshSection("connectionStrings");
+		}
 
 		public MainWindow()
 		{
