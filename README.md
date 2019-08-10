@@ -2,7 +2,7 @@
 Aplikacja stworzona w WPF (z użyciem Material Design) oparta na .Net Framework 4.8 imitująca bibliotekę.
 
 # Dodatkowe Informacje
-To nie jest w pełni poważny projekt - jedyny sposób, by go używać, to sklonowanie tego repo. Należy pamiętać również o zmianie ścieżki dostępu do bazy danych BibliotekaDB.mdf - w Properties\Settings\Default należy znaleźć pozycję BibliotekaDBConnectionString i zmienić parametr AttachDbFilename na ścieżkę dostępu do bazy danych na dysku.
+To nie jest w pełni poważny projekt - nigdy nie zostanie opublikowany, więc jedyny sposób, by go używać, to sklonowanie tego repo. Ścieżka do bazy danych BibliotekaDB.mdf powinna znaleźć się automatycznie przy każdym uruchomieniu aplikacji.
 
 # Screeny
 
